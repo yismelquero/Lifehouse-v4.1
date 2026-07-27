@@ -1,0 +1,441 @@
+/* ═══════════════════════════════════════
+   LECTURA PAGE — Premium Redesign
+═══════════════════════════════════════ */
+
+/* ── Hero Override ── */
+.lec-hero {
+  position: relative;
+  height: 72svh;
+  min-height: 560px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 5rem;
+  overflow: hidden;
+}
+.lec-hero-bg {
+  position: absolute; inset: 0; z-index: 1;
+}
+.lec-hero-bg img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: brightness(0.45) saturate(0.8);
+  transition: transform 12s ease;
+}
+.lec-hero:hover .lec-hero-bg img { transform: scale(1.03); }
+.lec-hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(10,10,10,1) 0%,
+    rgba(10,10,10,0.6) 40%,
+    rgba(10,10,10,0.2) 100%
+  );
+}
+.lec-hero-content {
+  position: relative; z-index: 2;
+  width: 100%;
+}
+.lec-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.65rem; font-weight: 800;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.5rem;
+}
+.lec-hero-eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--gold);
+}
+.lec-hero-title {
+  font-family: var(--ff-display);
+  font-size: clamp(3.5rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  max-width: 14ch;
+  margin-bottom: 2rem;
+}
+.lec-hero-meta {
+  display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+}
+.lec-hero-stat {
+  display: flex; flex-direction: column; gap: 0.2rem;
+}
+.lec-hero-stat-num {
+  font-family: var(--ff-display);
+  font-size: 1.8rem; font-weight: 900;
+  line-height: 1; color: var(--gold);
+}
+.lec-hero-stat-lbl {
+  font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+}
+.lec-hero-divider {
+  width: 1px; height: 40px;
+  background: rgba(255,255,255,0.2);
+}
+
+/* ── Progress Bar global ── */
+.lec-global-progress {
+  background: var(--black-2);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem 0;
+}
+.lec-progress-inner {
+  display: flex; align-items: center; gap: 2rem;
+}
+.lec-progress-label {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); white-space: nowrap; flex-shrink: 0;
+}
+.lec-progress-track {
+  flex: 1; height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px; overflow: hidden;
+}
+.lec-progress-fill {
+  height: 100%; background: var(--gold);
+  border-radius: 2px;
+  transition: width 1.5s var(--ease-out);
+}
+.lec-progress-pct {
+  font-family: var(--ff-display);
+  font-size: 1rem; font-weight: 800;
+  color: var(--white); white-space: nowrap; flex-shrink: 0;
+}
+
+/* ── Active Book Section ── */
+.lec-active {
+  background: var(--black);
+  padding-block: var(--section-py);
+}
+.lec-active-header {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 5rem;
+  align-items: start;
+  margin-bottom: 5rem;
+}
+.lec-book-card {
+  position: sticky; top: 100px;
+  background: var(--black-2);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+.lec-book-cover {
+  aspect-ratio: 3/4; overflow: hidden;
+}
+.lec-book-cover img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.8s var(--ease);
+}
+.lec-book-card:hover .lec-book-cover img { transform: scale(1.04); }
+.lec-book-info {
+  padding: 1.75rem;
+}
+.lec-book-status {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(200,169,110,0.12);
+  border: 1px solid rgba(200,169,110,0.3);
+  border-radius: 100px;
+  padding: 0.35rem 0.875rem;
+  font-size: 0.62rem; font-weight: 800;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.lec-book-status-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--gold); animation: pulse 2s infinite;
+}
+.lec-book-name {
+  font-family: var(--ff-display);
+  font-size: 1.6rem; font-weight: 900;
+  line-height: 1; margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.lec-book-sub {
+  font-size: 0.82rem; color: rgba(255,255,255,0.45);
+  margin-bottom: 1.25rem; line-height: 1.5;
+}
+.lec-mini-progress { width: 100%; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; margin-bottom: 0.5rem; }
+.lec-mini-bar { height: 100%; background: var(--gold); border-radius: 2px; transition: width 1.5s var(--ease-out); }
+.lec-mini-meta { display: flex; justify-content: space-between; font-size: 0.68rem; color: rgba(255,255,255,0.35); }
+
+/* ── Feed Section Right Column ── */
+.lec-feed-header {
+  margin-bottom: 2.5rem;
+}
+.lec-feed-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+  margin-bottom: 0.875rem;
+}
+.lec-feed-sub {
+  font-size: 1rem; color: rgba(255,255,255,0.5);
+  line-height: 1.65; max-width: 50ch;
+}
+
+/* ── Daily Message Cards ── */
+.lec-feed {
+  display: flex; flex-direction: column; gap: 1.25rem;
+}
+.lec-day-card {
+  background: var(--black-2);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  cursor: pointer;
+}
+.lec-day-card:hover {
+  border-color: rgba(200,169,110,0.3);
+  transform: translateX(4px);
+}
+.lec-day-card.active-day {
+  border-color: var(--gold);
+  background: rgba(200,169,110,0.05);
+}
+.lec-day-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  gap: 1.25rem;
+}
+.lec-day-left {
+  display: flex; align-items: center; gap: 1.25rem;
+}
+.lec-day-num {
+  font-family: var(--ff-display);
+  font-size: 2rem; font-weight: 900;
+  color: var(--gold); line-height: 1;
+  min-width: 3ch; text-align: center;
+}
+.lec-day-divider {
+  width: 1px; height: 36px;
+  background: rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.lec-day-info {}
+.lec-day-date {
+  font-size: 0.65rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 0.25rem;
+}
+.lec-day-reading {
+  font-family: var(--ff-display);
+  font-size: 1.05rem; font-weight: 800;
+  color: var(--white); line-height: 1;
+}
+
+.lec-day-badge {
+  flex-shrink: 0;
+  padding: 0.35rem 0.8rem;
+  border-radius: 100px;
+  font-size: 0.58rem; font-weight: 800;
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.lec-day-badge.hoy {
+  background: var(--gold); color: var(--black);
+}
+.lec-day-badge.completado {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.45);
+}
+.lec-day-badge.pendiente {
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Expandable content */
+.lec-day-body {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.45s var(--ease), padding 0.45s var(--ease);
+}
+.lec-day-card.open .lec-day-body {
+  max-height: 500px;
+}
+.lec-day-body-inner {
+  padding: 0 1.5rem 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.25rem;
+}
+.lec-day-block {
+  display: flex; flex-direction: column; gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+.lec-day-block:last-child { margin-bottom: 0; }
+.lec-day-block-label {
+  font-size: 0.6rem; font-weight: 800;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold);
+}
+.lec-day-block-text {
+  font-size: 0.95rem; color: rgba(255,255,255,0.75);
+  line-height: 1.65;
+}
+.lec-day-block-text strong {
+  color: var(--white); font-weight: 600;
+}
+
+.lec-day-chevron {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.3); flex-shrink: 0;
+  transition: transform 0.3s var(--ease), color 0.3s;
+}
+.lec-day-card.open .lec-day-chevron { transform: rotate(180deg); color: var(--gold); }
+
+/* Filter pills */
+.lec-filter-bar {
+  display: flex; gap: 0.5rem; flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.lec-filter-pill {
+  padding: 0.45rem 1.1rem;
+  border-radius: 100px;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.05em;
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.08);
+  cursor: pointer; transition: all 0.2s;
+}
+.lec-filter-pill:hover,
+.lec-filter-pill.active {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+/* ── Completed Books ── */
+.lec-completed {
+  background: var(--light-bg);
+  padding-block: var(--section-py);
+  color: var(--black);
+}
+.lec-completed-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 2rem; margin-bottom: 3.5rem; flex-wrap: wrap;
+}
+.lec-completed-header h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900; line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: var(--black);
+}
+.lec-completed-header p {
+  font-size: 1rem; color: #666; max-width: 38ch;
+  line-height: 1.65;
+}
+.lec-books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+.lec-book-thumb {
+  background: var(--white);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.07);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s;
+}
+.lec-book-thumb:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 28px 60px rgba(0,0,0,0.13);
+}
+.lec-book-thumb-img {
+  aspect-ratio: 3/4; overflow: hidden;
+}
+.lec-book-thumb-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s var(--ease);
+  filter: grayscale(30%);
+}
+.lec-book-thumb:hover .lec-book-thumb-img img {
+  transform: scale(1.06); filter: grayscale(0%);
+}
+.lec-book-thumb-body {
+  padding: 1.25rem;
+}
+.lec-book-thumb-tag {
+  font-size: 0.58rem; font-weight: 800;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--gold-dk); margin-bottom: 0.4rem;
+}
+.lec-book-thumb-title {
+  font-family: var(--ff-display);
+  font-size: 1.05rem; font-weight: 800;
+  color: var(--black); margin-bottom: 0.875rem;
+  line-height: 1.1;
+}
+.lec-book-thumb-progress {
+  width: 100%; height: 3px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 2px; overflow: hidden;
+  margin-bottom: 0.4rem;
+}
+.lec-book-thumb-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dk), var(--gold));
+  border-radius: 2px;
+}
+.lec-book-thumb-check {
+  display: flex; align-items: center; gap: 0.4rem;
+  font-size: 0.68rem; font-weight: 700;
+  color: #28a745; margin-top: 0.5rem;
+}
+
+/* ── Quote Strip ── */
+.lec-verse-strip {
+  background: var(--gold);
+  padding-block: 4rem;
+  text-align: center;
+}
+.lec-verse-strip blockquote {
+  font-family: var(--ff-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  max-width: 820px;
+  margin-inline: auto;
+  margin-bottom: 1.25rem;
+}
+.lec-verse-strip cite {
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(0,0,0,0.55);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .lec-active-header {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .lec-book-card {
+    position: static;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+  }
+  .lec-book-cover { aspect-ratio: auto; min-height: 280px; }
+  .lec-books-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .lec-book-card { grid-template-columns: 1fr; }
+  .lec-book-cover { aspect-ratio: 16/9; }
+  .lec-books-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .lec-progress-inner { flex-wrap: wrap; gap: 0.75rem; }
+}
+@media (max-width: 400px) {
+  .lec-books-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,192 @@
+/* ═══════════════════════════════════════
+   CLAY PAGE — Jóvenes LifeHouse
+════════════════════════════════════════ */
+
+/* ── HERO ── */
+.clay-hero {
+  position: relative;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  padding-top: var(--header-h);
+}
+
+.clay-hero-left {
+  background: var(--black);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 5rem var(--pad-x) 5rem clamp(1.5rem, 5vw, 5rem);
+  position: relative;
+  z-index: 2;
+}
+
+.clay-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 0.65rem; font-weight: 800;
+  letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+}
+.clay-hero-eyebrow::before {
+  content: ''; width: 28px; height: 1px; background: var(--gold);
+}
+
+.clay-hero-title {
+  font-family: var(--ff-display);
+  font-size: clamp(3.5rem, 6.5vw, 7rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+}
+
+.clay-hero-desc {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.75;
+  max-width: 44ch;
+  margin-bottom: 2.5rem;
+}
+
+.clay-hero-pills {
+  display: flex; flex-wrap: wrap; gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.clay-hero-pill {
+  display: inline-flex; align-items: center;
+  font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.04em;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 100px;
+  padding: 0.45rem 1rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.clay-hero-right {
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+}
+.clay-hero-right img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.clay-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.5) 0%, transparent 60%);
+}
+
+/* ── INFO SECTION ── */
+.clay-info {
+  background: var(--black-2);
+  padding-block: var(--section-py);
+}
+.clay-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.clay-info-text h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+.clay-info-text p {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+
+.clay-info-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.clay-info-card {
+  background: var(--dark);
+  border: 1px solid var(--border-dk);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+.clay-info-card dt {
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--muted-lt); margin-bottom: 0.4rem;
+}
+.clay-info-card dd {
+  font-size: 0.95rem; font-weight: 600;
+  color: var(--white);
+}
+.clay-info-card dd a {
+  color: var(--gold);
+}
+.clay-info-card dd a:hover {
+  text-decoration: underline;
+}
+
+/* ── GALLERY SECTION ── */
+.clay-gallery {
+  background: var(--black);
+  padding-block: var(--section-py);
+}
+.clay-gallery-head {
+  margin-bottom: 2.5rem;
+}
+.clay-gallery-head h2 {
+  font-family: var(--ff-display);
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .clay-hero {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .clay-hero-left {
+    padding: 3rem var(--pad-x);
+  }
+  .clay-hero-right {
+    min-height: 50svh;
+    order: -1;
+  }
+  .clay-info-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .clay-info-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .clay-hero-title {
+    font-size: clamp(2.8rem, 10vw, 4rem);
+  }
+  .clay-hero-desc {
+    font-size: 0.95rem;
+  }
+  .clay-info-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .clay-hero-left {
+    padding: 2rem var(--pad-x);
+  }
+  .clay-hero-pills {
+    flex-direction: column;
+  }
+}
