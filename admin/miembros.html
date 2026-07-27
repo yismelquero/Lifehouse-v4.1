@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miembros — Admin LifeHouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../css/pages/admin.css">
+  <link rel="icon" type="image/jpeg" href="../assets/logo.jpeg">
+</head>
+<body class="admin-body">
+
+  <div class="admin-header">
+    <h2>
+      <img src="../assets/logo.jpeg" alt="">
+      Miembros · LifeHouse
+    </h2>
+    <div class="admin-header-actions">
+      <input type="text" id="searchInput" placeholder="Buscar por nombre..." style="padding:0.5rem 0.9rem;background:#2a2a2c;border:1.5px solid rgba(255,255,255,0.08);border-radius:8px;color:#fff;font-size:0.82rem;outline:none;width:200px;">
+      <button class="admin-btn admin-btn-solid" onclick="openModal()">+ Nuevo</button>
+      <button class="admin-btn admin-btn-ghost" onclick="logout()">Cerrar Sesión</button>
+    </div>
+  </div>
+
+  <div class="admin-content">
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Celular</th>
+            <th>Edad</th>
+            <th>Género</th>
+            <th>Casas Vida</th>
+            <th>Áreas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="membersTable"></tbody>
+      </table>
+    </div>
+    <div class="admin-empty" id="emptyState">
+      <p>Cargando miembros...</p>
+    </div>
+  </div>
+
+  <div id="modalContainer"></div>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase.js?v=2"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>

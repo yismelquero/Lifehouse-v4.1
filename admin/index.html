@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — LifeHouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../css/pages/admin.css">
+  <link rel="icon" type="image/jpeg" href="../assets/logo.jpeg">
+</head>
+<body class="admin-body">
+  <div class="admin-login">
+    <div class="admin-login-card">
+      <img src="../assets/logo.jpeg" alt="Logo" class="admin-login-logo">
+      <h1>Acceso Admin</h1>
+      <p>Ingresa para administrar los miembros.</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="loginUser" placeholder="admin@lifehouse.org" autocomplete="username" required>
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <input type="password" id="loginPass" placeholder="•••••" autocomplete="current-password" required>
+        </div>
+        <p id="loginMsg" style="font-size:0.85rem;font-weight:600;text-align:center;color:#e74c3c;"></p>
+        <button type="submit" class="btn-submit">Ingresar</button>
+      </form>
+    </div>
+  </div>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase.js?v=2"></script>
+  <script src="../js/admin.js"></script>
+</body>
+</html>
