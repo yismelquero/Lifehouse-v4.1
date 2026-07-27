@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Casas Vida | LifeHouse Casa de Vida — Encuentra tu comunidad y comparte la vida juntos durante la semana.">
+  <title>Casas Vida | LifeHouse Casa de Vida</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/pages/casas.css">
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+
+  <!-- SEO & Social -->
+  <meta property="og:title" content="Casas Vida | LifeHouse Casa de Vida">
+  <meta property="og:description" content="Encuentra un grupo para compartir la vida, crecer en fe y construir amistades reales.">
+  <meta property="og:image" content="assets/logo.jpeg">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand">
+        <img src="assets/logo.jpeg" alt="LifeHouse Casa de Vida Logo">
+        <div class="brand-text">
+          <span class="brand-name">LifeHouse</span>
+          <span class="brand-sub">Casa de Vida</span>
+        </div>
+      </a>
+
+            <nav class="header-nav" id="desktopNav">
+        <div class="nav-item">
+          <a href="nosotros.html" class="nav-link">Nosotros</a>
+        </div>
+        <div class="nav-item">
+          <a href="casas.html" class="nav-link">Conecta</a>
+        </div>
+        <div class="nav-item">
+          <a href="lectura.html" class="nav-link">Crece</a>
+        </div>
+        <div class="nav-item">
+          <a href="sirve.html" class="nav-link">Sirve</a>
+        </div>
+        <div class="nav-item">
+          <a href="eventos.html" class="nav-link">Eventos</a>
+        </div>
+        <div class="nav-item">
+          <a href="registro.html" class="nav-link">Planea tu visita</a>
+        </div>
+        <div class="nav-item">
+          <a href="dar.html" class="nav-link">Dar</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html#contacto" class="btn btn-solid header-cta">Quiero Visitar</a>
+        <div class="hamburger" id="mobileToggle" role="button" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="nosotros.html" class="mobile-nav-link">Nosotros</a>
+    <a href="casas.html" class="mobile-nav-link">Conecta</a>
+    <a href="lectura.html" class="mobile-nav-link">Crece</a>
+    <a href="sirve.html" class="mobile-nav-link">Sirve</a>
+    <a href="eventos.html" class="mobile-nav-link">Eventos</a>
+    <a href="registro.html" class="mobile-nav-link">Planea tu visita</a>
+    <a href="dar.html" class="mobile-nav-link">Dar</a>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="casas-hero">
+      <div class="casas-hero-bg">
+        <img src="assets/portada3.jpg" alt="Comunidad LifeHouse">
+      </div>
+      <div class="container">
+        <div class="casas-hero-content reveal">
+          <span class="casas-hero-eyebrow">La vida se vive mejor juntos</span>
+          <h1 class="casas-hero-title">Casas Vida</h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTORY -->
+    <section class="casas-directory">
+      <div class="container">
+        <!-- Filter Bar -->
+        <div class="casas-filter-bar reveal">
+          <button class="casa-filter-btn active" onclick="filterCasas(this, 'all')">Todas</button>
+          <button class="casa-filter-btn" onclick="filterCasas(this, 'mujeres')">Mujeres</button>
+          <button class="casa-filter-btn" onclick="filterCasas(this, 'hombres')">Hombres</button>
+          <button class="casa-filter-btn" onclick="filterCasas(this, 'parejas')">Matrimonios</button>
+          <button class="casa-filter-btn" onclick="filterCasas(this, 'jovenes')">Jóvenes</button>
+        </div>
+
+        <div class="casas-grid">
+          <!-- Mujeres -->
+          <article class="casa-full-card reveal" data-type="mujeres">
+            <div class="casa-full-img">
+              <span class="casa-full-tag">Mujeres</span>
+              <img src="assets/mujeres.jpg" alt="Grupo Mujeres" loading="lazy">
+            </div>
+            <div class="casa-full-body">
+              <h3 class="casa-full-title">Mujeres de Fe</h3>
+              <p class="casa-full-desc">Un espacio seguro para crecer, orar y compartir juntas las maravillas de Dios en nuestra vida cotidiana.</p>
+              <div class="casa-full-meta">
+                <div class="casa-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Líder: Nelly Toro
+                </div>
+              </div>
+              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
+            </div>
+          </article>
+
+          <!-- Mujeres Jovenes -->
+          <article class="casa-full-card reveal d1" data-type="jovenes">
+            <div class="casa-full-img">
+              <span class="casa-full-tag">Mujeres</span>
+              <img src="assets/mujeresjovenes.jpg" alt="Mujeres Jóvenes" loading="lazy">
+            </div>
+            <div class="casa-full-body">
+              <h3 class="casa-full-title">Mujeres Jóvenes</h3>
+              <p class="casa-full-desc">Descubriendo nuestra identidad en Cristo y construyendo amistades sólidas basadas en la verdad bíblica.</p>
+              <div class="casa-full-meta">
+                <div class="casa-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Líder: Nelly Toro
+                </div>
+              </div>
+              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
+            </div>
+          </article>
+
+          <!-- Mujeres Plus -->
+          <article class="casa-full-card reveal d2" data-type="mujeres">
+            <div class="casa-full-img">
+              <span class="casa-full-tag">Mujeres</span>
+              <img src="assets/mujeresplus.jpg" alt="Mujeres Plus" loading="lazy">
+            </div>
+            <div class="casa-full-body">
+              <h3 class="casa-full-title">Mujeres Plus</h3>
+              <p class="casa-full-desc">Sabiduría compartida y fe vivida en comunidad. Un grupo enfocado en la madurez espiritual y el apoyo mutuo.</p>
+              <div class="casa-full-meta">
+                <div class="casa-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Líder: Carmen Muñoz
+                </div>
+              </div>
+              <a href="https://wa.me/59170165424" target="_blank" class="casa-full-cta">Contactar Líder</a>
+            </div>
+          </article>
+
+          <!-- Matrimonios -->
+          <article class="casa-full-card reveal" data-type="parejas">
+            <div class="casa-full-img">
+              <span class="casa-full-tag">Parejas</span>
+              <img src="assets/matrimonios.jpg" alt="Matrimonios" loading="lazy">
+            </div>
+            <div class="casa-full-body">
+              <h3 class="casa-full-title">Matrimonios</h3>
+              <p class="casa-full-desc">Fortaleciendo la base de la familia a través de principios bíblicos prácticos para el matrimonio y el hogar.</p>
+              <div class="casa-full-meta">
+                <div class="casa-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Líder: Nelly Toro
+                </div>
+              </div>
+              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
+            </div>
+          </article>
+
+          <!-- Hombres -->
+          <article class="casa-full-card reveal d1" data-type="hombres">
+            <div class="casa-full-img">
+              <span class="casa-full-tag">Hombres</span>
+              <img src="assets/hombres.jpg" alt="Hombres" loading="lazy">
+            </div>
+            <div class="casa-full-body">
+              <h3 class="casa-full-title">Hombres de Valor</h3>
+              <p class="casa-full-desc">Liderazgo, hermandad y crecimiento espiritual real para hombres que buscan impactar su entorno.</p>
+              <div class="casa-full-meta">
+                <div class="casa-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Líder: Nelly Toro
+                </div>
+              </div>
+              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
+            </div>
+          </article>
+
+          <!-- Hombres Jovenes -->
+          <article class="casa-full-card reveal d2" data-type="jovenes">
+            <div class="casa-full-img">
+              <span class="casa-full-tag">Hombres</span>
+              <img src="assets/hombresjovenes.jpg" alt="Hombres Jóvenes" loading="lazy">
+            </div>
+            <div class="casa-full-body">
+              <h3 class="casa-full-title">Hombres Jóvenes</h3>
+              <p class="casa-full-desc">Desarrollando amistades de edificación y propósito en una etapa clave de la vida.</p>
+              <div class="casa-full-meta">
+                <div class="casa-meta-item">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  Líder: Nelly Toro
+                </div>
+              </div>
+              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN SECTION -->
+    <section class="casas-join">
+      <div class="container">
+        <div class="reveal">
+          <span class="eyebrow">Únete</span>
+          <h2 class="section-title">¿Cómo unirme a una Casa?</h2>
+        </div>
+
+        <div class="join-steps">
+          <div class="join-step reveal d1">
+            <span class="step-num">01</span>
+            <h4 class="step-title">Elige tu Grupo</h4>
+            <p class="step-desc">Busca el grupo que mejor se adapte a tu etapa de vida o intereses en nuestro directorio.</p>
+          </div>
+          <div class="join-step reveal d2">
+            <span class="step-num">02</span>
+            <h4 class="step-title">Contacta al Líder</h4>
+            <p class="step-desc">Haz clic en el botón de contacto para enviar un mensaje directo por WhatsApp al líder del grupo.</p>
+          </div>
+          <div class="join-step reveal d3">
+            <span class="step-num">03</span>
+            <h4 class="step-title">Visita la Casa</h4>
+            <p class="step-desc">El líder te dará la ubicación exacta y el horario para que puedas visitarlos esa misma semana.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <img src="assets/logo.jpeg" alt="Logo">
+            <div>
+              <div class="footer-brand-name">LifeHouse</div>
+              <div class="footer-brand-sub">Casa de Vida</div>
+            </div>
+          </div>
+          <p>Somos una iglesia en La Paz enfocada en construir familias sanas y compartir el amor de Jesús con nuestra ciudad.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="index.html">Inicio</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="reuniones.html">Reuniones</a>
+          <a href="casas.html">Casas Vida</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Ministerios</h4>
+          <a href="conpasion.html">Con-Pasión</a>
+          <a href="eventos.html">Iglesia de Niños</a>
+          <a href="clay.html">Jóvenes Clay</a>
+          <a href="eventos.html">Alabanza</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="lectura.html">Lectura Bíblica</a>
+          <a href="eventos.html">Próximos Eventos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 LifeHouse Casa de Vida. Todos los derechos reservados.</span>
+        <span>La Paz, Bolivia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    function filterCasas(btn, type) {
+      document.querySelectorAll('.casa-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.casa-full-card');
+      cards.forEach(card => {
+        if (type === 'all' || card.dataset.type === type) {
+          card.style.display = 'flex';
+          card.classList.add('visible');
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

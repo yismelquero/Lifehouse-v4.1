@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LifeHouse Casa de Vida — Una iglesia para toda la familia en La Paz, Bolivia.">
+  <title>LifeHouse Casa de Vida | La Paz, Bolivia</title>
+
+  <!-- SEO & Social -->
+  <meta property="og:title" content="LifeHouse Casa de Vida | La Paz, Bolivia">
+  <meta property="og:description" content="Somos una iglesia enfocada en construir familias sanas y compartir el amor de Jesús.">
+  <meta property="og:image" content="assets/logo.jpeg">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/css/intlTelInput.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+</head>
+<body>
+
+  <a href="#hero" class="skip-link">Saltar al contenido</a>
+
+  <div id="scroll-progress"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="#hero" class="header-brand">
+        <img src="assets/logo.jpeg" alt="LifeHouse Casa de Vida Logo">
+        <div class="brand-text">
+          <span class="brand-name">LifeHouse</span>
+          <span class="brand-sub">Casa de Vida</span>
+        </div>
+      </a>
+      
+            <nav class="header-nav" id="desktopNav">
+        <div class="nav-item">
+          <a href="nosotros.html" class="nav-link">Nosotros</a>
+        </div>
+        <div class="nav-item">
+          <a href="casas.html" class="nav-link">Conecta</a>
+        </div>
+        <div class="nav-item">
+          <a href="lectura.html" class="nav-link">Crece</a>
+        </div>
+        <div class="nav-item">
+          <a href="sirve.html" class="nav-link">Sirve</a>
+        </div>
+        <div class="nav-item">
+          <a href="eventos.html" class="nav-link">Eventos</a>
+        </div>
+        <div class="nav-item">
+          <a href="registro.html" class="nav-link">Planea tu visita</a>
+        </div>
+        <div class="nav-item">
+          <a href="dar.html" class="nav-link">Dar</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="registro.html" class="btn btn-solid header-cta">Quiero Visitar</a>
+        <div class="hamburger" id="mobileToggle" role="button" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="nosotros.html" class="mobile-nav-link">Nosotros</a>
+    <a href="casas.html" class="mobile-nav-link">Conecta</a>
+    <a href="lectura.html" class="mobile-nav-link">Crece</a>
+    <a href="sirve.html" class="mobile-nav-link">Sirve</a>
+    <a href="eventos.html" class="mobile-nav-link">Eventos</a>
+    <a href="registro.html" class="mobile-nav-link">Planea tu visita</a>
+    <a href="dar.html" class="mobile-nav-link">Dar</a>
+  <div class="mobile-nav-footer">
+      <p>Av. Ecuador 2211, subsuelo<br>La Paz, Bolivia</p>
+      <p>Domingos 9AM & 11AM</p>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-slide active">
+      <img src="assets/portada.jpg" alt="Bienvenidos a LifeHouse">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-slide">
+      <img src="assets/portada2.jpg" alt="LifeHouse Comunidad">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-slide">
+      <img src="assets/portada3.jpg" alt="LifeHouse Familia">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <span class="eyebrow hero-eyebrow">LifeHouse • La Paz, Bolivia</span>
+      <h1 class="hero-title">En la tierra<br>como en<br>el cielo.</h1>
+      <p class="hero-sub">Somos una iglesia para toda la familia, un lugar donde puedes encontrar propósito, comunidad y esperanza en Jesús.</p>
+      
+      <div class="hero-actions">
+        <a href="nosotros.html" class="btn btn-solid">Conoce más</a>
+        <a href="https://maps.google.com/?q=Av.+Ecuador+2211+La+Paz+Bolivia" target="_blank" class="btn btn-ghost">
+          Planear visita
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-pill">
+        <div class="hero-pill-dot"></div>
+        <span class="hero-pill-text">DOMINGOS 9:00 AM & 11:00 AM</span>
+      </div>
+      <div class="hero-dots">
+        <button class="hero-dot active" aria-label="Slide 1"></button>
+        <button class="hero-dot" aria-label="Slide 2"></button>
+        <button class="hero-dot" aria-label="Slide 3"></button>
+      </div>
+    </div>
+
+    <div class="hero-scroll-cue" id="scrollCue">
+      <span>Desliza</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE CINTA DE BIENVENIDO-->
+  <div class="marquee">
+    <div class="marquee-track">
+      <div class="marquee-inner">
+        <span>BIENVENIDO A LIFEHOUSE</span><span class="msep">•</span>
+        <span>BIENVENIDA A LIFEHOUSE</span><span class="msep">•</span>
+        <span>BIENVENIDO A LIFEHOUSE</span><span class="msep">•</span>
+        <span>BIENVENIDA A LIFEHOUSE</span><span class="msep">•</span>
+      </div>
+      <div class="marquee-inner">
+        <span>BIENVENIDO A LIFEHOUSE</span><span class="msep">•</span>
+        <span>BIENVENIDA A LIFEHOUSE</span><span class="msep">•</span>
+        <span>BIENVENIDO A LIFEHOUSE</span><span class="msep">•</span>
+        <span>BIENVENIDA A LIFEHOUSE</span><span class="msep">•</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cinta-spacer"></div>
+
+  <!-- GALLERY 2 FILAS CARRUSEL - PARA APLICAR CAMBIO DE IMAGENES -->
+  <div class="gallery-2rows" aria-hidden="true">
+    <!-- Fila 1: derecha a izquierda -->
+    <div class="g-row g-row--rtl">
+      <div class="g-track">
+        <div class="g-inner">
+          <img src="assets/servicios.jpg" alt="" loading="lazy">
+          <img src="assets/hombres.jpg" alt="" loading="lazy">
+          <img src="assets/clay1.jpg" alt="" loading="lazy">
+          <img src="assets/mujeres.jpg" alt="" loading="lazy">
+          <img src="assets/portada2.jpg" alt="" loading="lazy">
+          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
+          <img src="assets/servicios3.jpg" alt="" loading="lazy">
+          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
+        </div>
+        <div class="g-inner">
+          <img src="assets/servicios.jpg" alt="" loading="lazy">
+          <img src="assets/hombres.jpg" alt="" loading="lazy">
+          <img src="assets/clay1.jpg" alt="" loading="lazy">
+          <img src="assets/mujeres.jpg" alt="" loading="lazy">
+          <img src="assets/portada2.jpg" alt="" loading="lazy">
+          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
+          <img src="assets/servicios3.jpg" alt="" loading="lazy">
+          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
+        </div>
+      </div>
+    </div>
+    <!-- Fila 2: izquierda a derecha -->
+    <div class="g-row g-row--ltr">
+      <div class="g-track">
+        <div class="g-inner">
+          <img src="assets/servicios.jpg" alt="" loading="lazy">
+          <img src="assets/hombres.jpg" alt="" loading="lazy">
+          <img src="assets/clay1.jpg" alt="" loading="lazy">
+          <img src="assets/mujeres.jpg" alt="" loading="lazy">
+          <img src="assets/portada2.jpg" alt="" loading="lazy">
+          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
+          <img src="assets/servicios3.jpg" alt="" loading="lazy">
+          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
+        </div>
+        <div class="g-inner">
+          <img src="assets/servicios.jpg" alt="" loading="lazy">
+          <img src="assets/hombres.jpg" alt="" loading="lazy">
+          <img src="assets/clay1.jpg" alt="" loading="lazy">
+          <img src="assets/mujeres.jpg" alt="" loading="lazy">
+          <img src="assets/portada2.jpg" alt="" loading="lazy">
+          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
+          <img src="assets/servicios3.jpg" alt="" loading="lazy">
+          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION BANNER -->
+  <section class="mission-banner">
+    <div class="container">
+      <p>Somos una iglesia para todas las generaciones donde encontrarás propósito, comunidad y esperanza en Jesús.</p>
+    </div>
+  </section>
+
+  <!-- NUESTRAS REUNIONES -->
+  <section class="reuniones" id="reuniones">
+    <div class="container">
+      <div class="reuniones-grid">
+
+        <!-- Lado Izquierdo: Hero Info -->
+        <div class="r-hero reveal from-left">
+          <span class="r-eyebrow">Te Esperamos</span>
+          <h2 class="r-title">Nuestra Reunión<br><span class="r-highlight">ESTE Domingo</span></h2>
+
+          <p class="r-desc">En LifeHouse creemos en construir una fe genuina. Queremos que te sientas como en casa desde el primer momento en que nos visitas.</p>
+
+          <div class="r-location">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Av. Ecuador 2211, subsuelo · La Paz, Bolivia</span>
+          </div>
+
+          <div class="r-times-grid">
+            <div class="r-time-card">
+              <span class="r-time-value">9:00 AM</span>
+              <span class="r-time-label">1er Servicio</span>
+            </div>
+            <div class="r-time-card">
+              <span class="r-time-value">11:00 AM</span>
+              <span class="r-time-label">2do Servicio</span>
+            </div>
+            <div class="r-time-card">
+              <span class="r-time-value">12:00 PM</span>
+              <span class="r-time-label">Servicio Virtual</span>
+            </div>
+          </div>
+
+          <a href="https://maps.google.com/?q=Av.+Ecuador+2211+La Paz+Bolivia" target="_blank" class="btn btn-gold r-cta">
+            Planear tu visita
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+
+          <div class="r-extra-schedules">
+            <div class="r-extra-item">
+              <span class="r-extra-day">Jueves</span>
+              <span class="r-extra-dot">·</span>
+              <span class="r-extra-name">Ayuno Congregacional</span>
+              <span class="r-extra-time">1:00 - 3:00 PM</span>
+            </div>
+            <div class="r-extra-item">
+              <span class="r-extra-day">Diario</span>
+              <span class="r-extra-dot">·</span>
+              <span class="r-extra-name">Oración Matutina</span>
+              <span class="r-extra-time">6:00 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lado derecho: Imagen grande + Event Cards -->
+        <div class="r-visual-side reveal from-right">
+          <div class="r-image-wrap">
+            <img src="assets/servicios3.jpg" alt="LifeHouse Domingo" loading="lazy">
+            <div class="r-image-overlay"></div>
+            <div class="r-image-cards">
+              <article class="r-card-sm">
+                <div class="r-card-sm-bg">
+                  <img src="assets/bitacora.jpg" alt="Bitácora" loading="lazy">
+                </div>
+                <div class="r-card-sm-overlay"></div>
+                <div class="r-card-sm-content">
+                  <span class="r-card-sm-tag">Ministerio Kids</span>
+                  <h3 class="r-card-sm-title">Bitácora</h3>
+                  <p class="r-card-sm-meta">Cada 2do Sábado</p>
+                </div>
+              </article>
+              <article class="r-card-sm">
+                <div class="r-card-sm-bg">
+                  <img src="assets/clay1.jpg" alt="Noche Clay" loading="lazy">
+                </div>
+                <div class="r-card-sm-overlay"></div>
+                <div class="r-card-sm-content">
+                  <span class="r-card-sm-tag">Juventud</span>
+                  <h3 class="r-card-sm-title">Noche Clay</h3>
+                  <p class="r-card-sm-meta">Último Sábado</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TU SIGUIENTE PASO -->
+  <section class="siguiente-paso" id="siguiente-paso">
+    <div class="container">
+      <div class="happening-header reveal">
+        <div>
+          <span class="eyebrow dark">Crecimiento</span>
+          <h2 class="section-title dark">Tu Siguiente Paso</h2>
+        </div>
+      </div>
+      
+      <div class="pasos-grid">
+        <a href="casas.html" class="paso-card reveal">
+          <div class="paso-img">
+             <img src="assets/mujeres.jpg" alt="Conecta" loading="lazy">
+          </div>
+          <div class="paso-body">
+            <h3>CONECTA</h3>
+            <p>Encuentra tu comunidad</p>
+          </div>
+        </a>
+        <a href="lectura.html" class="paso-card reveal d1">
+          <div class="paso-img">
+             <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="Crece" loading="lazy" onerror="this.src='assets/portada.jpg'">
+          </div>
+          <div class="paso-body">
+            <h3>CRECE</h3>
+            <p>Profundiza tu relación con Jesús</p>
+          </div>
+        </a>
+        <a href="sirve.html" class="paso-card reveal d2">
+          <div class="paso-img">
+             <img src="assets/servicios.jpg" alt="Sirve" loading="lazy">
+          </div>
+          <div class="paso-body">
+            <h3>SIRVE</h3>
+            <p>Usa tus dones</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LO QUE VIENE EN LIFEHOUSE -->
+  <section class="lo-que-viene" id="lo-que-viene">
+    <div class="container">
+      <div class="happening-header reveal">
+        <div>
+          <span class="eyebrow dark">Agenda</span>
+          <h2 class="section-title dark">Lo que viene</h2>
+        </div>
+      </div>
+      <div class="eventos-minimal-grid">
+        <article class="evento-minimal reveal">
+          <div class="ev-min-img">
+            <img src="assets/servicios2.jpg" alt="Evento 1" loading="lazy" onerror="this.src='assets/portada.jpg'">
+            <div class="ev-min-date">
+              <span class="ev-day">15</span>
+              <span class="ev-month">AGO</span>
+            </div>
+          </div>
+          <div class="ev-min-body">
+            <div class="ev-min-meta">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 19:00</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Auditorio Principal</span>
+            </div>
+            <h3>Noche de Alabanza</h3>
+            <p>Acompáñanos en un tiempo especial de adoración y búsqueda de Dios en comunidad.</p>
+          </div>
+        </article>
+        <article class="evento-minimal reveal d1">
+          <div class="ev-min-img">
+            <img src="assets/clay1.jpg" alt="Evento 2" loading="lazy" onerror="this.src='assets/portada.jpg'">
+            <div class="ev-min-date">
+              <span class="ev-day">22</span>
+              <span class="ev-month">AGO</span>
+            </div>
+          </div>
+          <div class="ev-min-body">
+            <div class="ev-min-meta">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 18:30</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Sala Clay</span>
+            </div>
+            <h3>Reunión de Jóvenes</h3>
+            <p>Un espacio dinámico para compartir, aprender y hacer grandes amistades.</p>
+          </div>
+        </article>
+        <article class="evento-minimal reveal d2">
+          <div class="ev-min-img">
+            <img src="assets/mujeres.jpg" alt="Evento 3" loading="lazy" onerror="this.src='assets/portada.jpg'">
+            <div class="ev-min-date">
+              <span class="ev-day">28</span>
+              <span class="ev-month">AGO</span>
+            </div>
+          </div>
+          <div class="ev-min-body">
+            <div class="ev-min-meta">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 16:00</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Café Vida</span>
+            </div>
+            <h3>Tarde de Mujeres</h3>
+            <p>Conéctate con otras mujeres en una tarde de té, charla y edificación espiritual.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ÚLTIMO MENSAJE -->
+  <section class="ultimo-mensaje" id="ultimo-mensaje">
+    <div class="container">
+      <div class="mensaje-grid">
+        <div class="mensaje-video reveal">
+          <div class="video-wrapper">
+             <img src="https://img.youtube.com/vi/fU7L_3mIqwY/maxresdefault.jpg" alt="Último Mensaje">
+             <a href="https://youtu.be/fU7L_3mIqwY" target="_blank" class="play-btn">
+               <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+             </a>
+          </div>
+        </div>
+        <div class="mensaje-info reveal d1">
+          <span class="eyebrow">Prédica Reciente</span>
+          <h2 class="mensaje-titulo">Último Mensaje</h2>
+          <p class="mensaje-pastor">Pastor</p>
+          <div class="mensaje-actions">
+            <a href="https://youtu.be/fU7L_3mIqwY" target="_blank" class="btn btn-solid">Ver Mensaje</a>
+            <a href="https://www.youtube.com/@LifeHouseLaPaz" target="_blank" class="btn btn-ghost">Canal de YouTube</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPASIÓN LIFEHOUSE -->
+  <section class="compasion-home" id="compasion-home">
+    <div class="container">
+      <div class="compasion-header text-center reveal">
+        <span class="eyebrow dark">Corazón Social</span>
+        <h2 class="section-title dark">Con-pasión LifeHouse</h2>
+        <p class="compasion-sub">Expresamos el amor de Jesús de manera práctica sirviendo a quienes más lo necesitan a través de acciones de ayuda.</p>
+      </div>
+
+      <div class="stats-grid reveal d1">
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Proyectos Realizados</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Personas Alcanzadas</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">120</span>
+          <span class="stat-label">Voluntarios</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Campañas este Año</span>
+        </div>
+      </div>
+
+      <div class="compasion-gallery reveal d2">
+        <div class="c-gal-item"><img src="assets/servicios.jpg" alt="Compasión" loading="lazy" onerror="this.src='assets/portada.jpg'"></div>
+        <div class="c-gal-item"><img src="assets/clay1.jpg" alt="Compasión" loading="lazy" onerror="this.src='assets/portada2.jpg'"></div>
+        <div class="c-gal-item"><img src="assets/mujeres.jpg" alt="Compasión" loading="lazy" onerror="this.src='assets/portada3.jpg'"></div>
+      </div>
+
+      <div class="compasion-action text-center mt-5 reveal d3">
+        <a href="conpasion.html" class="btn btn-dark">Conoce Con-pasión</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BIENVENIDA (ANULADA POR EL MOMENTO) -->
+  <!-- <section class="welcome" id="nosotros">
+    <div class="container">
+      <div class="welcome-grid">
+        <div class="welcome-img reveal from-left">
+          <img src="assets/servicios3.jpg" alt="Servicio Dominical">
+          <div class="welcome-badge">
+            Reuniones fijas
+            <strong>Domingo</strong>
+          </div>
+        </div>
+        <div class="welcome-text reveal from-right">
+          <span class="eyebrow">Nuestra reunión</span>
+          <h2 class="section-title">Este Domingo <br></h2>
+          <p>En LifeHouse creemos en construir una fé genuina. Queremos que te sientas como en casa desde el primer momento en que nos visitas.</p>
+          <div class="welcome-stats">
+            <div>
+              <div class="w-stat-num">9&nbsp;AM</div>
+              <div class="w-stat-lbl">1er Servicio</div>
+            </div>
+            <div>
+              <div class="w-stat-num">11&nbsp;AM</div>
+              <div class="w-stat-lbl">2do Servicio</div>
+            </div>
+            <div>
+              <div class="w-stat-num">12&nbsp;PM</div>
+              <div class="w-stat-lbl">Servicio Virtual</div>
+            </div>
+          </div>
+          <a href="#contacto" class="btn btn-gold">
+            Contáctanos
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- WHAT'S HAPPENING -->
+  <section class="happening" id="eventos-quick">
+    <div class="container">
+      <div class="happening-header reveal">
+        <div>
+          <span class="eyebrow dark">Panorama</span>
+          <h2 class="section-title dark">Grupos &amp; Eventos</h2>
+        </div>
+        <a href="eventos.html" class="btn btn-dark">Ver Todo</a>
+      </div>
+      
+      <div class="happening-list">
+        <!-- Item 1 -->
+        <a href="clay.html" class="happening-item reveal d1">
+          <div class="h-date">
+            <div class="h-date-top">SEM</div>
+            <div class="h-date-num">CLAY</div>
+          </div>
+          <div class="h-divider"></div>
+          <div class="h-info">
+            <div class="h-tag">Ministerio Joven</div>
+            <h3 class="h-name">Jóvenes Clay</h3>
+            <p class="h-desc">Encuentros semanales para conocer a Dios y hacer amigos.</p>
+          </div>
+          <div class="h-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+        
+        <!-- Item 2 -->
+        <a href="casas.html" class="happening-item reveal d2">
+          <div class="h-date">
+            <div class="h-date-top">SEM</div>
+            <div class="h-date-num">CASA</div>
+          </div>
+          <div class="h-divider"></div>
+          <div class="h-info">
+            <div class="h-tag">Comunidad</div>
+            <h3 class="h-name">Casas Vida</h3>
+            <p class="h-desc">Grupos pequeños en diferentes hogares.</p>
+          </div>
+          <div class="h-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+        
+        <!-- Item 3 -->
+        <a href="eventos.html" class="happening-item reveal d3">
+          <div class="h-date">
+            <div class="h-date-top">PRÓX</div>
+            <div class="h-date-num">RET</div>
+          </div>
+          <div class="h-divider"></div>
+          <div class="h-info">
+            <div class="h-tag">Niños</div>
+            <h3 class="h-name">Retiro "Bitácora"</h3>
+            <p class="h-desc">Una aventura especial para los más pequeños.</p>
+          </div>
+          <div class="h-arrow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASAS VIDA -->
+  <section class="casas" id="casas">
+    <div class="container">
+      <div class="casas-head reveal">
+        <span class="eyebrow dark">En Comunidad</span>
+        <h2 class="section-title dark">Casas Vida</h2>
+        <p>Compartimos la vida juntos durante la semana. Hay un grupo para cada etapa de tu vida.</p>
+      </div>
+
+      <div class="casas-grid">
+        <!-- Mujeres -->
+        <article class="casa-card reveal">
+          <div class="casa-img">
+            <span class="casa-tag">Mujeres</span>
+            <img src="assets/mujeres.jpg" alt="Mujeres" loading="lazy">
+          </div>
+          <div class="casa-body">
+            <h3>Mujeres</h3>
+            <p>Espacio seguro para crecer, orar y compartir juntas.</p>
+            <div class="casa-meta">Día y Hora por confirmar</div>
+            <a href="https://wa.me/59173501744" target="_blank" class="casa-link">73501744 - Nelly Toro <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Mujeres Jovenes -->
+        <article class="casa-card reveal d1">
+          <div class="casa-img">
+            <span class="casa-tag">Mujeres</span>
+            <img src="assets/mujeresjovenes.jpg" alt="Mujeres Jóvenes" loading="lazy">
+          </div>
+          <div class="casa-body">
+            <h3>Mujeres Jóvenes</h3>
+            <p>Descubriendo su identidad en Cristo y construyendo amistad.</p>
+            <div class="casa-meta">Día y Hora por confirmar</div>
+            <a href="https://wa.me/59173501744" target="_blank" class="casa-link">73501744 - Nelly Toro <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Mujeres Plus -->
+        <article class="casa-card reveal d2">
+          <div class="casa-img">
+            <span class="casa-tag">Mujeres</span>
+            <img src="assets/mujeresplus.jpg" alt="Mujeres Plus" loading="lazy">
+          </div>
+          <div class="casa-body">
+            <h3>Mujeres Plus</h3>
+            <p>Sabiduría y fe compartida día a día.</p>
+            <div class="casa-meta">Día y Hora por confirmar</div>
+            <a href="https://wa.me/59170165424" target="_blank" class="casa-link">70165424 - Carmen Muñoz <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Matrimonios -->
+        <article class="casa-card reveal">
+          <div class="casa-img">
+            <span class="casa-tag">Parejas</span>
+            <img src="assets/matrimonios.jpg" alt="Matrimonios" loading="lazy">
+          </div>
+          <div class="casa-body">
+            <h3>Matrimonios</h3>
+            <p>Fortaleciendo la familia en el amor de Cristo.</p>
+            <div class="casa-meta">Día y Hora por confirmar</div>
+            <a href="https://wa.me/59173501744" target="_blank" class="casa-link">73501744 - Nelly Toro <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Hombres -->
+        <article class="casa-card reveal d1">
+          <div class="casa-img">
+            <span class="casa-tag">Hombres</span>
+            <img src="assets/hombres.jpg" alt="Hombres" loading="lazy">
+          </div>
+          <div class="casa-body">
+            <h3>Hombres</h3>
+            <p>Crecimiento personal, espiritual y liderazgo.</p>
+            <div class="casa-meta">Día y Hora por confirmar</div>
+            <a href="https://wa.me/59173501744" target="_blank" class="casa-link">73501744 - Nelly Toro <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Hombres Jovenes -->
+        <article class="casa-card reveal d2">
+          <div class="casa-img">
+            <span class="casa-tag">Hombres</span>
+            <img src="assets/hombresjovenes.jpg" alt="Hombres Jóvenes" loading="lazy">
+          </div>
+          <div class="casa-body">
+            <h3>Hombres Jóvenes</h3>
+            <p>Desarrollando amistades de edificación y propósito.</p>
+            <div class="casa-meta">Día y Hora por confirmar</div>
+            <a href="https://wa.me/59173501744" target="_blank" class="casa-link">73501744 - Nelly Toro <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLAY (CARRUSEL) -->
+  <section class="clay" id="clay">
+    <div class="container">
+      <div class="clay-header-grid">
+        <div class="clay-left reveal">
+          <span class="eyebrow">Juventud</span>
+          <h2 class="clay-title">Grupo Clay</h2>
+        </div>
+        <div class="clay-right reveal d1">
+          <p>Un espacio especialmente diseñado para los jóvenes. Nos reunimos para adorar, aprender y hacer grandes amistades en un ambiente vibrante.</p>
+          <div class="clay-details">
+            <dl class="clay-detail">
+              <dt>Líder Encargado</dt>
+              <dd>Josué Solares</dd>
+            </dl>
+            <dl class="clay-detail">
+              <dt>Contacto</dt>
+              <dd><a href="https://wa.me/59169732791" target="_blank">69732791</a></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-wrap reveal d2">
+        <div class="carousel" id="clayCarousel">
+          <div class="carousel-item"><img src="assets/clay1.jpg" alt="Clay" loading="lazy"></div>
+          <div class="carousel-item"><img src="assets/clay2.jpg" alt="Clay" loading="lazy" onerror="this.src='assets/clay1.jpg'"></div>
+          <div class="carousel-item"><img src="assets/clay3.jpg" alt="Clay" loading="lazy"></div>
+          <div class="carousel-item"><img src="assets/clay4.jpg" alt="Clay" loading="lazy" onerror="this.src='assets/clay5.jpg'"></div>
+          <div class="carousel-item"><img src="assets/clay5.jpg" alt="Clay" loading="lazy"></div>
+          <div class="carousel-item"><img src="assets/clay6.jpg" alt="Clay" loading="lazy" onerror="this.src='assets/clay3.jpg'"></div>
+        </div>
+        
+        <div class="carousel-controls">
+          <button class="c-btn" id="cPrev" aria-label="Anterior"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+          <button class="c-btn" id="cNext" aria-label="Siguiente"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTOS DETALLE -->
+  <section class="eventos" id="eventos">
+    <div class="container">
+      <div class="eventos-header reveal">
+        <h2 class="section-title dark">Ministerios<br>&amp; Eventos</h2>
+        <div class="eventos-tabs">
+          <button class="e-tab active" data-tab="tab-todos">Todos</button>
+          <button class="e-tab" data-tab="tab-pasados">Pasados</button>
+        </div>
+      </div>
+
+      <div id="tab-todos" class="e-panel active">
+        <div class="past-event mb-5">
+          <div class="past-gallery reveal">
+            <div class="gallery-main"><img src="assets/servicios.jpg" alt="Servicio Principal" loading="lazy"></div>
+          </div>
+          <div class="past-text reveal d1">
+            <span class="eyebrow dark">Familia</span>
+            <h3>Iglesia de Niños</h3>
+            <p>Un ministerio enfocado en que los más pequeños de la casa conozcan el amor de Jesús con actividades para su edad.</p>
+            <p><strong>Contacto:</strong> 60102199 - Liz Huarachi</p>
+          </div>
+        </div>
+        
+        <div class="upcoming-list reveal d2">
+          <div class="upcoming-item">
+            <div class="up-date">
+              <div class="up-date-top">DOM</div>
+              <div class="up-date-num">9</div>
+            </div>
+            <div class="up-info">
+              <h4>Reuniones Generales</h4>
+              <p>Domingos 9:00 am & 11:00 am en nuestro salón principal.</p>
+            </div>
+          </div>
+          <div class="upcoming-item">
+            <div class="up-date">
+              <div class="up-date-top">MÚSICA</div>
+              <div class="up-date-num">ALB</div>
+            </div>
+            <div class="up-info">
+              <h4>Ministerio de Alabanza</h4>
+              <p>Si deseas ser parte de la banda. Contacto: 76550183 - Hans Javier.</p>
+            </div>
+          </div>
+          <div class="upcoming-item">
+            <div class="up-date">
+              <div class="up-date-top">ADOLES</div>
+              <div class="up-date-num">VST</div>
+            </div>
+            <div class="up-info">
+              <h4>Grupo Vista (Adolescentes)</h4>
+              <p>Reuniones para pre-juveniles. Contacto: 67073712 - Adrián Rodríguez.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="tab-pasados" class="e-panel">
+        <div class="past-event">
+          <div class="past-gallery">
+            <div class="gallery-main"><img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="Bautismo" loading="lazy" onerror="this.src='assets/servicios3.jpg'"></div>
+          </div>
+          <div class="past-text">
+            <span class="eyebrow dark">Galería</span>
+            <h3>Bautismos recientes</h3>
+            <p>Revive uno de los momentos más hermosos como familia, celebrando la fe pública de nuestros hermanos.</p>
+            <a href="#" class="btn btn-dark">Ver más fotos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LECTURA BÍBLICA -->
+  <section class="lectura" id="lectura">
+    <div class="container">
+      <div class="lectura-head reveal">
+        <span class="eyebrow">Recurso</span>
+        <h2 class="section-title">Palabra de vida</h2>
+        <div class="lectura-verse">
+          <blockquote>"La palabra de Dios es viva y eficaz..."</blockquote>
+          <cite>Hebreos 4:12</cite>
+        </div>
+      </div>
+
+      <div class="lectura-grid">
+        <div class="lectura-card reveal">
+          <div class="lc-img">
+            <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="Lucas" loading="lazy" onerror="this.src='assets/portada.jpg'">
+          </div>
+          <div class="lc-body">
+            <div class="lc-testament">Nuevo Testamento</div>
+            <h4 class="lc-title">El Evangelio de Lucas</h4>
+            <div class="lc-progress"><div class="lc-bar" style="width:10%"></div></div>
+            <div class="lc-meta">En curso</div>
+          </div>
+        </div>
+        <div class="lectura-card reveal d1">
+          <div class="lc-img">
+            <img src="assets/images/lecturabiblica/mateo/mateo.jpeg" alt="Mateo" loading="lazy" onerror="this.src='assets/portada2.jpg'">
+          </div>
+          <div class="lc-body">
+            <div class="lc-testament">Nuevo Testamento</div>
+            <h4 class="lc-title">El Evangelio de Mateo</h4>
+            <div class="lc-progress"><div class="lc-bar" style="width:100%"></div></div>
+            <div class="lc-meta">Completado</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="contacto-grid">
+        <div class="contacto-info reveal">
+          <span class="eyebrow dark">Conéctate</span>
+          <h2 class="section-title dark">Queremos<br>conocerte</h2>
+          <p>Llena el formulario o visítanos directamente en nuestras reuniones. Siempre habrá un lugar reservado para ti.</p>
+          
+          <div class="contacto-details">
+            <div class="c-detail">
+              <div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <div class="c-text">
+                <h4>Dirección</h4>
+                <p>Av. Ecuador 2211, subsuelo<br>La Paz, Bolivia</p>
+              </div>
+            </div>
+            <div class="c-detail">
+              <div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div class="c-text">
+                <h4>Reuniones</h4>
+                <p>Domingos 9:00 AM & 11:00 AM</p>
+              </div>
+            </div>
+            <div class="c-detail">
+              <div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.7 16l.22.92z"/></svg></div>
+              <div class="c-text">
+                <h4>Contacto General</h4>
+                <a href="tel:73501744">73501744</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contacto-form reveal d1">
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Nombre *</label>
+                <input type="text" id="conNombre" placeholder="Tu nombre" required>
+              </div>
+              <div class="form-group">
+                <label>Apellido *</label>
+                <input type="text" id="conApellido" placeholder="Tu apellido" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Correo Electrónico *</label>
+              <input type="email" id="conEmail" placeholder="correo@ejemplo.com" required>
+            </div>
+            <div class="form-group">
+              <label>Celular</label>
+              <input type="tel" id="conPhone" placeholder="70000000">
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea id="conMensaje" placeholder="¿En qué podemos ayudarte?" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Enviar Mensaje</button>
+            <p id="conMsg" style="margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; text-align: center;"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP (FOOTER TOP) -->
+  <section class="cta-strip">
+    <div class="cta-strip-bg"><img src="assets/portada2.jpg" alt="BG" loading="lazy" onerror="this.src='assets/portada.jpg'"></div>
+    <div class="cta-strip-content container reveal">
+      <span class="eyebrow">Acompáñanos</span>
+      <h2 class="cta-strip-title">Ven y sé parte<br>de lo que Dios hace.</h2>
+      <p class="cta-strip-sub">Av. Ecuador 2211, subsuelo • La Paz, Bolivia</p>
+      <div class="cta-strip-actions">
+        <a href="https://maps.google.com/?q=Av.+Ecuador+2211+La+Paz+Bolivia" target="_blank" class="btn btn-solid">Ver Mapa</a>
+        <a href="#contacto" class="btn btn-ghost">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <img src="assets/logo.jpeg" alt="Logo">
+            <div>
+              <div class="footer-brand-name">LifeHouse</div>
+              <div class="footer-brand-sub">Casa de Vida</div>
+            </div>
+          </div>
+          <p>Somos una iglesia en La Paz enfocada en construir familias sanas y compartir el amor de Jesús con nuestra ciudad.</p>
+          <div class="footer-social">
+            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="#hero">Inicio</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="reuniones.html">Reuniones</a>
+          <a href="casas.html">Casas Vida</a>
+          <a href="registro.html">Regístrate</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Ministerios</h4>
+          <a href="eventos.html">Iglesia de Niños</a>
+          <a href="clay.html">Jóvenes Clay</a>
+          <a href="eventos.html">Adolescentes Vista</a>
+          <a href="eventos.html">Alabanza</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="lectura.html">Lectura Bíblica</a>
+          <a href="eventos.html">Próximos Eventos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 LifeHouse Casa de Vida. Todos los derechos reservados.  </span>
+        <span>La Paz, Bolivia</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flotante -->
+  <a href="https://wa.me/59173501744" class="wa-float" target="_blank" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.004c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+  </a>
+
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/intlTelInput.min.js"></script>
+  <script src="js/supabase.js?v=2"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

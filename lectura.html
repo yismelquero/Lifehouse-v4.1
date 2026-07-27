@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plan de Lectura Bíblica · LifeHouse Casa de Vida — Seguimiento diario de Hechos de los Apóstoles">
+  <title>Lectura Bíblica | LifeHouse Casa de Vida</title>
+
+  <!-- SEO & Social -->
+  <meta property="og:title" content="Plan de Lectura Bíblica | LifeHouse Casa de Vida">
+  <meta property="og:description" content="Sigue nuestra ruta de lectura bíblica diaria y crece en tu relación con Dios.">
+  <meta property="og:image" content="assets/logo.jpeg">
+  <meta property="og:type" content="website">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/pages/lectura.css">
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand">
+        <img src="assets/logo.jpeg" alt="LifeHouse Casa de Vida Logo">
+        <div class="brand-text">
+          <span class="brand-name">LifeHouse</span>
+          <span class="brand-sub">Casa de Vida</span>
+        </div>
+      </a>
+
+            <nav class="header-nav" id="desktopNav">
+        <div class="nav-item">
+          <a href="nosotros.html" class="nav-link">Nosotros</a>
+        </div>
+        <div class="nav-item">
+          <a href="casas.html" class="nav-link">Conecta</a>
+        </div>
+        <div class="nav-item">
+          <a href="lectura.html" class="nav-link">Crece</a>
+        </div>
+        <div class="nav-item">
+          <a href="sirve.html" class="nav-link">Sirve</a>
+        </div>
+        <div class="nav-item">
+          <a href="eventos.html" class="nav-link">Eventos</a>
+        </div>
+        <div class="nav-item">
+          <a href="registro.html" class="nav-link">Planea tu visita</a>
+        </div>
+        <div class="nav-item">
+          <a href="dar.html" class="nav-link">Dar</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html#contacto" class="btn btn-solid header-cta">Quiero Visitar</a>
+        <div class="hamburger" id="mobileToggle" role="button" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="nosotros.html" class="mobile-nav-link">Nosotros</a>
+    <a href="casas.html" class="mobile-nav-link">Conecta</a>
+    <a href="lectura.html" class="mobile-nav-link">Crece</a>
+    <a href="sirve.html" class="mobile-nav-link">Sirve</a>
+    <a href="eventos.html" class="mobile-nav-link">Eventos</a>
+    <a href="registro.html" class="mobile-nav-link">Planea tu visita</a>
+    <a href="dar.html" class="mobile-nav-link">Dar</a>
+  <div class="mobile-nav-footer">
+      <p>Av. Ecuador 2211, subsuelo<br>La Paz, Bolivia</p>
+      <p>Domingos 9AM &amp; 11AM</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════
+       HERO
+  ════════════════════════════ -->
+  <section class="lec-hero">
+    <div class="lec-hero-bg">
+      <img src="assets/portada2.jpg" alt="Lectura Bíblica LifeHouse"
+           onerror="this.src='assets/portada.jpg'">
+    </div>
+    <div class="container lec-hero-content">
+      <div class="lec-hero-eyebrow">Crecimiento · Plan Bíblico</div>
+      <h1 class="lec-hero-title">Lectura<br>Bíblica.</h1>
+      <div class="lec-hero-meta">
+        <div class="lec-hero-stat">
+          <span class="lec-hero-stat-num">5</span>
+          <span class="lec-hero-stat-lbl">Libros</span>
+        </div>
+        <div class="lec-hero-divider"></div>
+        <div class="lec-hero-stat">
+          <span class="lec-hero-stat-num" id="hero-days">81</span>
+          <span class="lec-hero-stat-lbl">Días juntos</span>
+        </div>
+        <div class="lec-hero-divider"></div>
+        <div class="lec-hero-stat">
+          <span class="lec-hero-stat-num">4</span>
+          <span class="lec-hero-stat-lbl">Completados</span>
+        </div>
+        <div class="lec-hero-divider"></div>
+        <div class="lec-hero-stat">
+          <span class="lec-hero-stat-num">1</span>
+          <span class="lec-hero-stat-lbl">En curso</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Global Progress ── -->
+  <div class="lec-global-progress">
+    <div class="container">
+      <div class="lec-progress-inner">
+        <span class="lec-progress-label">Progreso general</span>
+        <div class="lec-progress-track">
+          <div class="lec-progress-fill" style="width: 58%"></div>
+        </div>
+        <span class="lec-progress-pct">58%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════
+       LIBRO ACTIVO — HECHOS
+  ════════════════════════════ -->
+  <section class="lec-active">
+    <div class="container">
+
+      <!-- Section heading -->
+      <div style="margin-bottom: 3.5rem;" class="reveal">
+        <span class="eyebrow">Lectura en curso</span>
+        <h2 class="section-title" style="margin-top: 1rem;">En este momento<br>estamos leyendo.</h2>
+      </div>
+
+      <div class="lec-active-header">
+
+        <!-- Book Card (Left) -->
+        <div class="lec-book-card reveal">
+          <div class="lec-book-cover">
+            <img src="assets/portada3.jpg" alt="Hechos de los Apóstoles"
+                 onerror="this.src='assets/portada.jpg'">
+          </div>
+          <div class="lec-book-info">
+            <div class="lec-book-status">
+              <div class="lec-book-status-dot"></div>
+              Leyendo ahora
+            </div>
+            <div class="lec-book-name">Hechos de los<br>Apóstoles</div>
+            <div class="lec-book-sub">Nuevo Testamento · 28 capítulos<br>El libro de la iglesia primitiva.</div>
+            <div class="lec-mini-progress">
+              <div class="lec-mini-bar" style="width: 57%"></div>
+            </div>
+            <div class="lec-mini-meta">
+              <span>Capítulo 16 de 28</span>
+              <span>57%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feed (Right) -->
+        <div class="reveal d2">
+          <div class="lec-feed-header">
+            <div class="lec-feed-title">Seguimiento<br>diario.</div>
+            <p class="lec-feed-sub">Cada día, un capítulo. Una reflexión y una aplicación práctica para vivir la Palabra.</p>
+          </div>
+
+          <!-- Filter pills -->
+          <div class="lec-filter-bar">
+            <button class="lec-filter-pill active" onclick="filterDays(this,'all')">Todos</button>
+            <button class="lec-filter-pill" onclick="filterDays(this,'hoy')">Hoy</button>
+            <button class="lec-filter-pill" onclick="filterDays(this,'completado')">Completados</button>
+            <button class="lec-filter-pill" onclick="filterDays(this,'pendiente')">Próximos</button>
+          </div>
+
+          <!-- Daily messages feed -->
+          <div class="lec-feed" id="lecFeed">
+
+            <!-- DAY 81 - HOY -->
+            <div class="lec-day-card active-day" data-status="hoy" onclick="toggleDay(this)">
+              <div class="lec-day-header">
+                <div class="lec-day-left">
+                  <div class="lec-day-num">81</div>
+                  <div class="lec-day-divider"></div>
+                  <div class="lec-day-info">
+                    <div class="lec-day-date">Jueves · 9 de Abril · 2026</div>
+                    <div class="lec-day-reading">HECHOS 16</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span class="lec-day-badge hoy">Hoy</span>
+                  <div class="lec-day-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lec-day-body">
+                <div class="lec-day-body-inner">
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">🔥 Reflexión</span>
+                    <p class="lec-day-block-text">¿Cómo reacciono en momentos de <strong>dificultad</strong>? Pablo y Silas en la cárcel no respondieron con queja sino con adoración. La dificultad reveló la fe que llevaban dentro.</p>
+                  </div>
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">⚡ Aplicación</span>
+                    <p class="lec-day-block-text">Escucha una alabanza en un momento difícil del día. Permítele a la adoración cambiar tu perspectiva antes que cambien las circunstancias.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DAY 80 -->
+            <div class="lec-day-card" data-status="completado" onclick="toggleDay(this)">
+              <div class="lec-day-header">
+                <div class="lec-day-left">
+                  <div class="lec-day-num">80</div>
+                  <div class="lec-day-divider"></div>
+                  <div class="lec-day-info">
+                    <div class="lec-day-date">Miércoles · 8 de Abril · 2026</div>
+                    <div class="lec-day-reading">HECHOS 15</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span class="lec-day-badge completado">✓ Completado</span>
+                  <div class="lec-day-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lec-day-body">
+                <div class="lec-day-body-inner">
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">🔥 Reflexión</span>
+                    <p class="lec-day-block-text">El concilio de Jerusalén muestra que la iglesia resuelve sus tensiones con <strong>diálogo, Escritura y oración</strong>. No con poder sino con humildad colectiva.</p>
+                  </div>
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">⚡ Aplicación</span>
+                    <p class="lec-day-block-text">En algún conflicto o diferencia que tengas hoy, busca primero escuchar. Dale espacio a la perspectiva del otro antes de responder.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DAY 79 -->
+            <div class="lec-day-card" data-status="completado" onclick="toggleDay(this)">
+              <div class="lec-day-header">
+                <div class="lec-day-left">
+                  <div class="lec-day-num">79</div>
+                  <div class="lec-day-divider"></div>
+                  <div class="lec-day-info">
+                    <div class="lec-day-date">Martes · 7 de Abril · 2026</div>
+                    <div class="lec-day-reading">HECHOS 14</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span class="lec-day-badge completado">✓ Completado</span>
+                  <div class="lec-day-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lec-day-body">
+                <div class="lec-day-body-inner">
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">🔥 Reflexión</span>
+                    <p class="lec-day-block-text">Pablo fue apedreado y dejado por muerto, pero se levantó y continuó. La <strong>perseverancia misionera</strong> no depende de las condiciones sino del llamado.</p>
+                  </div>
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">⚡ Aplicación</span>
+                    <p class="lec-day-block-text">¿Hay algo que has dejado de hacer porque fue difícil una vez? Vuelve a intentarlo hoy con oración, recordando que Dios va contigo.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DAY 78 -->
+            <div class="lec-day-card" data-status="completado" onclick="toggleDay(this)">
+              <div class="lec-day-header">
+                <div class="lec-day-left">
+                  <div class="lec-day-num">78</div>
+                  <div class="lec-day-divider"></div>
+                  <div class="lec-day-info">
+                    <div class="lec-day-date">Lunes · 6 de Abril · 2026</div>
+                    <div class="lec-day-reading">HECHOS 13</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span class="lec-day-badge completado">✓ Completado</span>
+                  <div class="lec-day-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lec-day-body">
+                <div class="lec-day-body-inner">
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">🔥 Reflexión</span>
+                    <p class="lec-day-block-text">El Espíritu Santo separó a Bernabé y Saulo mientras <strong>ayunaban y oraban</strong>. La misión nace de la intimidad con Dios, no solo del entusiasmo humano.</p>
+                  </div>
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">⚡ Aplicación</span>
+                    <p class="lec-day-block-text">Toma 5 minutos hoy para estar en silencio ante Dios. Pregúntale a qué te está llamando en esta temporada. Escribe lo que venga a tu corazón.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DAY 77 -->
+            <div class="lec-day-card" data-status="completado" onclick="toggleDay(this)">
+              <div class="lec-day-header">
+                <div class="lec-day-left">
+                  <div class="lec-day-num">77</div>
+                  <div class="lec-day-divider"></div>
+                  <div class="lec-day-info">
+                    <div class="lec-day-date">Domingo · 5 de Abril · 2026</div>
+                    <div class="lec-day-reading">HECHOS 12</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span class="lec-day-badge completado">✓ Completado</span>
+                  <div class="lec-day-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lec-day-body">
+                <div class="lec-day-body-inner">
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">🔥 Reflexión</span>
+                    <p class="lec-day-block-text">La iglesia oraba intensamente por Pedro mientras él dormía en paz en la cárcel. <strong>La oración de la comunidad</strong> sostiene a los que están en los momentos más oscuros.</p>
+                  </div>
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">⚡ Aplicación</span>
+                    <p class="lec-day-block-text">Ora hoy por alguien de la iglesia que esté pasando por una situación difícil. Envíale un mensaje haciéndole saber que estás orando por él/ella.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DAYS 82-83 (upcoming) -->
+            <div class="lec-day-card" data-status="pendiente" onclick="toggleDay(this)">
+              <div class="lec-day-header">
+                <div class="lec-day-left">
+                  <div class="lec-day-num" style="color: rgba(255,255,255,0.3);">82</div>
+                  <div class="lec-day-divider"></div>
+                  <div class="lec-day-info">
+                    <div class="lec-day-date">Viernes · 10 de Abril · 2026</div>
+                    <div class="lec-day-reading" style="color: rgba(255,255,255,0.4);">HECHOS 17</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span class="lec-day-badge pendiente">Próximo</span>
+                  <div class="lec-day-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lec-day-body">
+                <div class="lec-day-body-inner">
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">📖 Próxima lectura</span>
+                    <p class="lec-day-block-text" style="color:rgba(255,255,255,0.4);">El contenido de mañana estará disponible a partir del <strong style="color:rgba(255,255,255,0.55)">Viernes 10 de Abril</strong>. Está leyendo Hechos 17 — Pablo en Berea y Atenas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="lec-day-card" data-status="pendiente" onclick="toggleDay(this)">
+              <div class="lec-day-header">
+                <div class="lec-day-left">
+                  <div class="lec-day-num" style="color: rgba(255,255,255,0.3);">83</div>
+                  <div class="lec-day-divider"></div>
+                  <div class="lec-day-info">
+                    <div class="lec-day-date">Sábado · 11 de Abril · 2026</div>
+                    <div class="lec-day-reading" style="color: rgba(255,255,255,0.4);">HECHOS 18</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:0.75rem;">
+                  <span class="lec-day-badge pendiente">Próximo</span>
+                  <div class="lec-day-chevron">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="lec-day-body">
+                <div class="lec-day-body-inner">
+                  <div class="lec-day-block">
+                    <span class="lec-day-block-label">📖 Próxima lectura</span>
+                    <p class="lec-day-block-text" style="color:rgba(255,255,255,0.4);">Pablo en Corinto — Aquila, Priscila y la perseverancia en el ministerio. Disponible el <strong style="color:rgba(255,255,255,0.55)">sábado 11 de Abril</strong>.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /lec-feed -->
+        </div><!-- /right column -->
+
+      </div><!-- /lec-active-header -->
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       VERSE STRIP
+  ════════════════════════════ -->
+  <div class="lec-verse-strip">
+    <blockquote>
+      "Ellos respondieron: Cree en el Señor Jesucristo, y serás salvo tú y tu casa."
+    </blockquote>
+    <cite>Hechos 16:31</cite>
+  </div>
+
+  <!-- ════════════════════════════
+       LIBROS COMPLETADOS
+  ════════════════════════════ -->
+  <section class="lec-completed">
+    <div class="container">
+      <div class="lec-completed-header reveal">
+        <div>
+          <span class="eyebrow dark">Historial</span>
+          <h2 style="margin-top:1rem;">Libros que<br>hemos leído.</h2>
+        </div>
+        <p>Cada libro que completamos como familia nos ha transformado. Estos son los evangelios que ya recorrimos juntos en LifeHouse.</p>
+      </div>
+
+      <div class="lec-books-grid">
+
+        <!-- 1. Mateo -->
+        <div class="lec-book-thumb reveal d1">
+          <div class="lec-book-thumb-img">
+            <img src="assets/images/lecturabiblica/mateo/mateo.jpeg"
+                 alt="Evangelio de Mateo"
+                 loading="lazy"
+                 onerror="this.src='assets/portada.jpg'">
+          </div>
+          <div class="lec-book-thumb-body">
+            <div class="lec-book-thumb-tag">Nuevo Testamento</div>
+            <div class="lec-book-thumb-title">El Evangelio<br>de Mateo</div>
+            <div class="lec-book-thumb-progress">
+              <div class="lec-book-thumb-bar" style="width:100%"></div>
+            </div>
+            <div class="lec-book-thumb-check">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Completado · 28 capítulos
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Marcos -->
+        <div class="lec-book-thumb reveal d2">
+          <div class="lec-book-thumb-img">
+            <img src="assets/images/lecturabiblica/marcos/marcos1.jpg"
+                 alt="Evangelio de Marcos"
+                 loading="lazy"
+                 onerror="this.src='assets/portada2.jpg'">
+          </div>
+          <div class="lec-book-thumb-body">
+            <div class="lec-book-thumb-tag">Nuevo Testamento</div>
+            <div class="lec-book-thumb-title">El Evangelio<br>de Marcos</div>
+            <div class="lec-book-thumb-progress">
+              <div class="lec-book-thumb-bar" style="width:100%"></div>
+            </div>
+            <div class="lec-book-thumb-check">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Completado · 16 capítulos
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Lucas -->
+        <div class="lec-book-thumb reveal d3">
+          <div class="lec-book-thumb-img">
+            <img src="assets/images/lecturabiblica/lucas/lucas.jpeg"
+                 alt="Evangelio de Lucas"
+                 loading="lazy"
+                 onerror="this.src='assets/portada3.jpg'">
+          </div>
+          <div class="lec-book-thumb-body">
+            <div class="lec-book-thumb-tag">Nuevo Testamento</div>
+            <div class="lec-book-thumb-title">El Evangelio<br>de Lucas</div>
+            <div class="lec-book-thumb-progress">
+              <div class="lec-book-thumb-bar" style="width:100%"></div>
+            </div>
+            <div class="lec-book-thumb-check">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Completado · 24 capítulos
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Juan -->
+        <div class="lec-book-thumb reveal d4">
+          <div class="lec-book-thumb-img">
+            <img src="assets/images/lecturabiblica/juan/juan.jpeg"
+                 alt="Evangelio de Juan"
+                 loading="lazy"
+                 onerror="this.onerror=null;this.src='assets/portada.jpg'">
+          </div>
+          <div class="lec-book-thumb-body">
+            <div class="lec-book-thumb-tag">Nuevo Testamento</div>
+            <div class="lec-book-thumb-title">El Evangelio<br>de Juan</div>
+            <div class="lec-book-thumb-progress">
+              <div class="lec-book-thumb-bar" style="width:100%"></div>
+            </div>
+            <div class="lec-book-thumb-check">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Completado · 21 capítulos
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="cta-strip">
+    <div class="cta-strip-bg"><img src="assets/portada3.jpg" alt="BG" loading="lazy" onerror="this.src='assets/portada.jpg'"></div>
+    <div class="cta-strip-content container reveal">
+      <span class="eyebrow">Acompáñanos</span>
+      <h2 class="cta-strip-title">Ven y sé parte<br>de lo que Dios hace.</h2>
+      <p class="cta-strip-sub">Av. Ecuador 2211, subsuelo • La Paz, Bolivia</p>
+      <div class="cta-strip-actions">
+        <a href="https://maps.google.com/?q=Av.+Ecuador+2211+La+Paz+Bolivia" target="_blank" class="btn btn-solid">Ver Mapa</a>
+        <a href="index.html#contacto" class="btn btn-ghost">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <img src="assets/logo.jpeg" alt="Logo">
+            <div>
+              <div class="footer-brand-name">LifeHouse</div>
+              <div class="footer-brand-sub">Casa de Vida</div>
+            </div>
+          </div>
+          <p>Somos una iglesia en La Paz enfocada en construir familias sanas y compartir el amor de Jesús con nuestra ciudad.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="index.html#hero">Inicio</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="reuniones.html">Reuniones</a>
+          <a href="casas.html">Casas Vida</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Ministerios</h4>
+          <a href="eventos.html">Iglesia de Niños</a>
+          <a href="clay.html">Jóvenes Clay</a>
+          <a href="eventos.html">Adolescentes Vista</a>
+          <a href="eventos.html">Alabanza</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="lectura.html">Lectura Bíblica</a>
+          <a href="eventos.html">Próximos Eventos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 LifeHouse Casa de Vida. Todos los derechos reservados.</span>
+        <span>La Paz, Bolivia</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="js/main.js"></script>
+</body>
+</html>

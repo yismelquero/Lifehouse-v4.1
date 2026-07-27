@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Eventos | LifeHouse Casa de Vida — Mantente al tanto de nuestros servicios especiales, conferencias y actividades comunitarias.">
+  <title>Eventos | LifeHouse Casa de Vida</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/pages/eventos.css">
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
+
+  <!-- SEO & Social -->
+  <meta property="og:title" content="Eventos | LifeHouse Casa de Vida">
+  <meta property="og:description" content="No te pierdas nada de lo que sucede en nuestra familia. Conferencias, servicios especiales y más.">
+  <meta property="og:image" content="assets/logo.jpeg">
+  <meta property="og:type" content="website">
+</head>
+<body>
+
+  <div id="scroll-progress"></div>
+
+  <!-- HEADER -->
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="header-brand">
+        <img src="assets/logo.jpeg" alt="LifeHouse Casa de Vida Logo">
+        <div class="brand-text">
+          <span class="brand-name">LifeHouse</span>
+          <span class="brand-sub">Casa de Vida</span>
+        </div>
+      </a>
+
+            <nav class="header-nav" id="desktopNav">
+        <div class="nav-item">
+          <a href="nosotros.html" class="nav-link">Nosotros</a>
+        </div>
+        <div class="nav-item">
+          <a href="casas.html" class="nav-link">Conecta</a>
+        </div>
+        <div class="nav-item">
+          <a href="lectura.html" class="nav-link">Crece</a>
+        </div>
+        <div class="nav-item">
+          <a href="sirve.html" class="nav-link">Sirve</a>
+        </div>
+        <div class="nav-item">
+          <a href="eventos.html" class="nav-link">Eventos</a>
+        </div>
+        <div class="nav-item">
+          <a href="registro.html" class="nav-link">Planea tu visita</a>
+        </div>
+        <div class="nav-item">
+          <a href="dar.html" class="nav-link">Dar</a>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <a href="index.html#contacto" class="btn btn-solid header-cta">Quiero Visitar</a>
+        <div class="hamburger" id="mobileToggle" role="button" aria-label="Abrir menú de navegación" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="nosotros.html" class="mobile-nav-link">Nosotros</a>
+    <a href="casas.html" class="mobile-nav-link">Conecta</a>
+    <a href="lectura.html" class="mobile-nav-link">Crece</a>
+    <a href="sirve.html" class="mobile-nav-link">Sirve</a>
+    <a href="eventos.html" class="mobile-nav-link">Eventos</a>
+    <a href="registro.html" class="mobile-nav-link">Planea tu visita</a>
+    <a href="dar.html" class="mobile-nav-link">Dar</a>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="events-hero">
+      <div class="container">
+        <h1 class="events-hero-title reveal">Próximos<br>Eventos</h1>
+      </div>
+    </section>
+
+    <!-- FEATURED EVENT -->
+    <section class="featured-event">
+      <div class="container">
+        <div class="featured-card reveal">
+          <div class="featured-img">
+            <img src="assets/portada2.jpg" alt="Evento Destacado">
+          </div>
+          <div class="featured-content">
+            <div class="featured-tag">Próximamente</div>
+            <h2 class="featured-title">Conferencia Familiar 2026</h2>
+            <p class="featured-desc">Un fin de semana diseñado para fortalecer los lazos familiares, encontrar propósito compartido y crecer juntos en la fe.</p>
+            
+            <div class="featured-meta">
+              <div class="f-meta-item">
+                <span class="f-meta-lbl">Fecha</span>
+                <span class="f-meta-val">15 - 17 de Mayo</span>
+              </div>
+              <div class="f-meta-item">
+                <span class="f-meta-lbl">Ubicación</span>
+                <span class="f-meta-val">Auditorio Principal</span>
+              </div>
+            </div>
+
+            <a href="index.html#contacto" class="btn btn-gold" style="width: fit-content;">Inscribirme Ahora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING GRID -->
+    <section class="upcoming-events">
+      <div class="container">
+        <div class="reveal mb-5">
+          <span class="eyebrow dark">Calendario</span>
+          <h2 class="section-title dark">No te pierdas de nada</h2>
+        </div>
+
+        <div class="events-grid">
+          <!-- Event 1 -->
+          <article class="event-card reveal d1">
+            <div class="event-img">
+              <img src="assets/clay1.jpg" alt="Noche Clay" loading="lazy">
+            </div>
+            <div class="event-body">
+              <div class="event-date">Sábado 24 de Abril · 6 PM</div>
+              <h3 class="event-name">Noche Clay Especial</h3>
+              <div class="event-info">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Sala de Jóvenes
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 2 -->
+          <article class="event-card reveal d2">
+            <div class="event-img">
+              <img src="assets/bitacora.jpg" alt="Bitácora" loading="lazy">
+            </div>
+            <div class="event-body">
+              <div class="event-date">Domingo 25 de Abril · 10 AM</div>
+              <h3 class="event-name">Celebración de Niños</h3>
+              <div class="event-info">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                LifeHouse Kids
+              </div>
+            </div>
+          </article>
+
+          <!-- Event 3 -->
+          <article class="event-card reveal d3">
+            <div class="event-img">
+              <img src="assets/servicios2.jpg" alt="Servicio" loading="lazy">
+            </div>
+            <div class="event-body">
+              <div class="event-date">Miércoles 28 de Abril · 7 PM</div>
+              <h3 class="event-name">Noche de Oración</h3>
+              <div class="event-info">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Auditorio Principal
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORIES -->
+    <section class="past-memories">
+      <div class="container">
+        <div class="reveal mb-5">
+          <span class="eyebrow">Recuerdos</span>
+          <h2 class="section-title">Lo que hemos vivido</h2>
+        </div>
+
+        <div class="memories-grid">
+          <div class="memory-item reveal d1"><img src="assets/clay3.jpg" alt="Recuerdo" loading="lazy"></div>
+          <div class="memory-item reveal d2"><img src="assets/mujeres2.jpg" alt="Recuerdo" loading="lazy"></div>
+          <div class="memory-item reveal d3"><img src="assets/hombres2.jpg" alt="Recuerdo" loading="lazy"></div>
+          <div class="memory-item reveal d4"><img src="assets/servicios3.jpg" alt="Recuerdo" loading="lazy"></div>
+          <div class="memory-item reveal d1"><img src="assets/portada.jpg" alt="Recuerdo" loading="lazy"></div>
+          <div class="memory-item reveal d2"><img src="assets/clay5.jpg" alt="Recuerdo" loading="lazy"></div>
+          <div class="memory-item reveal d3"><img src="assets/matrimonios2.jpg" alt="Recuerdo" loading="lazy"></div>
+          <div class="memory-item reveal d4"><img src="assets/mujeresplus.jpg" alt="Recuerdo" loading="lazy"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <img src="assets/logo.jpeg" alt="Logo">
+            <div>
+              <div class="footer-brand-name">LifeHouse</div>
+              <div class="footer-brand-sub">Casa de Vida</div>
+            </div>
+          </div>
+          <p>Somos una iglesia en La Paz enfocada en construir familias sanas y compartir el amor de Jesús con nuestra ciudad.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="index.html">Inicio</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="reuniones.html">Reuniones</a>
+          <a href="casas.html">Casas Vida</a>
+          <a href="index.html#contacto">Contacto</a>
+        </div>
+        <div class="footer-col">
+          <h4>Ministerios</h4>
+          <a href="conpasion.html">Con-Pasión</a>
+          <a href="eventos.html">Iglesia de Niños</a>
+          <a href="clay.html">Jóvenes Clay</a>
+          <a href="eventos.html">Alabanza</a>
+        </div>
+        <div class="footer-col">
+          <h4>Recursos</h4>
+          <a href="lectura.html">Lectura Bíblica</a>
+          <a href="eventos.html">Próximos Eventos</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 LifeHouse Casa de Vida. Todos los derechos reservados.</span>
+        <span>La Paz, Bolivia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
