@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/pages/sirve.css">
   <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
 
   <!-- SEO & Social -->
@@ -79,103 +80,106 @@
   </div>
 
   <main>
-    <!-- HERO -->
-    <section class="sirve-hero">
-      <div class="container">
-        <span class="eyebrow" style="margin-bottom: 1rem;">Tu Siguiente Paso</span>
-        <h1 class="sirve-hero-title reveal">Sirve y<br>Usa tus Dones</h1>
-        <p style="color: var(--muted-lt); max-width: 600px; margin: 2rem auto 0; font-size: 1.1rem; line-height: 1.6;" class="reveal d1">
-          Creemos que Dios ha equipado a cada persona con dones únicos para edificar la iglesia. Explora nuestras áreas de servicio e involúcrate.
-        </p>
-      </div>
-    </section>
+    <!-- HERO MOSAICO (inspirado en brand.dropbox.com) -->
+    <section class="sirve-mosaic-section" id="sirveMosaicSection">
+      <div class="sirve-mosaic-sticky">
+        <div class="container sirve-mosaic-container">
+          <div class="sirve-mosaic-grid" id="sirveMosaicGrid">
 
-    <!-- AREAS DE SERVICIO -->
-    <section style="background: var(--black);">
-      <div class="container">
-        <div class="sirve-grid">
-          
-          <article class="sirve-card reveal">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            <!-- Tarjeta central: intro + isotipo. Se encoge al hacer scroll. -->
+            <div class="mosaic-tile mosaic-tile--center" id="mosaicCenter">
+              <div class="mosaic-center-intro" id="mosaicCenterIntro">
+                <span class="eyebrow">Tu Siguiente Paso</span>
+                <h1 class="sirve-hero-title">Sirve y<br>Usa tus Dones</h1>
+                <p class="mosaic-center-sub">Creemos que Dios ha equipado a cada persona con dones únicos para edificar la iglesia. Explora nuestras áreas de servicio e involúcrate.</p>
+              </div>
+              <div class="mosaic-center-logo-wrap">
+                <img src="assets/sirve/Isotipo-blanco.svg" alt="LifeHouse" class="mosaic-center-logo" id="mosaicCenterLogo">
+              </div>
             </div>
-            <h3>Alabanza</h3>
-            <p>Acompaña a la congregación en adoración a través de la música y el canto durante nuestras reuniones.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
 
-          <article class="sirve-card reveal d1">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            </div>
-            <h3>Bienvenida</h3>
-            <p>Sé el primer rostro amable que recibe a las familias e invitados cuando llegan a nuestra casa de vida.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card mosaic-tile--xl" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+              </div>
+              <h3>Alabanza</h3>
+              <p>Acompaña a la congregación en adoración a través de la música y el canto durante nuestras reuniones.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
-          <article class="sirve-card reveal d2">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
-            </div>
-            <h3>Cafetería</h3>
-            <p>Prepara un ambiente cálido y sirviendo café y bocadillos para fomentar la conexión entre hermanos.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card mosaic-tile--wide" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </div>
+              <h3>Bienvenida</h3>
+              <p>Sé el primer rostro amable que recibe a las familias e invitados cuando llegan a nuestra casa de vida.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
-          <article class="sirve-card reveal">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22h20"></path><path d="M17 2v14"></path><path d="M7 2v14"></path><path d="M12 2v14"></path></svg>
-            </div>
-            <h3>Limpieza</h3>
-            <p>Mantén la excelencia de nuestra casa para que todos disfruten de un espacio digno y ordenado.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+              </div>
+              <h3>Cafetería</h3>
+              <p>Prepara un ambiente cálido sirviendo café y bocadillos para fomentar la conexión entre hermanos.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
-          <article class="sirve-card reveal d1">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
-            </div>
-            <h3>Media</h3>
-            <p>Apoya en la proyección, sonido y transmisión en vivo para que el mensaje llegue claro y sin interrupciones.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card mosaic-tile--tall" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 22h20"></path><path d="M17 2v14"></path><path d="M7 2v14"></path><path d="M12 2v14"></path></svg>
+              </div>
+              <h3>Limpieza</h3>
+              <p>Mantén la excelencia de nuestra casa para que todos disfruten de un espacio digno y ordenado.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
-          <article class="sirve-card reveal d2">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-            </div>
-            <h3>Maestros</h3>
-            <p>Impacta a la próxima generación enseñando la Palabra de Dios a nuestros niños con amor y paciencia.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"></rect><polyline points="17 2 12 7 7 2"></polyline></svg>
+              </div>
+              <h3>Media</h3>
+              <p>Apoya en la proyección, sonido y transmisión en vivo para que el mensaje llegue claro y sin interrupciones.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
-          <article class="sirve-card reveal">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-            </div>
-            <h3>Redes</h3>
-            <p>Comparte lo que Dios está haciendo en nuestra comunidad a través de plataformas digitales.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card mosaic-tile--xl" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+              </div>
+              <h3>Maestros</h3>
+              <p>Impacta a la próxima generación enseñando la Palabra de Dios a nuestros niños con amor y paciencia.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
-          <article class="sirve-card reveal d1">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
-            </div>
-            <h3>Fotografía</h3>
-            <p>Captura los momentos más especiales de nuestras reuniones y eventos para contar nuestra historia.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card mosaic-tile--wide" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+              </div>
+              <h3>Redes</h3>
+              <p>Comparte lo que Dios está haciendo en nuestra comunidad a través de plataformas digitales.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
-          <article class="sirve-card reveal d2">
-            <div class="sirve-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>
-            </div>
-            <h3>Historias</h3>
-            <p>Redacta y comparte los testimonios de vida que ocurren en nuestra iglesia y testimonios transformadores.</p>
-            <a href="index.html#contacto" class="btn btn-ghost" style="width: 100%;">Me interesa</a>
-          </article>
+            <article class="mosaic-tile sirve-card" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+              </div>
+              <h3>Fotografía</h3>
+              <p>Captura los momentos más especiales de nuestras reuniones y eventos para contar nuestra historia.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
 
+            <article class="mosaic-tile sirve-card" data-mosaic-card>
+              <div class="sirve-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>
+              </div>
+              <h3>Historias</h3>
+              <p>Redacta y comparte los testimonios de vida que ocurren en nuestra iglesia y testimonios transformadores.</p>
+              <a href="index.html#contacto" class="btn btn-ghost">Me interesa</a>
+            </article>
+
+          </div>
         </div>
       </div>
     </section>
@@ -224,6 +228,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=sirve-mosaic-2"></script>
 </body>
 </html>

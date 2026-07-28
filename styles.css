@@ -319,6 +319,17 @@ body.page-light-top .site-header:not(.scrolled) {
   max-width: 13ch; margin-bottom: 1.5rem;
   opacity: 0; transform: translateY(18px); animation: fadeUp 0.8s 0.6s var(--ease-out) forwards;
 }
+/* Palabra que cambia en el hero: "Somos" (fijo) + esta palabra (una familia /
+   una iglesia / LifeHouse). Se anima una sola vez al cargar la pagina y se
+   queda fija en "LifeHouse" el resto de la navegacion (no hace loop). */
+.hero-cycle {
+  display: inline-block;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.hero-cycle.hero-cycle--switching {
+  opacity: 0;
+  transform: translateY(14px);
+}
 .hero-sub {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   color: rgba(255,255,255,0.78); max-width: 44ch; line-height: 1.7;
@@ -1255,22 +1266,48 @@ body.page-light-top .site-header:not(.scrolled) {
    FOOTER
 ══════════════════════════════════ */
 .site-footer { background: var(--black-2); border-top: 1px solid var(--border-dk); padding-block: 5rem 2.5rem; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 4rem; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 4rem; }
 .footer-brand-logo { display: flex; align-items: center; gap: 0.875rem; margin-bottom: 1.25rem; }
 .footer-brand-logo img { width: 36px; height: 36px; object-fit: cover; border-radius: 8px; }
 .footer-brand-name { font-family: var(--ff-display); font-weight: 800; font-size: 1.05rem; }
 .footer-brand-sub { font-size: 0.62rem; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted-lt); }
 .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.75; margin-bottom: 1.5rem; max-width: 30ch; }
-.footer-social { display: flex; gap: 0.75rem; }
-.footer-social a {
-  width: 36px; height: 36px; border-radius: 50%;
-  border: 1px solid var(--border-dk); display: flex; align-items: center; justify-content: center;
-  color: rgba(255,255,255,0.5); transition: all 0.25s;
-}
-.footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+.footer-info { display: flex; flex-direction: column; gap: 0.6rem; }
+.f-info-item { display: flex; align-items: center; gap: 0.625rem; font-size: 0.82rem; color: rgba(255,255,255,0.5); line-height: 1.5; transition: color 0.2s; }
+.f-info-item svg { flex-shrink: 0; color: var(--gold); opacity: 0.7; }
+a.f-info-item { text-decoration: none; }
+a.f-info-item:hover { color: var(--white); }
+a.f-info-item:hover svg { opacity: 1; }
+
 .footer-col h4 { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.25rem; }
-.footer-col a { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.55); padding: 0.3rem 0; transition: color 0.2s; }
+.footer-col a { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.55); padding: 0.3rem 0; transition: color 0.2s; text-decoration: none; }
 .footer-col a:hover { color: var(--white); }
+
+/* Schedule column */
+.f-schedule { display: flex; flex-direction: column; gap: 0.9rem; }
+.f-sched-item { display: flex; flex-direction: column; gap: 0.25rem; }
+.f-sched-day { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.7); }
+.f-sched-times { display: flex; gap: 0.75rem; }
+.f-sched-time { font-size: 0.9rem; font-weight: 700; color: var(--gold); letter-spacing: 0.02em; }
+
+/* Social row column */
+.f-social-row { display: flex !important; align-items: center; gap: 0.625rem; padding: 0.3rem 0; font-size: 0.85rem; color: rgba(255,255,255,0.55); transition: color 0.2s; text-decoration: none; }
+.f-social-row svg { flex-shrink: 0; color: rgba(255,255,255,0.45); transition: color 0.2s; }
+.f-social-row:hover { color: var(--white); }
+.f-social-row:hover svg { color: var(--gold); }
+.f-social-row--disabled { cursor: default; opacity: 0.6; }
+.f-social-row--disabled:hover { color: rgba(255,255,255,0.55); }
+.f-social-row--disabled:hover svg { color: rgba(255,255,255,0.45); }
+.f-soon { font-size: 0.65rem; font-weight: 600; color: var(--gold); letter-spacing: 0.06em; text-transform: uppercase; margin-left: 0.25rem; }
+
+/* CTA column */
+.footer-col--cta p.f-cta-text { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 1.25rem; }
+.f-btn { display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; font-size: 0.85rem; padding: 0.7rem 1.4rem; }
+.f-prayer-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: rgba(255,255,255,0.5); transition: color 0.2s; text-decoration: none; }
+.f-prayer-link svg { color: var(--gold); opacity: 0.7; transition: opacity 0.2s; }
+.f-prayer-link:hover { color: var(--white); }
+.f-prayer-link:hover svg { opacity: 1; }
+
 .footer-bottom {
   display: flex; align-items: center; justify-content: space-between;
   padding-top: 2rem; border-top: 1px solid var(--border-dk);
@@ -1292,6 +1329,9 @@ body.page-light-top .site-header:not(.scrolled) {
 /* ══════════════════════════════════
    RESPONSIVE
 ══════════════════════════════════ */
+@media (max-width: 1140px) {
+  .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+}
 @media (max-width: 1024px) {
   .welcome-grid { grid-template-columns: 1fr; gap: 3rem; }
   .welcome-img { aspect-ratio: 16/9; }

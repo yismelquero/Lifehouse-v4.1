@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initHeaderAndNav();
     initRevealAnimations();
     initHeroSlides();
+    initHeroWordCycle();
+    initSirveMosaic();
     initCarousel();
     initTabs();
     initProgressBars();
@@ -183,6 +185,144 @@ function initHeroSlides() {
     start();
 }
 
+// ── HERO WORD CYCLE ("Somos" + una familia / una iglesia / LifeHouse)
+// Pasa una sola vez por las 3 frases y se queda fija en la ultima
+// (LifeHouse) el resto del tiempo que la persona navegue la pagina.
+function initHeroWordCycle() {
+    const el = document.getElementById('heroCycleWord');
+    if (!el) return;
+
+    const words = ['Una familia', 'Una iglesia', 'LifeHouse'];
+    const holdTime = 1900;       // cuanto tiempo se queda visible cada palabra (ms)
+    const transitionTime = 450;  // debe coincidir con el CSS de .hero-cycle (ms)
+    let i = 0;
+
+    function next() {
+        if (i >= words.length - 1) return; // ya llegamos a "LifeHouse": quedarse ahi
+
+        setTimeout(() => {
+            el.classList.add('hero-cycle--switching');
+            setTimeout(() => {
+                i++;
+                el.textContent = words[i];
+                el.classList.remove('hero-cycle--switching');
+                next();
+            }, transitionTime);
+        }, holdTime);
+    }
+
+    next();
+}
+
+// ── SIRVE: MOSAICO ESTILO brand.dropbox.com (pagina sirve.html)
+// La tarjeta central (intro + isotipo) arranca grande; las tarjetas de
+// servicio arrancan invisibles y "adentro" de esa tarjeta central. Segun
+// se hace scroll dentro de la seccion, la central se encoge hasta quedar
+// solo el isotipo, y las demas se separan/agrandan hasta formar el mosaico.
+function initSirveMosaic() {
+    const section = document.getElementById('sirveMosaicSection');
+    if (!section) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return; // el CSS ya deja todo visible y estatico
+
+    const center = document.getElementById('mosaicCenter');
+    const centerIntro = document.getElementById('mosaicCenterIntro');
+    const centerLogo = document.getElementById('mosaicCenterLogo');
+    const cards = Array.from(section.querySelectorAll('.mosaic-tile.sirve-card'));
+
+    if (!center || cards.length === 0) return;
+
+    const clamp01 = value => Math.max(0, Math.min(1, value));
+    const easeOutCubic = value => 1 - Math.pow(1 - clamp01(value), 3);
+    const easeInOutCubic = value => {
+        const t = clamp01(value);
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    // Calcula, para cada tarjeta, cuanto tiene que moverse desde el centro
+    // de la tarjeta central hasta su propia posicion final en la grilla.
+    function measure() {
+        center.style.transform = 'none';
+        const centerRect = center.getBoundingClientRect();
+        const centerX = centerRect.left + centerRect.width / 2;
+        const centerY = centerRect.top + centerRect.height / 2;
+
+        cards.forEach(card => {
+            card.style.transform = 'none'; // reset temporal para medir su posicion real
+            const r = card.getBoundingClientRect();
+            const cx = r.left + r.width / 2;
+            const cy = r.top + r.height / 2;
+            card.__dx = centerX - cx;
+            card.__dy = centerY - cy;
+        });
+
+        update();
+    }
+
+    function update() {
+        const rect = section.getBoundingClientRect();
+        const scrollDistance = section.offsetHeight - window.innerHeight;
+        const scrolled = -rect.top;
+        let progress = scrollDistance > 0 ? scrolled / scrollDistance : 0;
+        progress = clamp01(progress);
+        const travel = easeInOutCubic(progress);
+        const cardProgress = easeOutCubic((progress - 0.08) / 0.82);
+
+        cards.forEach((card, index) => {
+            const stagger = index * 0.025;
+            const localProgress = easeOutCubic((progress - 0.06 - stagger) / 0.72);
+            const dx = (card.__dx || 0) * (1 - localProgress);
+            const dy = (card.__dy || 0) * (1 - localProgress);
+            const scale = 0.16 + 0.84 * localProgress;
+            const rotate = (1 - localProgress) * ((index % 2 === 0 ? -1 : 1) * 3.5);
+            card.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${scale}) rotate(${rotate}deg)`;
+            card.style.opacity = String(clamp01((cardProgress - stagger) / 0.7));
+        });
+
+        const centerStartScale = window.innerWidth < 700 ? 1.08 : window.innerWidth < 1024 ? 1.9 : 2.55;
+        const centerScale = centerStartScale - (centerStartScale - 1) * travel;
+        center.style.transform = `scale(${centerScale})`;
+        center.style.borderRadius = `${22 - 12 * travel}px`;
+
+        const textFade = 1 - easeOutCubic(progress / 0.48);
+        if (centerIntro) {
+            centerIntro.style.opacity = String(textFade);
+            centerIntro.style.transform = `scale(${0.96 + 0.04 * textFade})`;
+            centerIntro.style.pointerEvents = progress > 0.52 ? 'none' : '';
+        }
+        if (centerLogo) {
+            // El isotipo arranca oculto (para no superponerse al texto) y va
+            // apareciendo/creciendo a medida que el texto se desvanece, hasta
+            // quedar como unico contenido de la tarjeta central.
+            const logoAppear = easeOutCubic((progress - 0.3) / 0.45);
+            centerLogo.style.opacity = String(logoAppear);
+            const logoScale = 0.55 + 0.45 * logoAppear;
+            centerLogo.style.transform = `scale(${logoScale})`;
+        }
+    }
+
+    let ticking = false;
+    function onScroll() {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(() => {
+            update();
+            ticking = false;
+        });
+    }
+
+    let resizeTimer;
+    function onResize() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(measure, 150);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    measure();
+}
+
 // ── TAB SYSTEM (EVENTS/GENERAL)
 function initTabs() {
     const tabs = document.querySelectorAll('.e-tab');
@@ -310,5 +450,3 @@ function initProgressBars() {
         progressObserver.observe(bar);
     });
 }
-
-

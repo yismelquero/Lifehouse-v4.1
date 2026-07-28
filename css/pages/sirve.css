@@ -1,0 +1,214 @@
+/* ══════════════════════════════════
+   SIRVE — MOSAICO ESTILO brand.dropbox.com
+   ══════════════════════════════════
+   Seccion con scroll "pineado": la tarjeta central (intro + isotipo)
+   arranca grande y ocupa el centro; las demas tarjetas de servicio
+   arrancan invisibles, encogidas y superpuestas sobre ese centro.
+   A medida que se hace scroll dentro de esta seccion, la tarjeta
+   central se encoge hasta quedar solo el isotipo, y las tarjetas de
+   servicio se separan y crecen hasta formar un mosaico (como los
+   bloques de color de brand.dropbox.com). Todo el movimiento lo
+   controla initSirveMosaic() en js/main.js, leyendo el scroll. */
+
+.sirve-mosaic-section {
+  position: relative;
+  height: 360vh;
+  background: var(--black);
+}
+
+.sirve-mosaic-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding-top: var(--header-h);
+}
+
+.sirve-mosaic-container {
+  width: 100%;
+  max-width: 1320px;
+}
+
+.sirve-mosaic-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-auto-rows: minmax(104px, 12vh);
+  grid-auto-flow: dense;
+  gap: clamp(0.55rem, 1.1vw, 0.95rem);
+  min-height: min(760px, calc(100vh - var(--header-h) - 4rem));
+  align-content: center;
+}
+
+.mosaic-tile {
+  border-radius: 10px;
+  will-change: transform, opacity;
+}
+
+/* Las 9 tarjetas de servicio: arrancan invisibles (el JS las anima).
+   OJO: el tamano (span 1/2) lo definen las clases --xl/--wide/--tall
+   mas abajo; aqui NO se fija grid-column/row para no ganarles en
+   especificidad CSS (dos clases le ganaria a una sola clase modificadora). */
+.mosaic-tile.sirve-card {
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  padding: clamp(1rem, 1.8vw, 1.55rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  opacity: 0;
+  transform-origin: center center;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+.mosaic-tile.sirve-card .sirve-icon {
+  margin: 0 0 0.9rem;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+}
+.mosaic-tile.sirve-card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
+.mosaic-tile.sirve-card p {
+  font-size: 0.8rem;
+  margin-bottom: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.mosaic-tile.sirve-card .btn { width: 100%; font-size: 0.75rem; padding: 0.6rem 1rem; }
+
+.mosaic-tile.sirve-card:nth-child(2) { background: #BEA15F; color: var(--black); }
+.mosaic-tile.sirve-card:nth-child(3) { background: #EDE7DA; color: var(--black); }
+.mosaic-tile.sirve-card:nth-child(4) { background: #2F5B4F; }
+.mosaic-tile.sirve-card:nth-child(5) { background: #8B3F2D; }
+.mosaic-tile.sirve-card:nth-child(6) { background: #243A63; }
+.mosaic-tile.sirve-card:nth-child(7) { background: #D7B35E; color: var(--black); }
+.mosaic-tile.sirve-card:nth-child(8) { background: #D8D1C4; color: var(--black); }
+.mosaic-tile.sirve-card:nth-child(9) { background: #41615A; }
+.mosaic-tile.sirve-card:nth-child(10) { background: #7C2D3B; }
+.mosaic-tile.sirve-card:nth-child(2) .btn,
+.mosaic-tile.sirve-card:nth-child(3) .btn,
+.mosaic-tile.sirve-card:nth-child(7) .btn,
+.mosaic-tile.sirve-card:nth-child(8) .btn {
+  color: var(--black);
+  border-color: rgba(10,10,10,0.42);
+}
+.mosaic-tile.sirve-card:nth-child(2) .btn:hover,
+.mosaic-tile.sirve-card:nth-child(3) .btn:hover,
+.mosaic-tile.sirve-card:nth-child(7) .btn:hover,
+.mosaic-tile.sirve-card:nth-child(8) .btn:hover {
+  background: rgba(10,10,10,0.08);
+  border-color: rgba(10,10,10,0.78);
+}
+
+.mosaic-tile--xl   { grid-column: span 2; grid-row: span 2; }
+.mosaic-tile--wide { grid-column: span 2; grid-row: span 1; }
+.mosaic-tile--tall { grid-column: span 1; grid-row: span 2; }
+
+.mosaic-tile--xl h3 { font-size: 1.55rem; }
+.mosaic-tile--xl p, .mosaic-tile--tall p { -webkit-line-clamp: 5; font-size: 0.88rem; }
+.mosaic-tile--xl .sirve-icon,
+.mosaic-tile--wide .sirve-icon,
+.mosaic-tile--tall .sirve-icon { width: 54px; height: 54px; }
+
+/* Tarjeta central */
+.mosaic-tile--center {
+  grid-column: 3 / span 1;
+  grid-row: 3 / span 2;
+  position: relative;
+  z-index: 5;
+  background: var(--dark);
+  border: 1px solid var(--border-dk);
+  min-height: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  transform-origin: center center;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.42);
+}
+.mosaic-center-intro {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: clamp(1.25rem, 3vw, 2.25rem);
+  text-align: center;
+  transform-origin: center center;
+}
+.mosaic-center-intro .sirve-hero-title {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.65vw, 1.55rem);
+  line-height: 0.98;
+}
+.mosaic-center-sub {
+  color: var(--muted-lt);
+  font-size: clamp(0.34rem, 0.48vw, 0.45rem);
+  line-height: 1.58;
+  max-width: 18rem;
+}
+.mosaic-center-logo-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.mosaic-center-logo {
+  width: clamp(54px, 5vw, 76px);
+  height: clamp(54px, 5vw, 76px);
+  transform-origin: center center;
+  opacity: 0; /* el JS lo va revelando a medida que el texto se desvanece */
+}
+
+/* Accesibilidad: sin animaciones de scroll para quien las tenga desactivadas */
+@media (prefers-reduced-motion: reduce) {
+  .sirve-mosaic-section { height: auto; }
+  .sirve-mosaic-sticky { position: relative; height: auto; padding-block: 5rem; }
+  .mosaic-tile.sirve-card { opacity: 1 !important; transform: none !important; }
+  .mosaic-center-intro { opacity: 1 !important; transform: none !important; position: relative; }
+  .mosaic-center-logo-wrap { position: relative; margin-top: 1.5rem; }
+  .mosaic-center-logo { transform: none !important; opacity: 1 !important; }
+}
+
+@media (max-width: 1024px) {
+  .sirve-mosaic-grid { grid-template-columns: repeat(3, 1fr); grid-auto-rows: 100px; }
+  .mosaic-tile--center { grid-column: 2 / span 1; grid-row: 2 / span 2; }
+  /* En tablet no hay espacio para los bloques grandes del mosaico:
+     todas las tarjetas de servicio vuelven a ocupar una sola celda. */
+  .mosaic-tile--xl, .mosaic-tile--wide, .mosaic-tile--tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+  .mosaic-tile--xl h3 { font-size: 1.05rem; }
+  .mosaic-tile--xl p, .mosaic-tile--tall p { -webkit-line-clamp: 3; font-size: 0.8rem; }
+  .mosaic-tile--xl .sirve-icon,
+  .mosaic-tile--wide .sirve-icon,
+  .mosaic-tile--tall .sirve-icon { width: 46px; height: 46px; }
+}
+
+@media (max-width: 700px) {
+  .sirve-mosaic-section { height: 360vh; }
+  .sirve-mosaic-sticky { padding-top: calc(var(--header-h) + 0.75rem); }
+  .sirve-mosaic-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 88px; gap: 0.5rem; }
+  .mosaic-tile--center { grid-column: 1 / span 2; grid-row: 1 / span 2; aspect-ratio: auto; }
+  .mosaic-center-intro { padding: 0.75rem 1rem; gap: 0.45rem; }
+  .mosaic-center-intro .eyebrow { display: none; }
+  .mosaic-center-intro .sirve-hero-title { font-size: clamp(1.65rem, 8.6vw, 2rem); }
+  .mosaic-center-sub { font-size: 0.84rem; line-height: 1.45; }
+  .mosaic-center-logo { width: 58px; height: 58px; }
+  .mosaic-tile.sirve-card {
+    padding: 0.85rem;
+    justify-content: flex-start;
+  }
+  .mosaic-tile.sirve-card .sirve-icon { width: 28px; height: 28px; margin-bottom: 0.35rem; }
+  .mosaic-tile.sirve-card h3 { font-size: 0.86rem; margin-bottom: 0.2rem; }
+  .mosaic-tile.sirve-card p { display: none; }
+  .mosaic-tile.sirve-card .btn { font-size: 0.64rem; padding: 0.4rem 0.6rem; }
+}
