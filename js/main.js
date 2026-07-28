@@ -232,6 +232,7 @@ function initSirveMosaic() {
     const cards = Array.from(section.querySelectorAll('.mosaic-tile.sirve-card'));
 
     if (!center || cards.length === 0) return;
+    initSirveCardToggles(cards);
 
     const clamp01 = value => Math.max(0, Math.min(1, value));
     const easeOutCubic = value => 1 - Math.pow(1 - clamp01(value), 3);
@@ -247,6 +248,8 @@ function initSirveMosaic() {
         const centerRect = center.getBoundingClientRect();
         const centerX = centerRect.left + centerRect.width / 2;
         const centerY = centerRect.top + centerRect.height / 2;
+        center.__baseCenterY = centerY;
+        center.__baseHeight = centerRect.height;
 
         cards.forEach(card => {
             card.style.transform = 'none'; // reset temporal para medir su posicion real
@@ -280,10 +283,19 @@ function initSirveMosaic() {
             card.style.opacity = String(clamp01((cardProgress - stagger) / 0.7));
         });
 
-        const centerStartScale = window.innerWidth < 700 ? 1.08 : window.innerWidth < 1024 ? 1.9 : 2.55;
-        const centerScale = centerStartScale - (centerStartScale - 1) * travel;
+        const requestedStartScale = window.innerWidth < 700 ? 2 : window.innerWidth < 1024 ? 1.9 : 3.25;
+        const headerRect = document.getElementById('header')?.getBoundingClientRect();
+        const headerBottom = headerRect ? headerRect.bottom + 18 : 0;
+        const baseCenterY = center.__baseCenterY || (window.innerHeight / 2);
+        const baseHalfHeight = Math.max(1, (center.__baseHeight || center.offsetHeight) / 2);
+        const maxScaleTop = (baseCenterY - headerBottom) / baseHalfHeight;
+        const maxScaleBottom = (window.innerHeight - 18 - baseCenterY) / baseHalfHeight;
+        const viewportSafeScale = Math.max(1, Math.min(requestedStartScale, maxScaleTop, maxScaleBottom));
+        const centerStartScale = window.innerWidth >= 1024 ? viewportSafeScale : requestedStartScale;
+        const centerEndScale = window.innerWidth < 700 ? 1 : window.innerWidth < 1024 ? 1 : 1;
+        const centerScale = centerStartScale - (centerStartScale - centerEndScale) * travel;
         center.style.transform = `scale(${centerScale})`;
-        center.style.borderRadius = `${22 - 12 * travel}px`;
+        center.style.borderRadius = '12px';
 
         const textFade = 1 - easeOutCubic(progress / 0.48);
         if (centerIntro) {
@@ -297,7 +309,7 @@ function initSirveMosaic() {
             // quedar como unico contenido de la tarjeta central.
             const logoAppear = easeOutCubic((progress - 0.3) / 0.45);
             centerLogo.style.opacity = String(logoAppear);
-            const logoScale = 0.55 + 0.45 * logoAppear;
+            const logoScale = 0.72 + 0.28 * logoAppear;
             centerLogo.style.transform = `scale(${logoScale})`;
         }
     }
@@ -321,6 +333,77 @@ function initSirveMosaic() {
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
     measure();
+}
+
+function initSirveCardToggles(cards) {
+    const modal = document.createElement('div');
+    modal.className = 'sirve-card-modal';
+    modal.innerHTML = `
+        <div class="sirve-card-modal-panel" role="dialog" aria-modal="true" aria-labelledby="sirveCardModalTitle">
+            <div class="sirve-card-modal-head">
+                <h3 class="sirve-card-modal-title" id="sirveCardModalTitle"></h3>
+                <button class="sirve-card-modal-close" type="button" aria-label="Cerrar">×</button>
+            </div>
+            <div class="sirve-card-modal-body"></div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    const modalTitle = modal.querySelector('.sirve-card-modal-title');
+    const modalBody = modal.querySelector('.sirve-card-modal-body');
+    const modalClose = modal.querySelector('.sirve-card-modal-close');
+
+    function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', event => {
+        if (event.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
+    });
+
+    cards.forEach(card => {
+        if (card.querySelector('.sirve-card-toggle')) return;
+
+        card.classList.add('is-collapsed');
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'sirve-card-toggle';
+        button.textContent = 'Ver más';
+        button.setAttribute('aria-expanded', 'false');
+
+        button.addEventListener('click', () => {
+            const title = card.querySelector('h3')?.textContent || 'Área de servicio';
+            const description = card.querySelector('p:not(.sirve-card-meta)')?.cloneNode(true);
+            const meta = card.querySelector('.sirve-card-meta')?.cloneNode(true);
+            const actions = card.querySelector('.sirve-card-actions')?.cloneNode(true);
+            const singleAction = card.querySelector(':scope > .btn')?.cloneNode(true);
+
+            modalTitle.textContent = title;
+            modalBody.innerHTML = '';
+            if (description) modalBody.appendChild(description);
+            if (meta) modalBody.appendChild(meta);
+            if (actions) {
+                actions.classList.add('sirve-card-modal-actions');
+                modalBody.appendChild(actions);
+            } else if (singleAction) {
+                const actionWrap = document.createElement('div');
+                actionWrap.className = 'sirve-card-modal-actions';
+                actionWrap.appendChild(singleAction);
+                modalBody.appendChild(actionWrap);
+            }
+
+            modal.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const action = card.querySelector('.sirve-card-actions, .btn');
+        card.insertBefore(button, action || null);
+    });
 }
 
 // ── TAB SYSTEM (EVENTS/GENERAL)

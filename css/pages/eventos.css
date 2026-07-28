@@ -20,6 +20,10 @@
 .featured-event {
   background: var(--black);
   padding-bottom: var(--section-py);
+  scroll-margin-top: var(--header-h);
+}
+.featured-event:target .featured-card {
+  box-shadow: 0 0 0 3px var(--gold);
 }
 .featured-card {
   position: relative;
@@ -81,6 +85,11 @@
   padding-block: var(--section-py);
   color: var(--black);
 }
+/* Títulos más discretos para "Lo que viene en LH" y "Lo que vivimos en LH" */
+.upcoming-events .section-title,
+.past-memories .section-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+}
 .events-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -92,6 +101,14 @@
   border: 1px solid rgba(0,0,0,0.06);
   overflow: hidden;
   transition: transform 0.4s var(--ease), box-shadow 0.4s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  scroll-margin-top: calc(var(--header-h) + 1.5rem);
+}
+/* Resalta brevemente la tarjeta cuando se llega por enlace desde el home */
+.event-card:target {
+  box-shadow: 0 0 0 3px var(--gold);
 }
 .event-card:hover {
   transform: translateY(-8px);
@@ -99,6 +116,7 @@
 }
 .event-img {
   aspect-ratio: 4/3; overflow: hidden;
+  flex-shrink: 0;
 }
 .event-img img {
   width: 100%; height: 100%; object-fit: cover;
@@ -108,6 +126,9 @@
 
 .event-body {
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .event-date {
   font-size: 0.65rem; font-weight: 800;
@@ -123,30 +144,93 @@
   display: flex; align-items: center; gap: 0.5rem;
   font-size: 0.85rem; color: #666; margin-bottom: 0.5rem;
 }
+.event-desc {
+  font-size: 0.92rem; line-height: 1.6;
+  color: #666; margin-bottom: 0;
+}
+.event-cta {
+  /* Empuja el botón al fondo de la tarjeta, sin importar el largo de la descripción.
+     Padding propio más compacto y simétrico para que el texto quede centrado
+     dentro del pill (antes se veía ancho/descentrado por un padding-top desigual). */
+  margin-top: auto;
+  width: fit-content;
+  align-self: flex-start;
+  padding: 0.7rem 1.5rem;
+  font-size: 0.78rem;
+}
 
 /* ── Past Events Gallery ── */
 .past-memories {
   background: var(--black);
   padding-block: var(--section-py);
 }
-.memories-grid {
+
+/* Tarjetas de eventos pasados (misma animación grayscale que usábamos en la galería) */
+.memory-events-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
-.memory-item {
-  position: relative;
-  aspect-ratio: 1/1;
+.memory-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--black-2);
+  border-radius: 20px;
   overflow: hidden;
-  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s;
 }
-.memory-item img {
+.memory-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.35);
+}
+.memory-card-img {
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.memory-card-img img {
   width: 100%; height: 100%; object-fit: cover;
-  filter: grayscale(100%); transition: all 0.5s var(--ease);
+  filter: grayscale(100%);
+  transition: all 0.5s var(--ease);
 }
-.memory-item:hover img {
+.memory-card:hover .memory-card-img img {
   filter: grayscale(0%);
   transform: scale(1.1);
+}
+.memory-card-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.75rem;
+}
+.memory-card-tag {
+  font-size: 0.6rem; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.15em;
+  color: var(--gold);
+}
+.memory-card-title {
+  font-family: var(--ff-display);
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--white);
+  margin: 0;
+}
+.memory-card-desc {
+  font-size: 0.88rem; line-height: 1.6;
+  color: rgba(255,255,255,0.55);
+  margin: 0;
+}
+.memory-card-cta {
+  margin-top: auto;
+  width: fit-content;
+  align-self: flex-start;
+  font-size: 0.8rem;
+  padding: 0.65rem 1.5rem;
+}
+.memory-card.is-recap .memory-card-body {
+  gap: 0.5rem;
 }
 
 /* ── Responsive ── */
@@ -154,8 +238,9 @@
   .featured-card { grid-template-columns: 1fr; }
   .featured-content { padding: 3rem; }
   .events-grid { grid-template-columns: repeat(2, 1fr); }
+  .memory-events-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
   .events-grid { grid-template-columns: 1fr; }
-  .memories-grid { grid-template-columns: repeat(2, 1fr); }
+  .memory-events-grid { grid-template-columns: 1fr; }
 }

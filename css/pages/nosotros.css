@@ -106,7 +106,7 @@
   padding-block: var(--section-py);
 }
 .nos-adn-header {
-  display: flex; justify-content: space-between; align-items: flex-end;
+  display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 4rem; flex-wrap: wrap; gap: 2rem;
   border-bottom: 1px solid rgba(0,0,0,0.1);
   padding-bottom: 2rem;
@@ -270,16 +270,6 @@
   line-height: 1.65;
 }
 
-/* Video */
-.nos-beliefs-video {
-  max-width: 860px; margin-inline: auto;
-  margin-bottom: 5rem;
-  border-radius: 20px; overflow: hidden;
-  aspect-ratio: 16/9;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.12);
-}
-.nos-beliefs-video iframe { width: 100%; height: 100%; border: none; }
-
 /* 9 beliefs grid */
 .nos-beliefs-grid {
   display: grid;
@@ -324,6 +314,16 @@
   padding: 0.3rem 0.75rem;
   background: rgba(168,136,62,0.1);
   border-radius: 100px;
+}
+
+.nos-beliefs-footnote {
+  max-width: 56ch;
+  margin: 2.5rem auto 0;
+  text-align: center;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: #777;
+  line-height: 1.7;
 }
 
 /* ── TEAM ── */
@@ -390,89 +390,6 @@
   font-family: var(--ff-display);
   font-size: 1.8rem; font-weight: 900;
   line-height: 1; letter-spacing: -0.025em;
-}
-
-/* Dept sections */
-.nos-dept {
-  margin-bottom: 4rem;
-}
-.nos-dept:last-child { margin-bottom: 0; }
-.nos-dept-header {
-  display: flex; align-items: center; gap: 1.25rem;
-  margin-bottom: 2rem; padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
-}
-.nos-dept-icon {
-  width: 36px; height: 36px;
-  background: rgba(200,169,110,0.12);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--gold); font-size: 1rem;
-  flex-shrink: 0;
-}
-.nos-dept-header h3 {
-  font-family: var(--ff-display);
-  font-size: 1rem; font-weight: 800;
-  letter-spacing: 0.08em; text-transform: uppercase;
-  color: var(--gold);
-}
-.nos-dept-count {
-  margin-left: auto;
-  font-size: 0.65rem; font-weight: 700;
-  color: rgba(255,255,255,0.25);
-  letter-spacing: 0.06em;
-}
-
-.nos-staff-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 1.5rem 1.25rem;
-}
-.nos-staff-card {
-  background: var(--black-2);
-  border-radius: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: transform 0.35s var(--ease), border-color 0.35s;
-}
-.nos-staff-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(200,169,110,0.2);
-}
-.nos-staff-img {
-  aspect-ratio: 1;
-  overflow: hidden;
-  background: var(--mid);
-}
-.nos-staff-img img {
-  width: 100%; height: 100%; object-fit: cover;
-  object-position: center top;
-  transition: transform 0.5s var(--ease), filter 0.5s;
-  filter: grayscale(60%);
-}
-.nos-staff-card:hover .nos-staff-img img {
-  transform: scale(1.06); filter: grayscale(0%);
-}
-.nos-staff-initials {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  font-family: var(--ff-display);
-  font-size: 2.5rem; font-weight: 900;
-  color: rgba(255,255,255,0.12);
-}
-.nos-staff-body {
-  padding: 1rem 1.1rem;
-}
-.nos-staff-name {
-  font-family: var(--ff-display);
-  font-size: 0.95rem; font-weight: 800;
-  color: var(--white); margin-bottom: 0.2rem;
-  line-height: 1.1;
-}
-.nos-staff-role {
-  font-size: 0.65rem; font-weight: 600;
-  letter-spacing: 0.06em; text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
 }
 
 /* ── RESPONSIVE ── */
