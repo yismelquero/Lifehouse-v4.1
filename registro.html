@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Regístrate | LifeHouse Casa de Vida — Queremos conocerte y darte la bienvenida a nuestra familia.">
-  <title>Regístrate | LifeHouse Casa de Vida</title>
+  <meta name="description" content="Planea tu visita | LifeHouse Casa de Vida — Conoce nuestros horarios, ubicación y qué esperar.">
+  <title>Planea tu visita | LifeHouse Casa de Vida</title>
 
-  <meta property="og:title" content="Regístrate | LifeHouse Casa de Vida">
-  <meta property="og:description" content="Llena tus datos y sé parte de nuestra comunidad.">
+  <meta property="og:title" content="Planea tu visita | LifeHouse Casa de Vida">
+  <meta property="og:description" content="Queremos ayudarte a sentirte en casa desde tu primera visita.">
   <meta property="og:image" content="assets/logo.jpeg">
   <meta property="og:type" content="website">
 
@@ -17,6 +17,7 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/css/intlTelInput.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/pages/registro.css?v=visita-2">
   <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
 </head>
 <body class="page-light-top">
@@ -56,7 +57,7 @@
         </div>
       </nav>
       <div class="header-actions">
-        <a href="registro.html" class="btn btn-solid header-cta">Quiero Visitar</a>
+        <a href="registro-completo.html" class="btn btn-solid header-cta">Registro</a>
         <div class="hamburger" id="mobileToggle" role="button" aria-label="Abrir menú de navegación" aria-expanded="false">
           <span></span><span></span><span></span>
         </div>
@@ -73,86 +74,85 @@
     <a href="registro.html" class="mobile-nav-link">Planea tu visita</a>
     <a href="dar.html" class="mobile-nav-link">Dar</a>
   <div class="mobile-nav-footer">
-      <p>Av. Ecuador 2211, subsuelo<br>La Paz, Bolivia</p>
+      <p>Calle Ecuador #2211<br>La Paz, Bolivia</p>
       <p>Domingos 9AM &amp; 11AM</p>
     </div>
   </div>
 
-  <section class="contacto" style="padding-top: calc(var(--header-h) + 2rem); min-height: 100vh; display: flex; align-items: center;">
-    <div class="container" style="width: 100%;">
-      <div class="contacto-grid">
-        <div class="contacto-info reveal">
-          <span class="eyebrow dark">Bienvenido</span>
-          <h2 class="section-title dark">Queremos<br>conocerte</h2>
-          <p>Llena tus datos y sé parte de nuestra comunidad. Te esperamos con los brazos abiertos.</p>
-          <div class="contacto-details">
-            <div class="c-detail">
-              <div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-              <div class="c-text">
-                <h4>Dirección</h4>
-                <p>Av. Ecuador 2211, subsuelo<br>La Paz, Bolivia</p>
-              </div>
-            </div>
-            <div class="c-detail">
-              <div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-              <div class="c-text">
-                <h4>Reuniones</h4>
-                <p>Domingos 9:00 AM & 11:00 AM</p>
-              </div>
-            </div>
-            <div class="c-detail">
-              <div class="c-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.61a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.7 16l.22.92z"/></svg></div>
-              <div class="c-text">
-                <h4>Contacto</h4>
-                <a href="tel:73501744">73501744</a>
-              </div>
-            </div>
+  <main>
+    <section class="visit-hero">
+      <div class="visit-hero-bg"><img src="assets/portada2.jpg" alt="Reunión de LifeHouse" loading="eager"></div>
+      <div class="container visit-hero-content reveal">
+        <span class="eyebrow">Tu primera visita</span>
+        <h1>Planea tu visita</h1>
+        <p>En LifeHouse encontrarás una comunidad de personas como tú, que está aprendiendo a seguir a Jesús un paso a la vez. Creemos que nadie es perfecto y que todos estamos en un proceso de crecimiento. Cada reunión incluye un tiempo de alabanza, un mensaje basado en la Biblia y espacios para conectar con otras personas.</p>
+      </div>
+    </section>
+
+    <section class="visit-guide" aria-labelledby="visit-questions-title">
+      <div class="container">
+        <header class="visit-section-head reveal">
+          <span class="eyebrow dark">Antes de venir</span>
+          <h2 class="section-title dark" id="visit-questions-title">Preguntas que quizás te estás haciendo</h2>
+        </header>
+
+        <div class="visit-map-card reveal">
+          <div class="visit-map-copy">
+            <span class="visit-number">01</span>
+            <h3>¿Dónde estamos?</h3>
+            <p>Nos reunimos en:</p>
+            <address>📍 Calle Ecuador #2211 — a media cuadra del Mercado Sopocachi, La Paz, Bolivia.</address>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Calle+Ecuador+2211,+La+Paz,+Bolivia" target="_blank" rel="noopener" class="btn btn-dark">Cómo llegar</a>
+          </div>
+          <div class="visit-map">
+            <iframe src="https://www.google.com/maps?q=Calle+Ecuador+2211,+La+Paz,+Bolivia&output=embed" title="Mapa de LifeHouse en Calle Ecuador 2211" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
           </div>
         </div>
-        <div class="contacto-form reveal d1">
+
+        <div class="visit-question-grid">
+          <article class="visit-question-card reveal"><span class="visit-number">02</span><h3>¿A qué hora debería llegar?</h3><p>Te recomendamos llegar 10 minutos antes del inicio de la reunión. Así tendrás tiempo para ubicarte, disfrutar un café y conocer a algunas personas antes de comenzar.</p></article>
+          <article class="visit-question-card reveal d1"><span class="visit-number">03</span><h3>¿Qué pasa con mis hijos?</h3><p>Tenemos ambientes especialmente preparados para niños y adolescentes, con reuniones diseñadas para cada etapa de su crecimiento. Mientras tú disfrutas del servicio, ellos vivirán una experiencia segura, divertida y centrada en Jesús.</p></article>
+          <article class="visit-question-card visit-schedule reveal d2"><span class="visit-number">04</span><h3>Horarios de reunión</h3><ul><li><strong>Domingos</strong><span>🕘 9:00 a.m. / 🕚 11:00 a.m.</span></li><li><strong>Servicio Online</strong><span>💻 12:00 p.m.</span></li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit-form-section" id="quiero-visitar">
+      <div class="container visit-form-layout">
+        <div class="visit-form-intro reveal">
+          <span class="eyebrow">Queremos recibirte</span>
+          <h2 class="section-title">Nos encantaría conocerte</h2>
+          <p>Si es tu primera vez, puedes avisarnos que vendrás. Así podremos recibirte personalmente y ayudarte a sentirte como en casa desde que llegues.</p>
+          <div class="visit-parking"><strong>¿Dónde estaciono?</strong><p>Puedes estacionar en la calle Ecuador.</p></div>
+        </div>
+
+        <div class="contacto-form visit-form-card reveal d1">
+          <h3>Quiero visitar</h3>
           <form id="registroForm">
             <div class="form-row">
-              <div class="form-group">
-                <label>Nombre *</label>
-                <input type="text" id="regNombre" placeholder="Tu nombre" required>
-              </div>
-              <div class="form-group">
-                <label>Apellido *</label>
-                <input type="text" id="regApellido" placeholder="Tu apellido" required>
-              </div>
+              <div class="form-group"><label for="regNombre">Nombre *</label><input type="text" id="regNombre" placeholder="Tu nombre" autocomplete="name" required></div>
+              <div class="form-group"><label for="regPhone">WhatsApp *</label><input type="tel" id="regPhone" placeholder="70000000" autocomplete="tel" required></div>
             </div>
-            <div class="form-group">
-              <label>Correo Electrónico *</label>
-              <input type="email" id="regEmail" placeholder="correo@ejemplo.com" required>
+            <div class="form-group"><label for="regReunion">¿A cuál reunión asistirás? *</label><select id="regReunion" required><option value="">Selecciona una reunión</option><option value="9:00 a.m.">9:00 a.m.</option><option value="11:00 a.m.">11:00 a.m.</option></select></div>
+            <fieldset class="visit-choice-group"><legend>¿Vendrás con niños? *</legend><label><input type="radio" name="regConNinos" value="Sí" required> Sí</label><label><input type="radio" name="regConNinos" value="No" required> No</label></fieldset>
+            <div class="visit-conditional" id="regNinosFields" hidden>
+              <div class="form-group"><label for="regNinosDetalles">¿Cuántos niños y qué edades tienen?</label><input type="text" id="regNinosDetalles" placeholder="Ej.: 2 niños, de 4 y 8 años"></div>
+              <p>Esta información nos ayuda a preparar LH Kids.</p>
             </div>
-            <div class="form-group">
-              <label>Celular</label>
-              <input type="tel" id="regPhone" placeholder="70000000">
-            </div>
-            <div class="form-group">
-              <label>Mensaje</label>
-              <textarea id="regMensaje" placeholder="Cuéntanos de ti..."></textarea>
-            </div>
-            <button type="submit" class="btn-submit" id="regSubmit">Enviar Registro</button>
-            <p class="reg-msg" id="regMsg"></p>
+            <fieldset class="visit-choice-group"><legend>¿Es tu primera vez en LifeHouse? *</legend><label><input type="radio" name="regPrimeraVez" value="Sí" required> Sí</label><label><input type="radio" name="regPrimeraVez" value="No" required> No</label></fieldset>
+            <div class="form-group"><label for="regAyuda">¿Hay algo en lo que podamos ayudarte? <span>(opcional)</span></label><select id="regAyuda"><option value="">Selecciona una opción</option><option>Quiero conocer más sobre Jesús</option><option>Tengo preguntas</option><option>Necesito oración</option><option>Otro</option></select></div>
+            <div class="form-group"><label for="regMensaje">Cuéntanos un poco más <span>(opcional)</span></label><textarea id="regMensaje" placeholder="Escribe aquí cualquier detalle que quieras compartir..."></textarea></div>
+            <button type="submit" class="btn-submit" id="regSubmit">Avisar que voy</button>
+            <p class="reg-msg" id="regMsg" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-strip">
-    <div class="cta-strip-bg"><img src="assets/portada2.jpg" alt="BG" loading="lazy" onerror="this.src='assets/portada.jpg'"></div>
-    <div class="cta-strip-content container reveal">
-      <span class="eyebrow">Acompáñanos</span>
-      <h2 class="cta-strip-title">Ven y sé parte<br>de lo que Dios hace.</h2>
-      <p class="cta-strip-sub">Av. Ecuador 2211, subsuelo • La Paz, Bolivia</p>
-      <div class="cta-strip-actions">
-        <a href="https://maps.google.com/?q=Av.+Ecuador+2211+La+Paz+Bolivia" target="_blank" class="btn btn-solid">Ver Mapa</a>
-        <a href="index.html" class="btn btn-ghost">Inicio</a>
-      </div>
-    </div>
-  </section>
+    <section class="visit-final">
+      <div class="container reveal"><p>Tu primera visita no tiene que ser incómoda.</p><h2>Queremos ayudarte a sentirte en casa desde el primer momento.</h2><p>Si decides avisarnos que vienes, estaremos esperándote.</p></div>
+    </section>
+  </main>
 
   <footer class="site-footer">
     <div class="container">
@@ -166,11 +166,6 @@
             </div>
           </div>
           <p>Somos una iglesia en La Paz enfocada en construir familias sanas y compartir el amor de Jesús con nuestra ciudad.</p>
-          <div class="footer-social">
-            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
-          </div>
         </div>
         <div class="footer-col">
           <h4>Explorar</h4>
@@ -178,7 +173,7 @@
           <a href="nosotros.html">Nosotros</a>
           <a href="reuniones.html">Reuniones</a>
           <a href="casas.html">Casas Vida</a>
-          <a href="registro.html">Registro</a>
+          <a href="registro.html">Planea tu visita</a>
           <a href="index.html#contacto">Contacto</a>
         </div>
         <div class="footer-col">
@@ -208,7 +203,7 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/intlTelInput.min.js"></script>
   <script src="js/supabase.js?v=2"></script>
-  <script src="js/registro.js"></script>
+  <script src="js/registro.js?v=visita-2"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

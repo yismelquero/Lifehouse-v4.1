@@ -393,11 +393,15 @@ body.page-light-top .site-header:not(.scrolled) {
    MARQUEE
 ══════════════════════════════════ */
 .marquee {
+  display: flex;
+  align-items: center;
+  min-height: 58px;
   background: var(--gold); overflow: hidden;
   padding-block: 1.2rem;
 }
 .marquee-track {
   display: flex; white-space: nowrap;
+  min-width: max-content;
   animation: marquee 28s linear infinite;
   will-change: transform;
 }
@@ -446,9 +450,17 @@ body.page-light-top .site-header:not(.scrolled) {
 }
 .gallery-2rows .g-inner img {
   height: clamp(180px, 26vw, 340px);
-  width: auto;
+  width: clamp(260px, 38vw, 500px);
+  flex: 0 0 clamp(260px, 38vw, 500px);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
   border-radius: 5px;
+  background: linear-gradient(110deg, #ece8df 8%, #f7f5f0 28%, #ece8df 48%);
+  background-size: 220% 100%;
+  animation: gallery-placeholder 1.4s ease-in-out infinite;
 }
+.gallery-2rows .g-inner img[complete],
+.gallery-2rows .g-inner img.is-loaded { animation: none; }
 .g-row--rtl .g-track {
   animation: g-rtl 30s linear infinite;
   will-change: transform;
@@ -468,6 +480,20 @@ body.page-light-top .site-header:not(.scrolled) {
 @keyframes g-ltr {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
+}
+@keyframes gallery-placeholder {
+  from { background-position: 100% 0; }
+  to { background-position: -100% 0; }
+}
+
+@media (max-width: 600px) {
+  .gallery-2rows .g-row + .g-row { margin-top: 0.75rem; }
+  .gallery-2rows .g-track,
+  .gallery-2rows .g-inner { gap: 0.75rem; }
+  .gallery-2rows .g-inner img {
+    width: 260px;
+    flex-basis: 260px;
+  }
 }
 
 /* ══════════════════════════════════
@@ -1204,6 +1230,11 @@ body.page-light-top .site-header:not(.scrolled) {
 }
 
 @media (max-width: 640px) {
+  .editorial-grid,
+  .editorial-grid > *,
+  .editorial-content,
+  .as-modular-grid,
+  .as-card { min-width: 0; width: 100%; }
   .masonry-container { columns: 1; }
   .cp-grid-3 { grid-template-columns: 1fr; }
   .cp-item { padding: 2.5rem; }
@@ -1804,4 +1835,3 @@ a.f-info-item:hover svg { opacity: 1; }
 .mt-5 { margin-top: 3rem; }
 .mb-3 { margin-bottom: 1.5rem; }
 .mb-5 { margin-bottom: 3.5rem; }
-

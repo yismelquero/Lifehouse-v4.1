@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/pages/dar.css">
   <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
 
   <!-- SEO & Social -->
@@ -90,43 +91,101 @@
       </div>
     </section>
 
-    <!-- INFO DE DONACIÓN Y FOTOS -->
-    <section class="dar-content" style="background: var(--light-bg); padding: 6rem 0; color: var(--black);">
+    <!-- FORMAS DE DAR -->
+    <section class="giving-methods" aria-labelledby="giving-methods-title">
       <div class="container">
-        <div class="dar-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-          
-          <div class="dar-info reveal" style="background: var(--white); border-radius: 16px; padding: 3rem; box-shadow: 0 20px 40px rgba(0,0,0,0.05); text-align: center;">
-            <div style="margin-bottom: 2rem;">
-              <h2 style="font-family: var(--ff-display); font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Cuentas Bancarias</h2>
-              <p style="color: var(--muted); font-size: 1rem;">Transfiere de manera segura usando QR o nuestra cuenta.</p>
+        <header class="giving-section-head reveal">
+          <span class="eyebrow dark">Generosidad práctica</span>
+          <h2 class="section-title dark" id="giving-methods-title">Formas de dar</h2>
+        </header>
+
+        <div class="giving-cards">
+          <article class="giving-card giving-card-qr reveal">
+            <div class="giving-card-heading">
+              <span class="giving-icon" aria-hidden="true">📱</span>
+              <div>
+                <p class="giving-card-label">Desde tu celular</p>
+                <h3>QR</h3>
+              </div>
             </div>
-            
-            <div class="qr-box" style="margin: 0 auto 2rem; max-width: 200px; border: 1px solid var(--border-lt); border-radius: 12px; padding: 1rem;">
-              <img src="assets/servicios.jpg" alt="Código QR de Donación" style="width: 100%; height: auto; border-radius: 8px;">
+            <p class="giving-card-copy">Escanea este QR desde cualquier aplicación bancaria.</p>
+
+            <div class="giving-qr-frame" role="img" aria-label="Espacio reservado para el código QR bancario oficial">
+              <span class="giving-qr-mark" aria-hidden="true">▦</span>
+              <strong>QR bancario</strong>
+              <small>Agrega aquí el QR oficial</small>
             </div>
 
-            <div class="account-details" style="background: var(--light-bg2); padding: 1.5rem; border-radius: 8px; text-align: left;">
+            <div class="account-details">
               <p style="margin-bottom: 0.5rem;"><strong>Banco:</strong> Banco Bisa</p>
               <p style="margin-bottom: 0.5rem;"><strong>Nombre:</strong> LifeHouse Bolivia</p>
               <p style="margin-bottom: 0.5rem;"><strong>Cuenta Bs:</strong> 123456789</p>
               <p><strong>NIT:</strong> 123456020</p>
             </div>
-          </div>
+          </article>
 
-          <div class="dar-gallery reveal d1" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-            <div style="border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;">
-              <img src="assets/mujeres.jpg" alt="Impacto LifeHouse" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 1rem;">
-              <div style="border-radius: 12px; overflow: hidden;">
-                <img src="assets/clay1.jpg" alt="Generosidad LifeHouse" style="width: 100%; height: 100%; object-fit: cover;">
+          <article class="giving-card giving-card-inperson reveal d1">
+            <div>
+              <div class="giving-card-heading">
+                <span class="giving-icon" aria-hidden="true">🏛</span>
+                <div>
+                  <p class="giving-card-label">En nuestras reuniones</p>
+                  <h3>Presencial</h3>
+                </div>
               </div>
-              <div style="border-radius: 12px; overflow: hidden;">
-                <img src="assets/servicios3.jpg" alt="Comunidad LifeHouse" style="width: 100%; height: 100%; object-fit: cover;">
-              </div>
+              <p class="giving-card-copy">También puedes entregar tus diezmos y ofrendas durante nuestras reuniones dominicales.</p>
             </div>
-          </div>
+            <div class="giving-card-image" aria-hidden="true">
+              <img src="assets/servicios3.jpg" alt="">
+            </div>
+          </article>
+        </div>
 
+        <div class="giving-impact reveal">
+          <p class="giving-impact-kicker">Tu generosidad hace posible que más personas conozcan a Jesús.</p>
+          <p>Cada ofrenda y cada diezmo nos permite seguir compartiendo el evangelio, sirviendo a nuestra ciudad, desarrollando la siguiente generación y creando espacios donde las personas pueden encontrar propósito, comunidad y esperanza en Jesús.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS SOBRE GENEROSIDAD -->
+    <section class="giving-faq" aria-labelledby="giving-faq-title">
+      <div class="container giving-faq-layout">
+        <header class="giving-faq-head reveal">
+          <span class="eyebrow">Nuestra motivación</span>
+          <h2 class="section-title" id="giving-faq-title">¿Por qué damos?</h2>
+          <p>No damos por obligación ni por presión, sino como una respuesta de gratitud a Dios por todo lo que Él ha hecho en nuestras vidas. Creemos que la generosidad es una expresión de adoración y una oportunidad para participar en lo que Dios está haciendo a través de Su iglesia.</p>
+          <blockquote>“Cada uno dé como propuso en su corazón; no con tristeza ni por necesidad, porque Dios ama al dador alegre.” <cite>— 2 Corintios 9:7</cite></blockquote>
+        </header>
+
+        <div class="giving-questions reveal d1">
+          <details class="giving-question" open>
+            <summary>Generosidad <span aria-hidden="true"></span></summary>
+            <div class="giving-answer">
+              <p>Todo lo que hacemos comienza con un corazón dispuesto. En LifeHouse creemos que todo lo que tenemos proviene de Dios. La generosidad, la mayordomía y la adoración son expresiones de una vida que reconoce a Jesús como Señor. Dar no es una obligación, sino una respuesta de gratitud y una oportunidad para participar en la misión que Dios está llevando adelante a través de Su iglesia.</p>
+            </div>
+          </details>
+
+          <details class="giving-question">
+            <summary>¿Qué es el diezmo? <span aria-hidden="true"></span></summary>
+            <div class="giving-answer">
+              <p>El diezmo es la práctica de apartar la décima parte de nuestros ingresos como un acto de obediencia y confianza en Dios. A lo largo de la Biblia vemos que esta práctica expresa que reconocemos a Dios como el dueño de todo y que dependemos de Él para nuestra provisión.</p>
+            </div>
+          </details>
+
+          <details class="giving-question">
+            <summary>¿Qué es una ofrenda? <span aria-hidden="true"></span></summary>
+            <div class="giving-answer">
+              <p>La ofrenda es una expresión voluntaria de generosidad. Va más allá del diezmo y nace del deseo de apoyar la obra de Dios, bendecir a otros y contribuir a la misión de la iglesia con un corazón agradecido.</p>
+            </div>
+          </details>
+
+          <details class="giving-question">
+            <summary>¿Cómo administramos los recursos? <span aria-hidden="true"></span></summary>
+            <div class="giving-answer">
+              <p>Cada diezmo y cada ofrenda son administrados con responsabilidad y un profundo sentido de mayordomía. Nuestro compromiso es utilizar los recursos para cumplir la misión de LifeHouse: anunciar el evangelio, formar discípulos, servir a nuestra comunidad, desarrollar la siguiente generación y sostener el ministerio de la iglesia. Buscamos administrar todo con integridad, orden y transparencia, honrando la confianza que cada persona deposita en esta casa.</p>
+            </div>
+          </details>
         </div>
       </div>
     </section>

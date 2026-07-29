@@ -1,0 +1,289 @@
+.giving-methods {
+  padding: var(--section-py) 0;
+  background: var(--light-bg);
+  color: var(--black);
+}
+
+.giving-section-head {
+  max-width: 720px;
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+
+.giving-section-head .eyebrow { margin-bottom: 1rem; }
+
+.giving-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.giving-card {
+  min-height: 620px;
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.giving-card-qr {
+  background: var(--white);
+  box-shadow: 0 24px 60px rgba(10, 10, 10, 0.07);
+}
+
+.giving-card-inperson {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  background: var(--black);
+  color: var(--white);
+}
+
+.giving-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.giving-icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  border-radius: 50%;
+  background: var(--gold);
+  font-size: 1.55rem;
+}
+
+.giving-card-label {
+  margin-bottom: 0.2rem;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.giving-card-inperson .giving-card-label { color: var(--muted-lt); }
+
+.giving-card h3 {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.giving-card-copy {
+  max-width: 470px;
+  margin-top: 1.5rem;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.giving-card-inperson .giving-card-copy { color: rgba(255, 255, 255, 0.68); }
+
+.giving-qr-frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  width: min(100%, 300px);
+  aspect-ratio: 1;
+  margin: 2rem auto;
+  padding: 0.8rem;
+  overflow: hidden;
+  border: 1px solid var(--border-lt);
+  border-radius: 18px;
+  background-color: var(--white);
+  background-image:
+    linear-gradient(45deg, var(--light-bg) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--light-bg) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--light-bg) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--light-bg) 75%);
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+  background-size: 16px 16px;
+}
+
+.giving-qr-frame strong,
+.giving-qr-frame small {
+  padding: 0.2rem 0.5rem;
+  background: var(--white);
+}
+
+.giving-qr-frame small { color: var(--muted); }
+
+.giving-qr-mark {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin-bottom: 0.4rem;
+  border-radius: 12px;
+  background: var(--black);
+  color: var(--white);
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.account-details {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: var(--light-bg2);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.giving-card-image {
+  min-height: 300px;
+  margin: 0 -3rem -3rem;
+  overflow: hidden;
+}
+
+.giving-card-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  opacity: 0.82;
+}
+
+.giving-impact {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+  margin-top: clamp(4rem, 8vw, 7rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--border-lt);
+}
+
+.giving-impact-kicker {
+  font-family: var(--ff-display);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+
+.giving-impact > p:last-child {
+  color: #555;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.8;
+}
+
+.giving-faq {
+  padding: var(--section-py) 0;
+  background: var(--black-2);
+}
+
+.giving-faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(3rem, 8vw, 7rem);
+  align-items: start;
+}
+
+.giving-faq-head {
+  position: sticky;
+  top: 120px;
+}
+
+.giving-faq-head .eyebrow { margin-bottom: 1rem; }
+
+.giving-faq-head > p {
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 1.03rem;
+  line-height: 1.75;
+}
+
+.giving-faq blockquote {
+  margin-top: 2rem;
+  padding: 1.5rem 0 1.5rem 1.5rem;
+  border-left: 2px solid var(--gold);
+  color: rgba(255, 255, 255, 0.88);
+  font-family: var(--ff-display);
+  font-size: 1.12rem;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.giving-faq cite {
+  display: block;
+  margin-top: 0.75rem;
+  color: var(--gold);
+  font-family: var(--ff-body);
+  font-size: 0.75rem;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.giving-question { border-top: 1px solid var(--border-dk); }
+.giving-question:last-child { border-bottom: 1px solid var(--border-dk); }
+.giving-question summary { list-style: none; }
+.giving-question summary::-webkit-details-marker { display: none; }
+
+.giving-question summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  padding: 1.7rem 0;
+  cursor: pointer;
+  color: var(--white);
+  font-family: var(--ff-display);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 700;
+}
+
+.giving-question summary > span {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+}
+
+.giving-question summary > span::before,
+.giving-question summary > span::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1px;
+  background: var(--gold);
+  transform: translate(-50%, -50%);
+  transition: transform 0.25s var(--ease);
+}
+
+.giving-question summary > span::after { transform: translate(-50%, -50%) rotate(90deg); }
+.giving-question[open] summary > span::after { transform: translate(-50%, -50%) rotate(0); }
+
+.giving-answer {
+  padding: 0 3rem 1.8rem 0;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.98rem;
+  line-height: 1.8;
+}
+
+@media (max-width: 860px) {
+  .giving-cards,
+  .giving-faq-layout { grid-template-columns: 1fr; }
+  .giving-card { min-height: auto; }
+  .giving-faq-head { position: static; }
+}
+
+@media (max-width: 640px) {
+  .giving-card { border-radius: 18px; }
+  .giving-card-image { margin: 0 -1.5rem -1.5rem; }
+  .giving-impact { grid-template-columns: 1fr; }
+  .giving-answer { padding-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .giving-question summary > span::after { transition: none; }
+}

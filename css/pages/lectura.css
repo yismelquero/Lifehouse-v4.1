@@ -431,7 +431,13 @@
   .lec-books-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 640px) {
-  .lec-book-card { grid-template-columns: 1fr; }
+  .lec-active-header,
+  .lec-active-header > *,
+  .lec-book-card,
+  .lec-feed { min-width: 0; width: 100%; }
+  .lec-book-card { grid-template-columns: minmax(0, 1fr); }
+  .lec-book-cover { min-width: 0; width: 100%; }
+  .lec-book-cover img { min-width: 0; }
   .lec-book-cover { aspect-ratio: 16/9; }
   .lec-books-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .lec-progress-inner { flex-wrap: wrap; gap: 0.75rem; }

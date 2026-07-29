@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="css/pages/casas.css">
+  <link rel="stylesheet" href="css/pages/casas.css?v=conecta-2">
   <link rel="icon" type="image/jpeg" href="assets/logo.jpeg">
 
   <!-- SEO & Social -->
@@ -60,7 +60,7 @@
       </nav>
 
       <div class="header-actions">
-        <a href="index.html#contacto" class="btn btn-solid header-cta">Quiero Visitar</a>
+        <a href="registro-completo.html" class="btn btn-solid header-cta">Registro</a>
         <div class="hamburger" id="mobileToggle" role="button" aria-label="Abrir menú de navegación" aria-expanded="false">
           <span></span><span></span><span></span>
         </div>
@@ -93,163 +93,85 @@
       </div>
     </section>
 
-    <!-- DIRECTORY -->
+    <!-- CASAS VIDA -->
     <section class="casas-directory">
       <div class="container">
-        <!-- Filter Bar -->
-        <div class="casas-filter-bar reveal">
+        <div class="casas-directory-head reveal">
+          <span class="eyebrow">Grupos pequeños semanales</span>
+          <h2 class="section-title">Casas Vida</h2>
+          <p>La iglesia no se vive solo los domingos. Las Casas Vida son nuestros grupos pequeños semanales, donde compartimos la vida, estudiamos la Biblia, oramos unos por otros y crecemos juntos en comunidad. Encuentra una Casa Vida cerca de ti y sé parte de una familia espiritual.</p>
+          <div class="casas-directory-actions">
+            <a href="#directorio-casas" class="btn btn-gold">Encuentra una Casa Vida</a>
+            <span class="casas-season">Inicio temporada 2 · 2026 — 10 de agosto</span>
+          </div>
+        </div>
+
+        <div class="casas-filter-bar reveal" id="directorio-casas">
           <button class="casa-filter-btn active" onclick="filterCasas(this, 'all')">Todas</button>
           <button class="casa-filter-btn" onclick="filterCasas(this, 'mujeres')">Mujeres</button>
           <button class="casa-filter-btn" onclick="filterCasas(this, 'hombres')">Hombres</button>
           <button class="casa-filter-btn" onclick="filterCasas(this, 'parejas')">Matrimonios</button>
-          <button class="casa-filter-btn" onclick="filterCasas(this, 'jovenes')">Jóvenes</button>
         </div>
 
         <div class="casas-grid">
-          <!-- Mujeres -->
           <article class="casa-full-card reveal" data-type="mujeres">
-            <div class="casa-full-img">
-              <span class="casa-full-tag">Mujeres</span>
-              <img src="assets/mujeres.jpg" alt="Grupo Mujeres" loading="lazy">
-            </div>
-            <div class="casa-full-body">
-              <h3 class="casa-full-title">Mujeres de Fe</h3>
-              <p class="casa-full-desc">Un espacio seguro para crecer, orar y compartir juntas las maravillas de Dios en nuestra vida cotidiana.</p>
-              <div class="casa-full-meta">
-                <div class="casa-meta-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  Líder: Nelly Toro
-                </div>
-              </div>
-              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
-            </div>
+            <div class="casa-full-img"><span class="casa-full-tag">Mujeres</span><img src="assets/mujeresjovenes.jpg" alt="Mujeres Jóvenes" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Mujeres Jóvenes</h3><p class="casa-full-desc">Descubriendo nuestra identidad en Cristo y construyendo amistades sólidas basadas en la verdad bíblica.</p><div class="casa-full-meta"><div class="casa-meta-item">1 reunión semanal</div><div class="casa-meta-item">Líderes: Dani, Mica, Abby, Grecia y Tammy</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20la%20Casa%20Vida%20de%20Mujeres%20J%C3%B3venes." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
           </article>
-
-          <!-- Mujeres Jovenes -->
-          <article class="casa-full-card reveal d1" data-type="jovenes">
-            <div class="casa-full-img">
-              <span class="casa-full-tag">Mujeres</span>
-              <img src="assets/mujeresjovenes.jpg" alt="Mujeres Jóvenes" loading="lazy">
-            </div>
-            <div class="casa-full-body">
-              <h3 class="casa-full-title">Mujeres Jóvenes</h3>
-              <p class="casa-full-desc">Descubriendo nuestra identidad en Cristo y construyendo amistades sólidas basadas en la verdad bíblica.</p>
-              <div class="casa-full-meta">
-                <div class="casa-meta-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  Líder: Nelly Toro
-                </div>
-              </div>
-              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
-            </div>
+          <article class="casa-full-card reveal d1" data-type="mujeres">
+            <div class="casa-full-img"><span class="casa-full-tag">Mujeres Plus · Grupo 1</span><img src="assets/mujeresplus.jpg" alt="Mujeres Plus Grupo 1" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Mujeres Plus</h3><p class="casa-full-desc">Sabiduría compartida y fe vivida en comunidad, con enfoque en la madurez espiritual y el apoyo mutuo.</p><div class="casa-full-meta"><div class="casa-meta-item">1 de 2 reuniones semanales</div><div class="casa-meta-item">Líderes: Daniela, Micha y Maricel</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20Mujeres%20Plus%20Grupo%201." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
           </article>
-
-          <!-- Mujeres Plus -->
           <article class="casa-full-card reveal d2" data-type="mujeres">
-            <div class="casa-full-img">
-              <span class="casa-full-tag">Mujeres</span>
-              <img src="assets/mujeresplus.jpg" alt="Mujeres Plus" loading="lazy">
-            </div>
-            <div class="casa-full-body">
-              <h3 class="casa-full-title">Mujeres Plus</h3>
-              <p class="casa-full-desc">Sabiduría compartida y fe vivida en comunidad. Un grupo enfocado en la madurez espiritual y el apoyo mutuo.</p>
-              <div class="casa-full-meta">
-                <div class="casa-meta-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  Líder: Carmen Muñoz
-                </div>
-              </div>
-              <a href="https://wa.me/59170165424" target="_blank" class="casa-full-cta">Contactar Líder</a>
-            </div>
+            <div class="casa-full-img"><span class="casa-full-tag">Mujeres Plus · Grupo 2</span><img src="assets/mujeresplus2.jpg" alt="Mujeres Plus Grupo 2" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Mujeres Plus</h3><p class="casa-full-desc">Sabiduría compartida y fe vivida en comunidad, con enfoque en la madurez espiritual y el apoyo mutuo.</p><div class="casa-full-meta"><div class="casa-meta-item">1 de 2 reuniones semanales</div><div class="casa-meta-item">Líderes: Liz, Susan y Yismel</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20Mujeres%20Plus%20Grupo%202." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
           </article>
-
-          <!-- Matrimonios -->
-          <article class="casa-full-card reveal" data-type="parejas">
-            <div class="casa-full-img">
-              <span class="casa-full-tag">Parejas</span>
-              <img src="assets/matrimonios.jpg" alt="Matrimonios" loading="lazy">
-            </div>
-            <div class="casa-full-body">
-              <h3 class="casa-full-title">Matrimonios</h3>
-              <p class="casa-full-desc">Fortaleciendo la base de la familia a través de principios bíblicos prácticos para el matrimonio y el hogar.</p>
-              <div class="casa-full-meta">
-                <div class="casa-meta-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  Líder: Nelly Toro
-                </div>
-              </div>
-              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
-            </div>
+          <article class="casa-full-card reveal" data-type="mujeres">
+            <div class="casa-full-img"><span class="casa-full-tag">Mujeres</span><img src="assets/mujeres2.jpg" alt="Mujeres Adultas" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Mujeres Adultas</h3><p class="casa-full-desc">Un espacio seguro para compartir la vida, profundizar en la Palabra y acompañarnos en cada temporada.</p><div class="casa-full-meta"><div class="casa-meta-item">1 reunión semanal</div><div class="casa-meta-item">Líderes: Rossy y Carmen</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20la%20Casa%20Vida%20de%20Mujeres%20Adultas." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
           </article>
-
-          <!-- Hombres -->
           <article class="casa-full-card reveal d1" data-type="hombres">
-            <div class="casa-full-img">
-              <span class="casa-full-tag">Hombres</span>
-              <img src="assets/hombres.jpg" alt="Hombres" loading="lazy">
-            </div>
-            <div class="casa-full-body">
-              <h3 class="casa-full-title">Hombres de Valor</h3>
-              <p class="casa-full-desc">Liderazgo, hermandad y crecimiento espiritual real para hombres que buscan impactar su entorno.</p>
-              <div class="casa-full-meta">
-                <div class="casa-meta-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  Líder: Nelly Toro
-                </div>
-              </div>
-              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
-            </div>
+            <div class="casa-full-img"><span class="casa-full-tag">Hombres</span><img src="assets/hombresjovenes.jpg" alt="Hombres Jóvenes" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Hombres Jóvenes</h3><p class="casa-full-desc">Desarrollando amistades de edificación y propósito en una etapa clave de la vida.</p><div class="casa-full-meta"><div class="casa-meta-item">1 reunión semanal</div><div class="casa-meta-item">Líderes: Hans, Josh, Cris y Joy</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20la%20Casa%20Vida%20de%20Hombres%20J%C3%B3venes." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
           </article>
-
-          <!-- Hombres Jovenes -->
-          <article class="casa-full-card reveal d2" data-type="jovenes">
-            <div class="casa-full-img">
-              <span class="casa-full-tag">Hombres</span>
-              <img src="assets/hombresjovenes.jpg" alt="Hombres Jóvenes" loading="lazy">
-            </div>
-            <div class="casa-full-body">
-              <h3 class="casa-full-title">Hombres Jóvenes</h3>
-              <p class="casa-full-desc">Desarrollando amistades de edificación y propósito en una etapa clave de la vida.</p>
-              <div class="casa-full-meta">
-                <div class="casa-meta-item">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                  Líder: Nelly Toro
-                </div>
-              </div>
-              <a href="https://wa.me/59173501744" target="_blank" class="casa-full-cta">Contactar Líder</a>
-            </div>
+          <article class="casa-full-card reveal d2" data-type="hombres">
+            <div class="casa-full-img"><span class="casa-full-tag">Hombres</span><img src="assets/hombres2.jpg" alt="Hombres Adultos" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Hombres Adultos</h3><p class="casa-full-desc">Liderazgo, hermandad y crecimiento espiritual para hombres que desean vivir su fe con propósito.</p><div class="casa-full-meta"><div class="casa-meta-item">1 reunión semanal</div><div class="casa-meta-item">Líderes: Victor, Franz y Juan Victor</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20la%20Casa%20Vida%20de%20Hombres%20Adultos." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
+          </article>
+          <article class="casa-full-card reveal" data-type="parejas">
+            <div class="casa-full-img"><span class="casa-full-tag">Matrimonios</span><img src="assets/matrimonios.jpg" alt="Matrimonios Adultos" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Matrimonios Adultos</h3><p class="casa-full-desc">Fortaleciendo el matrimonio y la familia a través de principios bíblicos y una comunidad que acompaña.</p><div class="casa-full-meta"><div class="casa-meta-item">1 reunión semanal</div><div class="casa-meta-item">Líderes: Pastores</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20la%20Casa%20Vida%20de%20Matrimonios%20Adultos." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
+          </article>
+          <article class="casa-full-card reveal d1" data-type="parejas">
+            <div class="casa-full-img"><span class="casa-full-tag">Matrimonios</span><img src="assets/matrimonios2.jpg" alt="Matrimonios Jóvenes" loading="lazy"></div>
+            <div class="casa-full-body"><h3 class="casa-full-title">Matrimonios Jóvenes</h3><p class="casa-full-desc">Un espacio para construir matrimonios saludables, crecer juntos y establecer hogares centrados en Jesús.</p><div class="casa-full-meta"><div class="casa-meta-item">1 reunión semanal</div><div class="casa-meta-item">Líderes: Pastores</div></div><a href="https://wa.me/59173501744?text=Hola%2C%20quiero%20encontrar%20la%20Casa%20Vida%20de%20Matrimonios%20J%C3%B3venes." target="_blank" rel="noopener" class="casa-full-cta">Encontrar esta Casa Vida</a></div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- JOIN SECTION -->
-    <section class="casas-join">
-      <div class="container">
-        <div class="reveal">
-          <span class="eyebrow">Únete</span>
-          <h2 class="section-title">¿Cómo unirme a una Casa?</h2>
-        </div>
-
-        <div class="join-steps">
-          <div class="join-step reveal d1">
-            <span class="step-num">01</span>
-            <h4 class="step-title">Elige tu Grupo</h4>
-            <p class="step-desc">Busca el grupo que mejor se adapte a tu etapa de vida o intereses en nuestro directorio.</p>
-          </div>
-          <div class="join-step reveal d2">
-            <span class="step-num">02</span>
-            <h4 class="step-title">Contacta al Líder</h4>
-            <p class="step-desc">Haz clic en el botón de contacto para enviar un mensaje directo por WhatsApp al líder del grupo.</p>
-          </div>
-          <div class="join-step reveal d3">
-            <span class="step-num">03</span>
-            <h4 class="step-title">Visita la Casa</h4>
-            <p class="step-desc">El líder te dará la ubicación exacta y el horario para que puedas visitarlos esa misma semana.</p>
-          </div>
-        </div>
+    <!-- MINISTERIOS POR GENERACIÓN -->
+    <section class="conecta-program conecta-program-light" id="lh-kids">
+      <div class="container conecta-program-layout">
+        <div class="conecta-program-copy reveal"><span class="eyebrow dark">Niños LH</span><h2 class="section-title dark">LH Kids</h2><p>Un lugar donde los niños conocen y aman a Jesús. LH Kids es el grupo de niños de LifeHouse. Cada domingo vivimos un tiempo diseñado especialmente para ellos, con enseñanzas bíblicas, juegos y actividades adaptadas a su edad. Además, durante el año realizamos Bitácora, nuestro encuentro mensual, y un retiro anual para seguir creciendo en su fe.</p><ul class="conecta-program-list"><li>Domingos durante cada servicio</li><li>📅 Bitácora (mensual)</li><li>🏕 Retiro anual</li></ul><p class="conecta-program-note">Todos nuestros maestros y voluntarios pasan por un proceso de selección y capacitación antes de servir en LH Kids, con el propósito de ofrecer un ambiente seguro, confiable y lleno del amor de Jesús para cada niño.</p></div>
+        <div class="conecta-media-grid reveal d1" aria-label="Momentos de LH Kids y sus retiros"><figure class="conecta-media conecta-media-large"><img src="assets/bitacora.jpg" alt="Encuentro Bitácora de LH Kids" loading="lazy"></figure><figure class="conecta-media"><img src="assets/images/eventos/eventosproximos/retironinos/bitacora.jpg" alt="Retiro de niños de LifeHouse" loading="lazy"></figure><figure class="conecta-media"><img src="assets/servicios2.jpg" alt="Niños compartiendo en LifeHouse" loading="lazy"></figure></div>
       </div>
     </section>
+
+    <section class="conecta-program" id="clay">
+      <div class="container conecta-program-layout conecta-program-layout-reverse">
+        <div class="conecta-program-copy reveal"><span class="eyebrow">Jóvenes LH</span><h2 class="section-title">Grupo Clay</h2><p>Un espacio para crecer, conectar y vivir la fe con otros jóvenes. Clay es el ministerio de jóvenes de LifeHouse. Durante el año nos reunimos en las Noches Clay, encuentros diseñados para fortalecer nuestra relación con Dios, crear amistades auténticas y vivir experiencias que transforman vidas. También compartimos un campamento anual.</p><ul class="conecta-program-list"><li>Dos reuniones al mes</li><li>🏕 Campamento anual</li></ul><a href="clay.html" class="btn btn-gold">Conoce Clay</a></div>
+        <div class="conecta-media-grid reveal d1" aria-label="Momentos del Campamento Clay"><figure class="conecta-media conecta-media-large"><img src="assets/clay1.jpg" alt="Jóvenes durante el Campamento Clay" loading="lazy"></figure><figure class="conecta-media"><img src="assets/clay5.jpg" alt="Actividad del Campamento Clay" loading="lazy"></figure><figure class="conecta-media"><img src="assets/clay8.jpg" alt="Comunidad de jóvenes Clay" loading="lazy"></figure></div>
+      </div>
+    </section>
+
+    <section class="conecta-program conecta-program-blue" id="vista">
+      <div class="container conecta-program-layout">
+        <div class="conecta-program-copy reveal"><span class="eyebrow">Adolescentes LH</span><h2 class="section-title">Grupo Vista</h2><p>Un lugar donde los adolescentes pueden crecer en su identidad y en su fe. Vista es el ministerio de adolescentes de LifeHouse. Cada domingo tienen un espacio pensado especialmente para ellos y, además, se reúnen una vez al mes para compartir, aprender y fortalecer su relación con Dios. También participan del Campamento Clay junto a los jóvenes.</p><ul class="conecta-program-list"><li>Reuniones los domingos</li><li>📅 Una reunión mensual</li><li>🏕 Participan del Campamento Clay</li></ul></div>
+        <div class="conecta-media-grid reveal d1" aria-label="Momentos del Grupo Vista"><figure class="conecta-media conecta-media-large"><img src="assets/hombresjovenes2.jpg" alt="Adolescentes compartiendo en comunidad" loading="lazy"></figure><figure class="conecta-media"><img src="assets/mujeresjovenes2.jpg" alt="Jóvenes de LifeHouse" loading="lazy"></figure><figure class="conecta-media"><img src="assets/mujeresjovenes3.jpg" alt="Encuentro de adolescentes y jóvenes" loading="lazy"></figure></div>
+      </div>
+    </section>
+
   </main>
 
   <!-- FOOTER -->

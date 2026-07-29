@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollProgress();
     initHeaderAndNav();
     initRevealAnimations();
+    initGalleryLoading();
     initHeroSlides();
     initHeroWordCycle();
     initSirveMosaic();
@@ -19,6 +20,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const todayCard = document.querySelector('.lec-day-card.active-day');
     if (todayCard) todayCard.classList.add('open');
 });
+
+// Mantiene el espacio del carrusel desde el primer render y retira el estado
+// de carga de cada foto apenas termina de decodificarse.
+function initGalleryLoading() {
+    document.querySelectorAll('.gallery-2rows img').forEach(img => {
+        const markLoaded = () => img.classList.add('is-loaded');
+        if (img.complete && img.naturalWidth > 0) markLoaded();
+        else img.addEventListener('load', markLoaded, { once: true });
+    });
+}
 
 // ── SCROLL PROGRESS BAR
 function initScrollProgress() {
@@ -241,18 +252,32 @@ function initSirveMosaic() {
         return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     };
 
+    // Guardamos toda la geometria fuera del ciclo de scroll. Mezclar lecturas
+    // de layout con escrituras de transform en cada frame provoca tirones,
+    // especialmente en navegadores moviles cuando aparece/desaparece su barra.
+    const geometry = {
+        sectionTop: 0,
+        scrollDistance: 1,
+        centerStartScale: 1
+    };
+    let measuredViewportWidth = document.documentElement.clientWidth;
+
     // Calcula, para cada tarjeta, cuanto tiene que moverse desde el centro
     // de la tarjeta central hasta su propia posicion final en la grilla.
     function measure() {
         center.style.transform = 'none';
+        cards.forEach(card => { card.style.transform = 'none'; });
+
+        const viewportHeight = document.documentElement.clientHeight;
+        const sectionRect = section.getBoundingClientRect();
         const centerRect = center.getBoundingClientRect();
         const centerX = centerRect.left + centerRect.width / 2;
         const centerY = centerRect.top + centerRect.height / 2;
-        center.__baseCenterY = centerY;
-        center.__baseHeight = centerRect.height;
+
+        geometry.sectionTop = sectionRect.top + window.scrollY;
+        geometry.scrollDistance = Math.max(1, section.offsetHeight - viewportHeight);
 
         cards.forEach(card => {
-            card.style.transform = 'none'; // reset temporal para medir su posicion real
             const r = card.getBoundingClientRect();
             const cx = r.left + r.width / 2;
             const cy = r.top + r.height / 2;
@@ -260,15 +285,26 @@ function initSirveMosaic() {
             card.__dy = centerY - cy;
         });
 
+        const viewportWidth = document.documentElement.clientWidth;
+        const requestedStartScale = viewportWidth < 700 ? 2 : viewportWidth < 1024 ? 1.9 : 3.25;
+
+        if (viewportWidth >= 1024) {
+            const headerBottom = document.getElementById('header')?.getBoundingClientRect().bottom || 0;
+            const baseHalfHeight = Math.max(1, centerRect.height / 2);
+            const maxScaleTop = (centerY - headerBottom - 18) / baseHalfHeight;
+            const maxScaleBottom = (viewportHeight - 18 - centerY) / baseHalfHeight;
+            geometry.centerStartScale = Math.max(1, Math.min(requestedStartScale, maxScaleTop, maxScaleBottom));
+        } else {
+            geometry.centerStartScale = requestedStartScale;
+        }
+
+        measuredViewportWidth = viewportWidth;
+
         update();
     }
 
     function update() {
-        const rect = section.getBoundingClientRect();
-        const scrollDistance = section.offsetHeight - window.innerHeight;
-        const scrolled = -rect.top;
-        let progress = scrollDistance > 0 ? scrolled / scrollDistance : 0;
-        progress = clamp01(progress);
+        const progress = clamp01((window.scrollY - geometry.sectionTop) / geometry.scrollDistance);
         const travel = easeInOutCubic(progress);
         const cardProgress = easeOutCubic((progress - 0.08) / 0.82);
 
@@ -283,19 +319,8 @@ function initSirveMosaic() {
             card.style.opacity = String(clamp01((cardProgress - stagger) / 0.7));
         });
 
-        const requestedStartScale = window.innerWidth < 700 ? 2 : window.innerWidth < 1024 ? 1.9 : 3.25;
-        const headerRect = document.getElementById('header')?.getBoundingClientRect();
-        const headerBottom = headerRect ? headerRect.bottom + 18 : 0;
-        const baseCenterY = center.__baseCenterY || (window.innerHeight / 2);
-        const baseHalfHeight = Math.max(1, (center.__baseHeight || center.offsetHeight) / 2);
-        const maxScaleTop = (baseCenterY - headerBottom) / baseHalfHeight;
-        const maxScaleBottom = (window.innerHeight - 18 - baseCenterY) / baseHalfHeight;
-        const viewportSafeScale = Math.max(1, Math.min(requestedStartScale, maxScaleTop, maxScaleBottom));
-        const centerStartScale = window.innerWidth >= 1024 ? viewportSafeScale : requestedStartScale;
-        const centerEndScale = window.innerWidth < 700 ? 1 : window.innerWidth < 1024 ? 1 : 1;
-        const centerScale = centerStartScale - (centerStartScale - centerEndScale) * travel;
+        const centerScale = geometry.centerStartScale - (geometry.centerStartScale - 1) * travel;
         center.style.transform = `scale(${centerScale})`;
-        center.style.borderRadius = '12px';
 
         const textFade = 1 - easeOutCubic(progress / 0.48);
         if (centerIntro) {
@@ -326,12 +351,23 @@ function initSirveMosaic() {
 
     let resizeTimer;
     function onResize() {
+        const currentWidth = document.documentElement.clientWidth;
+
+        // En movil la interfaz del navegador cambia solo la altura del viewport
+        // mientras se hace scroll. El mosaico usa svh, asi que no necesita una
+        // medicion nueva hasta que cambie el ancho (rotacion o resize real).
+        if (currentWidth === measuredViewportWidth && currentWidth < 1025) return;
+
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(measure, 150);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(measure, 250);
+    });
     measure();
 }
 
@@ -449,7 +485,7 @@ function initContactForm() {
         iti = window.intlTelInput(phoneInput, {
             initialCountry: 'bo',
             separateDialCode: true,
-            utilsScript: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/utils.js',
+            loadUtilsOnInit: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/utils.js',
         });
     }
 
