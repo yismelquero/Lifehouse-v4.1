@@ -569,6 +569,7 @@
     border-radius: 12px;
     box-shadow: none;
     background: var(--dark);
+    contain: layout paint;
   }
   .mosaic-center-intro {
     padding: 0.72rem;

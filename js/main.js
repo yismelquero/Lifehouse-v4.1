@@ -293,7 +293,7 @@ function initSirveMosaic() {
         });
 
         const viewportWidth = document.documentElement.clientWidth;
-        const requestedStartScale = viewportWidth < 700 ? 1.72 : viewportWidth < 1024 ? 1.82 : 3.25;
+        const requestedStartScale = viewportWidth < 700 ? 1.48 : viewportWidth < 1024 ? 1.82 : 3.25;
 
         if (viewportWidth >= 1024) {
             const headerBottom = document.getElementById('header')?.getBoundingClientRect().bottom || 0;
@@ -320,6 +320,7 @@ function initSirveMosaic() {
         const viewportWidth = document.documentElement.clientWidth;
         const isMobileMosaic = viewportWidth < 700;
         const travel = isMobileMosaic ? easeOutQuad(progress) : easeInOutCubic(progress);
+        const centerTravel = isMobileMosaic ? easeOutCubic(progress / 0.68) : travel;
         const cardProgress = easeOutCubic((progress - (isMobileMosaic ? 0.025 : 0.08)) / (isMobileMosaic ? 0.82 : 0.82));
 
         cards.forEach((card, index) => {
@@ -334,20 +335,22 @@ function initSirveMosaic() {
             card.style.opacity = String(clamp01((cardProgress - stagger) / (isMobileMosaic ? 0.68 : 0.7)));
         });
 
-        const centerScale = geometry.centerStartScale - (geometry.centerStartScale - 1) * travel;
+        const centerScale = geometry.centerStartScale - (geometry.centerStartScale - 1) * centerTravel;
         center.style.transform = `scale(${centerScale})`;
 
-        const textFade = 1 - easeOutCubic(progress / 0.48);
+        const textFade = isMobileMosaic
+            ? 1 - easeInOutCubic(progress / 0.56)
+            : 1 - easeOutCubic(progress / 0.48);
         if (centerIntro) {
             centerIntro.style.opacity = String(textFade);
             centerIntro.style.transform = `scale(${0.96 + 0.04 * textFade})`;
-            centerIntro.style.pointerEvents = progress > 0.52 ? 'none' : '';
+            centerIntro.style.pointerEvents = progress > (isMobileMosaic ? 0.62 : 0.52) ? 'none' : '';
         }
         if (centerLogo) {
             // El isotipo arranca oculto (para no superponerse al texto) y va
             // apareciendo/creciendo a medida que el texto se desvanece, hasta
             // quedar como unico contenido de la tarjeta central.
-            const logoAppear = easeOutCubic((progress - 0.3) / 0.45);
+            const logoAppear = easeOutCubic((progress - (isMobileMosaic ? 0.2 : 0.3)) / (isMobileMosaic ? 0.44 : 0.45));
             centerLogo.style.opacity = String(logoAppear);
             const logoScale = 0.72 + 0.28 * logoAppear;
             centerLogo.style.transform = `scale(${logoScale})`;
@@ -365,7 +368,7 @@ function initSirveMosaic() {
             return;
         }
 
-        currentProgress += delta * 0.24;
+        currentProgress += delta * 0.32;
         update(currentProgress);
         smoothingFrame = requestAnimationFrame(animateMobileProgress);
     }
