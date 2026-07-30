@@ -251,6 +251,10 @@ function initSirveMosaic() {
         const t = clamp01(value);
         return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     };
+    const easeOutQuad = value => {
+        const t = clamp01(value);
+        return 1 - (1 - t) * (1 - t);
+    };
 
     // Guardamos toda la geometria fuera del ciclo de scroll. Mezclar lecturas
     // de layout con escrituras de transform en cada frame provoca tirones,
@@ -261,6 +265,9 @@ function initSirveMosaic() {
         centerStartScale: 1
     };
     let measuredViewportWidth = document.documentElement.clientWidth;
+    let currentProgress = 0;
+    let targetProgress = 0;
+    let smoothingFrame = null;
 
     // Calcula, para cada tarjeta, cuanto tiene que moverse desde el centro
     // de la tarjeta central hasta su propia posicion final en la grilla.
@@ -286,7 +293,7 @@ function initSirveMosaic() {
         });
 
         const viewportWidth = document.documentElement.clientWidth;
-        const requestedStartScale = viewportWidth < 700 ? 2 : viewportWidth < 1024 ? 1.9 : 3.25;
+        const requestedStartScale = viewportWidth < 700 ? 1.72 : viewportWidth < 1024 ? 1.82 : 3.25;
 
         if (viewportWidth >= 1024) {
             const headerBottom = document.getElementById('header')?.getBoundingClientRect().bottom || 0;
@@ -300,23 +307,31 @@ function initSirveMosaic() {
 
         measuredViewportWidth = viewportWidth;
 
-        update();
+        currentProgress = getTargetProgress();
+        targetProgress = currentProgress;
+        update(currentProgress);
     }
 
-    function update() {
-        const progress = clamp01((window.scrollY - geometry.sectionTop) / geometry.scrollDistance);
-        const travel = easeInOutCubic(progress);
-        const cardProgress = easeOutCubic((progress - 0.08) / 0.82);
+    function getTargetProgress() {
+        return clamp01((window.scrollY - geometry.sectionTop) / geometry.scrollDistance);
+    }
+
+    function update(progress) {
+        const viewportWidth = document.documentElement.clientWidth;
+        const isMobileMosaic = viewportWidth < 700;
+        const travel = isMobileMosaic ? easeOutQuad(progress) : easeInOutCubic(progress);
+        const cardProgress = easeOutCubic((progress - (isMobileMosaic ? 0.025 : 0.08)) / (isMobileMosaic ? 0.82 : 0.82));
 
         cards.forEach((card, index) => {
-            const stagger = index * 0.025;
-            const localProgress = easeOutCubic((progress - 0.06 - stagger) / 0.72);
+            const stagger = isMobileMosaic ? index * 0.012 : index * 0.025;
+            const localProgress = easeOutCubic((progress - (isMobileMosaic ? 0.02 : 0.06) - stagger) / (isMobileMosaic ? 0.78 : 0.72));
             const dx = (card.__dx || 0) * (1 - localProgress);
             const dy = (card.__dy || 0) * (1 - localProgress);
             const scale = 0.16 + 0.84 * localProgress;
-            const rotate = (1 - localProgress) * ((index % 2 === 0 ? -1 : 1) * 3.5);
+            const rotateAmount = isMobileMosaic ? 1.25 : 3.5;
+            const rotate = (1 - localProgress) * ((index % 2 === 0 ? -1 : 1) * rotateAmount);
             card.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(${scale}) rotate(${rotate}deg)`;
-            card.style.opacity = String(clamp01((cardProgress - stagger) / 0.7));
+            card.style.opacity = String(clamp01((cardProgress - stagger) / (isMobileMosaic ? 0.68 : 0.7)));
         });
 
         const centerScale = geometry.centerStartScale - (geometry.centerStartScale - 1) * travel;
@@ -340,11 +355,35 @@ function initSirveMosaic() {
     }
 
     let ticking = false;
+    function animateMobileProgress() {
+        smoothingFrame = null;
+        const delta = targetProgress - currentProgress;
+
+        if (Math.abs(delta) < 0.002) {
+            currentProgress = targetProgress;
+            update(currentProgress);
+            return;
+        }
+
+        currentProgress += delta * 0.24;
+        update(currentProgress);
+        smoothingFrame = requestAnimationFrame(animateMobileProgress);
+    }
+
     function onScroll() {
+        const viewportWidth = document.documentElement.clientWidth;
+        targetProgress = getTargetProgress();
+
+        if (viewportWidth < 700) {
+            if (!smoothingFrame) smoothingFrame = requestAnimationFrame(animateMobileProgress);
+            return;
+        }
+
         if (ticking) return;
         ticking = true;
         requestAnimationFrame(() => {
-            update();
+            currentProgress = targetProgress;
+            update(currentProgress);
             ticking = false;
         });
     }
