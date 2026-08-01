@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initRevealAnimations();
     initGalleryLoading();
     initHeroSlides();
-    initHeroWordCycle();
     initSirveMosaic();
     initCarousel();
     initTabs();
@@ -191,18 +190,35 @@ function initCarousel() {
 function initHeroSlides() {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.hero-dot');
+    const hero = document.getElementById('hero');
+    const word = document.getElementById('heroCycleWord');
     if (slides.length === 0) return;
 
     let current = 0;
     let interval;
     const delay = 5000;
+    const states = [
+        { key: 'familia', word: 'FAMILIA' },
+        { key: 'comunidad', word: 'COMUNIDAD' },
+        { key: 'lifehouse', word: 'LIFEHOUSE' }
+    ];
 
     function goTo(index) {
-        slides.forEach(s => s.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
         current = (index + slides.length) % slides.length;
-        slides[current].classList.add('active');
-        dots[current].classList.add('active');
+        if (word) word.classList.add('hero-cycle--switching');
+
+        window.setTimeout(() => {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slides[current].classList.add('active');
+            dots[current]?.classList.add('active');
+            hero.dataset.heroState = states[current].key;
+            document.body.dataset.heroState = states[current].key;
+            if (word) {
+                word.textContent = states[current].word;
+                word.classList.remove('hero-cycle--switching');
+            }
+        }, 450);
     }
 
     function next() { goTo(current + 1); }
@@ -213,42 +229,13 @@ function initHeroSlides() {
         dot.addEventListener('click', () => { goTo(i); start(); });
     });
 
-    const hero = document.getElementById('hero');
     if (hero) {
         hero.addEventListener('mouseenter', stop);
         hero.addEventListener('mouseleave', start);
     }
 
+    document.body.dataset.heroState = states[0].key;
     start();
-}
-
-// ── HERO WORD CYCLE ("Somos" + una familia / una iglesia / LifeHouse)
-// Pasa una sola vez por las 3 frases y se queda fija en la ultima
-// (LifeHouse) el resto del tiempo que la persona navegue la pagina.
-function initHeroWordCycle() {
-    const el = document.getElementById('heroCycleWord');
-    if (!el) return;
-
-    const words = ['Una familia', 'Una iglesia', 'LifeHouse'];
-    const holdTime = 1900;       // cuanto tiempo se queda visible cada palabra (ms)
-    const transitionTime = 450;  // debe coincidir con el CSS de .hero-cycle (ms)
-    let i = 0;
-
-    function next() {
-        if (i >= words.length - 1) return; // ya llegamos a "LifeHouse": quedarse ahi
-
-        setTimeout(() => {
-            el.classList.add('hero-cycle--switching');
-            setTimeout(() => {
-                i++;
-                el.textContent = words[i];
-                el.classList.remove('hero-cycle--switching');
-                next();
-            }, transitionTime);
-        }, holdTime);
-    }
-
-    next();
 }
 
 // ── SIRVE: MOSAICO ESTILO brand.dropbox.com (pagina sirve.html)

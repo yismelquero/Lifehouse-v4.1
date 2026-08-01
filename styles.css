@@ -180,6 +180,21 @@ body.page-light-top .site-header:not(.scrolled) {
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
+body[data-hero-state="lifehouse"] .site-header:not(.scrolled) {
+  top: 18px;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  max-width: calc(var(--container) - (var(--pad-x) * 2));
+  margin-inline: auto;
+  height: calc(var(--header-h) - 8px);
+  border-radius: 100px;
+  background: rgba(8, 8, 10, 0.94);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.14);
+}
+body[data-hero-state="lifehouse"] .site-header:not(.scrolled) .header-inner {
+  padding-inline: 1.2rem;
+}
 .header-inner {
   display: flex; align-items: center;
   justify-content: space-between;
@@ -306,11 +321,55 @@ body.page-light-top .site-header:not(.scrolled) {
   opacity: 0; transition: opacity 0.8s ease;
 }
 .hero-slide.active { opacity: 1; }
-.hero-slide img { width: 100%; height: 100%; object-fit: cover; }
+.hero-slide > .hero-bg { width: 100%; height: 100%; object-fit: cover; }
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(125deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.4) 60%, rgba(0,0,0,0.55) 100%);
 }
+
+/* Frame Familia: fondo de color y cinco retratos horizontales. */
+.hero-family-collage {
+  position: absolute;
+  z-index: 1;
+  top: 9%;
+  right: -1%;
+  width: min(48vw, 720px);
+  height: 82%;
+}
+.hero-family-collage img {
+  position: absolute;
+  width: 76%;
+  height: auto;
+  border-radius: clamp(15px, 1.5vw, 26px);
+  box-shadow: 0 16px 32px rgba(8, 8, 12, 0.1);
+}
+.hero-family-collage img:nth-child(1) { top: 0; right: 0; }
+.hero-family-collage img:nth-child(2) { top: 21%; right: 18%; }
+.hero-family-collage img:nth-child(3) { top: 42%; right: 0; }
+.hero-family-collage img:nth-child(4) { top: 63%; right: 18%; }
+.hero-family-collage img:nth-child(5) { top: 84%; right: 0; }
+
+/* Frame Comunidad: el recurso ya incluye el desenfoque y oscurecimiento. */
+.hero-slide--comunidad > .hero-bg {
+  width: 104%;
+  height: 104%;
+  margin: -2%;
+}
+.hero-slide--comunidad .hero-overlay {
+  background: linear-gradient(90deg, rgba(0,0,0,0.25), rgba(0,0,0,0.04) 70%);
+}
+
+/* Frame LifeHouse: composición clara con collage, isotipo y acentos azules. */
+.hero-lifehouse-art,
+.hero-lifehouse-mark,
+.hero-lifehouse-bars {
+  position: absolute;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.hero-lifehouse-art { z-index: 1; width: min(42vw, 640px); right: 7%; top: 17%; }
+.hero-lifehouse-mark { z-index: 2; width: min(8vw, 112px); right: 26%; top: 42%; }
+.hero-lifehouse-bars { z-index: 1; width: min(38vw, 570px); left: 10%; top: 38%; }
 
 /* Content */
 .hero-content {
@@ -322,7 +381,7 @@ body.page-light-top .site-header:not(.scrolled) {
 .hero-eyebrow { margin-bottom: 1.5rem; opacity: 0; transform: translateY(18px); animation: fadeUp 0.8s 0.4s var(--ease-out) forwards; }
 .hero-title {
   font-family: var(--ff-display);
-  font-size: clamp(3.2rem, 8.5vw, 6.8rem);
+  font-size: clamp(2.75rem, 6.5vw, 5.4rem);
   font-weight: 900; line-height: 0.97; letter-spacing: -0.035em;
   max-width: 13ch; margin-bottom: 1.5rem;
   opacity: 0; transform: translateY(18px); animation: fadeUp 0.8s 0.6s var(--ease-out) forwards;
@@ -332,12 +391,26 @@ body.page-light-top .site-header:not(.scrolled) {
    queda fija en "LifeHouse" el resto de la navegacion (no hace loop). */
 .hero-cycle {
   display: inline-block;
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  transition: opacity 0.45s ease, transform 0.45s ease, color 0.8s ease;
 }
 .hero-cycle.hero-cycle--switching {
   opacity: 0;
   transform: translateY(14px);
 }
+
+.hero[data-hero-state="lifehouse"] .hero-eyebrow,
+.hero[data-hero-state="lifehouse"] .hero-title,
+.hero[data-hero-state="lifehouse"] .hero-sub,
+.hero[data-hero-state="lifehouse"] .hero-pill-text,
+.hero[data-hero-state="lifehouse"] .hero-scroll-cue { color: var(--black); }
+.hero[data-hero-state="lifehouse"] .hero-eyebrow::before { background: var(--black); }
+.hero[data-hero-state="lifehouse"] .hero-actions .btn-solid { background: var(--black); color: var(--white); }
+.hero[data-hero-state="lifehouse"] .hero-actions .btn-ghost { color: var(--black); border-color: rgba(0,0,0,0.65); }
+.hero[data-hero-state="lifehouse"] .hero-pill { background: rgba(255,255,255,0.3); border-color: rgba(0,0,0,0.6); }
+.hero[data-hero-state="lifehouse"] .hero-pill-dot { background: var(--black); }
+.hero[data-hero-state="lifehouse"] .hero-dot { background: rgba(0,0,0,0.25); }
+.hero[data-hero-state="lifehouse"] .hero-dot.active { background: var(--black); }
+.hero[data-hero-state="lifehouse"] .scroll-line { background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent); }
 .hero-sub {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   color: rgba(255,255,255,0.78); max-width: 44ch; line-height: 1.7;
@@ -347,6 +420,22 @@ body.page-light-top .site-header:not(.scrolled) {
 .hero-actions {
   display: flex; flex-wrap: wrap; gap: 0.875rem;
   opacity: 0; transform: translateY(18px); animation: fadeUp 0.8s 1s var(--ease-out) forwards;
+}
+
+.hero-eyebrow,
+.hero-title,
+.hero-sub,
+.hero-scroll-cue,
+.hero-pill-text {
+  transition: color 0.8s ease;
+}
+.hero-eyebrow::before,
+.hero-pill,
+.hero-pill-dot,
+.hero-dot,
+.scroll-line,
+.hero-actions .btn {
+  transition: color 0.8s ease, background-color 0.8s ease, border-color 0.8s ease, width 0.35s ease, transform 0.28s var(--ease);
 }
 
 /* Hero bottom bar */
@@ -1402,12 +1491,17 @@ a.f-info-item:hover svg { opacity: 1; }
      object-fit:cover las recorta y agranda tanto que ese texto/logo queda
      cortado y gigante detras del titulo real. Se oscurece mas el overlay para
      que ese texto de fondo no compita visualmente con el <h1> real. */
-  .hero-overlay { background: rgba(8,8,10,0.82); }
+  .hero-overlay { background: rgba(8,8,10,0.58); }
+  .hero-family-collage { opacity: 0.38; width: 115vw; right: -70vw; top: 12%; }
+  .hero-lifehouse-art { width: 94vw; right: -52vw; top: 18%; opacity: 0.32; }
+  .hero-lifehouse-mark { display: none; }
+  .hero-lifehouse-bars { width: 115vw; left: -22vw; top: 39%; opacity: 0.75; }
+  .hero[data-hero-state="lifehouse"] .hero-content { z-index: 3; }
 }
 @media (max-width: 480px) {
   .casas-grid { grid-template-columns: 1fr; }
   .footer-top { grid-template-columns: 1fr; }
-  .hero-title { font-size: 3rem; }
+  .hero-title { font-size: 2.65rem; }
   .happening-header { flex-direction: column; align-items: flex-start; }
   .eventos-header { flex-direction: column; align-items: flex-start; }
 }
