@@ -196,7 +196,8 @@ function initHeroSlides() {
 
     let current = 0;
     let interval;
-    const delay = 5000;
+    const delay = 4000;
+    const compactHero = window.matchMedia('(max-width: 768px)');
     const states = [
         { key: 'familia', word: 'FAMILIA' },
         { key: 'comunidad', word: 'COMUNIDAD' },
@@ -210,10 +211,11 @@ function initHeroSlides() {
         window.setTimeout(() => {
             slides.forEach(s => s.classList.remove('active'));
             dots.forEach(d => d.classList.remove('active'));
-            slides[current].classList.add('active');
+            slides[compactHero.matches ? 1 : current].classList.add('active');
             dots[current]?.classList.add('active');
-            hero.dataset.heroState = states[current].key;
-            document.body.dataset.heroState = states[current].key;
+            const visualState = compactHero.matches ? states[1].key : states[current].key;
+            hero.dataset.heroState = visualState;
+            document.body.dataset.heroState = visualState;
             if (word) {
                 word.textContent = states[current].word;
                 word.classList.remove('hero-cycle--switching');
@@ -234,7 +236,16 @@ function initHeroSlides() {
         hero.addEventListener('mouseleave', start);
     }
 
-    document.body.dataset.heroState = states[0].key;
+    function syncVisualMode() {
+        slides.forEach(s => s.classList.remove('active'));
+        slides[compactHero.matches ? 1 : current].classList.add('active');
+        const visualState = compactHero.matches ? states[1].key : states[current].key;
+        hero.dataset.heroState = visualState;
+        document.body.dataset.heroState = visualState;
+    }
+
+    compactHero.addEventListener('change', syncVisualMode);
+    syncVisualMode();
     start();
 }
 

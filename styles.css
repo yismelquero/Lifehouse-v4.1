@@ -368,7 +368,12 @@ body[data-hero-state="lifehouse"] .site-header:not(.scrolled) .header-inner {
   mix-blend-mode: multiply;
 }
 .hero-lifehouse-art { z-index: 1; width: min(42vw, 640px); right: 7%; top: 17%; }
-.hero-lifehouse-mark { z-index: 2; width: min(8vw, 112px); right: 26%; top: 42%; }
+.hero-lifehouse-mark {
+  z-index: 2;
+  width: min(8vw, 112px);
+  right: calc(7% + min(17vw, 264px));
+  top: 42%;
+}
 .hero-lifehouse-bars { z-index: 1; width: min(38vw, 570px); left: 10%; top: 38%; }
 
 /* Content */
