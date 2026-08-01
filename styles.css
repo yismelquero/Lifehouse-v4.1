@@ -6,6 +6,14 @@
 /* ── Reset ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+@font-face {
+  font-family: 'On Diatype';
+  src: url('./assets/Fuentes/On%20Diatype/OnDiatypeStd-Bold.otf') format('opentype');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   --black:     #0A0A0A;
   --black-2:   #141414;
@@ -22,7 +30,7 @@
   --border-dk: rgba(255,255,255,0.09);
   --border-lt: rgba(0,0,0,0.1);
 
-  --ff-display: 'Outfit', sans-serif;
+  --ff-display: 'On Diatype', sans-serif;
   --ff-body:    'Inter', sans-serif;
 
   --container: 1200px;
@@ -395,9 +403,9 @@ body.page-light-top .site-header:not(.scrolled) {
 .marquee {
   display: flex;
   align-items: center;
-  min-height: 58px;
-  background: var(--gold); overflow: hidden;
-  padding-block: 1.2rem;
+  min-height: 68px;
+  background: var(--black); overflow: hidden;
+  padding-block: 1rem;
 }
 .marquee-track {
   display: flex; white-space: nowrap;
@@ -407,19 +415,14 @@ body.page-light-top .site-header:not(.scrolled) {
 }
 .marquee-track:hover { animation-play-state: paused; }
 .marquee-inner { display: flex; align-items: center; flex-shrink: 0; }
-.marquee-inner span { font-size: 1rem; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; color: var(--black); padding: 0 1.5rem; }
-.msep { color: rgba(0,0,0,0.3) !important; padding: 0 0.25rem !important; }
+.marquee-inner span { font-size: clamp(0.9rem, 1.25vw, 1.35rem); font-weight: 700; letter-spacing: -0.02em; text-transform: uppercase; color: var(--white); padding: 0 0.45rem; }
+.msep { color: var(--white) !important; padding: 0 0.15rem !important; }
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 @media (prefers-reduced-motion: reduce) {
   .marquee-track, .g-row--rtl .g-track, .g-row--ltr .g-track { animation: none !important; }
   .hero-slide { transition: none !important; }
   .ig-track { animation: none !important; }
-}
-
-.cinta-spacer {
-  height: 2.5rem;
-  background: #fff;
 }
 
 /* ══════════════════════════════════
@@ -429,32 +432,32 @@ body.page-light-top .site-header:not(.scrolled) {
   overflow: hidden;
   width: 100%;
   background: #fff;
-  padding-block: 0.5rem;
+  padding-block: clamp(1.75rem, 3vw, 3rem) clamp(2rem, 4vw, 3.75rem);
 }
 .gallery-2rows .g-row {
   width: 100%;
   overflow: hidden;
 }
 .gallery-2rows .g-row + .g-row {
-  margin-top: 1.5rem;
+  margin-top: clamp(1.5rem, 3vw, 3.5rem);
 }
 .gallery-2rows .g-track {
   display: flex;
-  gap: 1.5rem;
+  gap: clamp(1.25rem, 2vw, 2.5rem);
   width: max-content;
 }
 .gallery-2rows .g-inner {
   display: flex;
-  gap: 1.5rem;
+  gap: clamp(1.25rem, 2vw, 2.5rem);
   flex-shrink: 0;
 }
 .gallery-2rows .g-inner img {
-  height: clamp(180px, 26vw, 340px);
-  width: clamp(260px, 38vw, 500px);
-  flex: 0 0 clamp(260px, 38vw, 500px);
-  aspect-ratio: 4 / 3;
+  width: clamp(280px, 24vw, 420px);
+  height: auto;
+  flex: 0 0 clamp(280px, 24vw, 420px);
+  aspect-ratio: 1603 / 1085;
   object-fit: cover;
-  border-radius: 5px;
+  border-radius: clamp(20px, 1.8vw, 32px);
   background: linear-gradient(110deg, #ece8df 8%, #f7f5f0 28%, #ece8df 48%);
   background-size: 220% 100%;
   animation: gallery-placeholder 1.4s ease-in-out infinite;
@@ -462,11 +465,11 @@ body.page-light-top .site-header:not(.scrolled) {
 .gallery-2rows .g-inner img[complete],
 .gallery-2rows .g-inner img.is-loaded { animation: none; }
 .g-row--rtl .g-track {
-  animation: g-rtl 30s linear infinite;
+  animation: g-rtl 80s linear infinite;
   will-change: transform;
 }
 .g-row--ltr .g-track {
-  animation: g-ltr 30s linear infinite;
+  animation: g-ltr 80s linear infinite;
   will-change: transform;
 }
 .g-row--rtl:hover .g-track,
@@ -487,12 +490,12 @@ body.page-light-top .site-header:not(.scrolled) {
 }
 
 @media (max-width: 600px) {
-  .gallery-2rows .g-row + .g-row { margin-top: 0.75rem; }
+  .gallery-2rows .g-row + .g-row { margin-top: 1rem; }
   .gallery-2rows .g-track,
   .gallery-2rows .g-inner { gap: 0.75rem; }
   .gallery-2rows .g-inner img {
-    width: 260px;
-    flex-basis: 260px;
+    width: 275px;
+    flex-basis: 275px;
   }
 }
 

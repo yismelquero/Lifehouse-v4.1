@@ -34,7 +34,7 @@
   margin: 0 auto 1.25rem;
 }
 .admin-login-card h1 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'On Diatype', sans-serif;
   font-size: 1.6rem;
   font-weight: 800;
   margin-bottom: 0.4rem;
@@ -79,7 +79,7 @@
   gap: 1rem;
 }
 .admin-header h2 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'On Diatype', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   display: flex;
@@ -253,7 +253,7 @@
   overflow-y: auto;
 }
 .admin-modal h3 {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'On Diatype', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 1.5rem;

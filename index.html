@@ -15,7 +15,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/css/intlTelInput.css">
   <link rel="stylesheet" href="styles.css?v=gallery-loading-2">
@@ -150,59 +150,13 @@
     </div>
   </div>
 
-  <div class="cinta-spacer"></div>
-
-  <!-- GALLERY 2 FILAS CARRUSEL - PARA APLICAR CAMBIO DE IMAGENES -->
+  <!-- CARRUSEL DE COMUNIDAD -->
   <div class="gallery-2rows" aria-hidden="true">
-    <!-- Fila 1: derecha a izquierda -->
-    <div class="g-row g-row--rtl">
-      <div class="g-track">
-        <div class="g-inner">
-          <img src="assets/servicios.jpg" alt="" loading="eager" fetchpriority="low" decoding="async">
-          <img src="assets/hombres.jpg" alt="" loading="eager" fetchpriority="low" decoding="async">
-          <img src="assets/clay1.jpg" alt="" loading="lazy">
-          <img src="assets/mujeres.jpg" alt="" loading="lazy">
-          <img src="assets/portada2.jpg" alt="" loading="lazy">
-          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
-          <img src="assets/servicios3.jpg" alt="" loading="lazy">
-          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
-        </div>
-        <div class="g-inner">
-          <img src="assets/servicios.jpg" alt="" loading="eager" fetchpriority="low" decoding="async">
-          <img src="assets/hombres.jpg" alt="" loading="eager" fetchpriority="low" decoding="async">
-          <img src="assets/clay1.jpg" alt="" loading="lazy">
-          <img src="assets/mujeres.jpg" alt="" loading="lazy">
-          <img src="assets/portada2.jpg" alt="" loading="lazy">
-          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
-          <img src="assets/servicios3.jpg" alt="" loading="lazy">
-          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
-        </div>
-      </div>
+    <div class="g-row g-row--rtl" data-gallery-row="first">
+      <div class="g-track"></div>
     </div>
-    <!-- Fila 2: izquierda a derecha -->
-    <div class="g-row g-row--ltr">
-      <div class="g-track">
-        <div class="g-inner">
-          <img src="assets/servicios.jpg" alt="" loading="eager" fetchpriority="low" decoding="async">
-          <img src="assets/hombres.jpg" alt="" loading="eager" fetchpriority="low" decoding="async">
-          <img src="assets/clay1.jpg" alt="" loading="lazy">
-          <img src="assets/mujeres.jpg" alt="" loading="lazy">
-          <img src="assets/portada2.jpg" alt="" loading="lazy">
-          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
-          <img src="assets/servicios3.jpg" alt="" loading="lazy">
-          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
-        </div>
-        <div class="g-inner">
-          <img src="assets/servicios.jpg" alt="" loading="lazy">
-          <img src="assets/hombres.jpg" alt="" loading="lazy">
-          <img src="assets/clay1.jpg" alt="" loading="lazy">
-          <img src="assets/mujeres.jpg" alt="" loading="lazy">
-          <img src="assets/portada2.jpg" alt="" loading="lazy">
-          <img src="assets/images/lecturabiblica/lucas/lucas.jpeg" alt="" loading="lazy">
-          <img src="assets/servicios3.jpg" alt="" loading="lazy">
-          <img src="assets/images/eventos/eventospasados/bautismo/bautismo.jpg" alt="" loading="lazy" onerror="this.src='assets/portada.jpg'">
-        </div>
-      </div>
+    <div class="g-row g-row--ltr" data-gallery-row="second">
+      <div class="g-track"></div>
     </div>
   </div>
 
@@ -698,6 +652,6 @@
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/intlTelInput.min.js"></script>
   <script src="js/supabase.js?v=2"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=home-gallery-3"></script>
 </body>
 </html>

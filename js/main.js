@@ -24,6 +24,32 @@ document.addEventListener('DOMContentLoaded', () => {
 // Mantiene el espacio del carrusel desde el primer render y retira el estado
 // de carga de cada foto apenas termina de decodificarse.
 function initGalleryLoading() {
+    const galleryImages = Array.from({ length: 30 }, (_, index) => {
+        const frame = String(index + 5).padStart(2, '0');
+        const sequence = index + 1;
+        return `assets/carrusel webp/PICS FRAME 4 -${frame}_${sequence}_11zon.webp`;
+    });
+
+    document.querySelectorAll('[data-gallery-row]').forEach((row, rowIndex) => {
+        const track = row.querySelector('.g-track');
+        if (!track || track.children.length) return;
+
+        const rowImages = galleryImages.filter((_, index) => index % 2 === rowIndex);
+        const inner = document.createElement('div');
+        inner.className = 'g-inner';
+
+        rowImages.forEach((src, index) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = '';
+            img.decoding = 'async';
+            img.loading = index < 4 ? 'eager' : 'lazy';
+            inner.appendChild(img);
+        });
+
+        track.append(inner, inner.cloneNode(true));
+    });
+
     document.querySelectorAll('.gallery-2rows img').forEach(img => {
         const markLoaded = () => img.classList.add('is-loaded');
         if (img.complete && img.naturalWidth > 0) markLoaded();
