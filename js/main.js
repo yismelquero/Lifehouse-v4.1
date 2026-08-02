@@ -6,6 +6,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     initScrollProgress();
     initHeaderAndNav();
+    initUnifiedFooter();
+    initPageContent();
+    initFastNavigation();
+});
+
+function initPageContent() {
     initRevealAnimations();
     initGalleryLoading();
     initHeroSlides();
@@ -14,12 +20,209 @@ document.addEventListener('DOMContentLoaded', () => {
     initTabs();
     initProgressBars();
     initContactForm();
-    initUnifiedFooter();
 
-    // Auto-open today's card if on lectura page
     const todayCard = document.querySelector('.lec-day-card.active-day');
     if (todayCard) todayCard.classList.add('open');
-});
+}
+
+// Navegación progresiva para las páginas de contenido. Home, Sirve y los
+// formularios conservan la recarga tradicional porque manejan intervalos o
+// dependencias propias que deben iniciar desde un documento limpio.
+function initFastNavigation() {
+    if (!window.fetch || !window.history?.pushState || !window.DOMParser) return;
+
+    const fastPages = new Set([
+        '/casas.html',
+        '/clay.html',
+        '/conpasion.html',
+        '/dar.html',
+        '/eventos.html',
+        '/lectura.html',
+        '/nosotros.html',
+        '/reuniones.html',
+    ]);
+    const pageCache = new Map();
+    let navigating = false;
+
+    const normalizedPath = (url) => {
+        const path = url.pathname.replace(/\/{2,}/g, '/');
+        return path === '/' ? '/index.html' : path;
+    };
+
+    const canNavigateFast = (url) => (
+        url.origin === window.location.origin &&
+        fastPages.has(normalizedPath(url)) &&
+        fastPages.has(normalizedPath(window.location))
+    );
+
+    const ensureContentContainer = (doc) => {
+        let container = doc.getElementById('pjax-content');
+        if (container) return container;
+
+        const header = doc.querySelector('header.site-header');
+        const footer = doc.querySelector('footer.site-footer');
+        if (!header || !footer) return null;
+
+        container = doc.createElement('div');
+        container.id = 'pjax-content';
+        header.after(container);
+
+        let node = container.nextSibling;
+        while (node && node !== footer) {
+            const next = node.nextSibling;
+            container.appendChild(node);
+            node = next;
+        }
+        return container;
+    };
+
+    const fetchPage = async (url) => {
+        const key = url.origin + url.pathname + url.search;
+        if (pageCache.has(key)) return pageCache.get(key);
+
+        const request = fetch(key, {
+            headers: { 'X-Requested-With': 'LifeHouse-PJAX' },
+            credentials: 'same-origin',
+        }).then(async (response) => {
+            if (!response.ok) throw new Error(`No se pudo cargar ${response.status}`);
+            const html = await response.text();
+            return new DOMParser().parseFromString(html, 'text/html');
+        }).catch((error) => {
+            pageCache.delete(key);
+            throw error;
+        });
+
+        pageCache.set(key, request);
+        if (pageCache.size > 8) pageCache.delete(pageCache.keys().next().value);
+        return request;
+    };
+
+    const syncPageStyles = async (nextDocument, targetUrl) => {
+        const resolveHref = (link, base) => new URL(link.getAttribute('href'), base).href;
+        const isPageStyle = (href) => href.includes('/css/pages/');
+        const targetStyles = Array.from(nextDocument.querySelectorAll('link[rel="stylesheet"][href]'))
+            .map((link) => resolveHref(link, targetUrl))
+            .filter(isPageStyle);
+        const currentStyles = Array.from(document.querySelectorAll('link[rel="stylesheet"][href]'))
+            .filter((link) => isPageStyle(link.href));
+
+        await Promise.all(targetStyles.map((href) => {
+            if (currentStyles.some((link) => link.href === href)) return Promise.resolve();
+            return new Promise((resolve, reject) => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = href;
+                link.dataset.pjaxPageStyle = '';
+                link.onload = resolve;
+                link.onerror = reject;
+                document.head.appendChild(link);
+            });
+        }));
+
+        currentStyles.forEach((link) => {
+            if (!targetStyles.includes(link.href)) link.remove();
+        });
+    };
+
+    const updateHead = (nextDocument) => {
+        document.title = nextDocument.title;
+        const nextDescription = nextDocument.querySelector('meta[name="description"]')?.content;
+        const currentDescription = document.querySelector('meta[name="description"]');
+        if (nextDescription && currentDescription) currentDescription.content = nextDescription;
+    };
+
+    const restoreScroll = (url, savedScroll) => {
+        requestAnimationFrame(() => {
+            if (url.hash) {
+                const target = document.getElementById(decodeURIComponent(url.hash.slice(1)));
+                if (target) {
+                    target.scrollIntoView();
+                    return;
+                }
+            }
+            window.scrollTo(0, Number.isFinite(savedScroll) ? savedScroll : 0);
+        });
+    };
+
+    const navigate = async (url, { push = true, savedScroll = 0 } = {}) => {
+        if (navigating) return;
+        navigating = true;
+        document.documentElement.classList.add('is-page-loading');
+        document.body.setAttribute('aria-busy', 'true');
+
+        try {
+            const nextDocument = await fetchPage(url);
+            const currentContent = ensureContentContainer(document);
+            const nextContent = ensureContentContainer(nextDocument);
+            if (!currentContent || !nextContent) throw new Error('La página no tiene contenedor navegable');
+
+            await syncPageStyles(nextDocument, url);
+            const nextNodes = Array.from(nextContent.childNodes).map((node) => document.importNode(node, true));
+
+            const swap = () => {
+                currentContent.replaceChildren(...nextNodes);
+                document.body.className = nextDocument.body.className;
+                updateHead(nextDocument);
+                initPageContent();
+            };
+
+            if (push) {
+                history.replaceState({ ...(history.state || {}), pjax: true, scrollY: window.scrollY }, '', window.location.href);
+                history.pushState({ pjax: true, scrollY: 0 }, '', url.href);
+            }
+
+            if (document.startViewTransition) {
+                const transition = document.startViewTransition(swap);
+                await transition.updateCallbackDone;
+            } else {
+                swap();
+            }
+            restoreScroll(url, savedScroll);
+        } catch (error) {
+            console.warn('Navegación rápida no disponible; se usará la carga normal.', error);
+            window.location.href = url.href;
+        } finally {
+            navigating = false;
+            document.documentElement.classList.remove('is-page-loading');
+            document.body.removeAttribute('aria-busy');
+        }
+    };
+
+    ensureContentContainer(document);
+    history.scrollRestoration = 'manual';
+    history.replaceState({ ...(history.state || {}), pjax: true, scrollY: window.scrollY }, '', window.location.href);
+
+    document.addEventListener('click', (event) => {
+        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const link = event.target.closest('a[href]');
+        if (!link || link.target === '_blank' || link.hasAttribute('download') || link.dataset.noPjax !== undefined) return;
+
+        const url = new URL(link.href, window.location.href);
+        if (!canNavigateFast(url)) return;
+        if (url.pathname === window.location.pathname && url.search === window.location.search) return;
+
+        event.preventDefault();
+        navigate(url);
+    });
+
+    const prefetchLink = (event) => {
+        const link = event.target.closest?.('a[href]');
+        if (!link) return;
+        const url = new URL(link.href, window.location.href);
+        if (canNavigateFast(url)) fetchPage(url).catch(() => {});
+    };
+    document.addEventListener('pointerover', prefetchLink, { passive: true });
+    document.addEventListener('focusin', prefetchLink);
+
+    window.addEventListener('popstate', (event) => {
+        const url = new URL(window.location.href);
+        if (!fastPages.has(normalizedPath(url))) {
+            window.location.reload();
+            return;
+        }
+        navigate(url, { push: false, savedScroll: event.state?.scrollY || 0 });
+    });
+}
 
 // Mantiene el footer completo del home en todas las paginas internas que ya
 // cuentan con footer, sin alterar el markup del home.
@@ -122,7 +325,7 @@ function initGalleryLoading() {
     const galleryImages = Array.from({ length: 30 }, (_, index) => {
         const frame = String(index + 5).padStart(2, '0');
         const sequence = index + 1;
-        return `assets/carrusel webp/PICS FRAME 4 -${frame}_${sequence}_11zon.webp`;
+        return `assets/Home/carrusel webp/PICS FRAME 4 -${frame}_${sequence}_11zon.webp`;
     });
 
     document.querySelectorAll('[data-gallery-row]').forEach((row, rowIndex) => {
@@ -709,6 +912,18 @@ function filterDays(btn, status) {
     });
 }
 window.filterDays = filterDays;
+
+function filterCasas(btn, type) {
+    document.querySelectorAll('.casa-filter-btn').forEach(button => button.classList.remove('active'));
+    btn.classList.add('active');
+
+    document.querySelectorAll('.casa-full-card').forEach(card => {
+        const visible = type === 'all' || card.dataset.type === type;
+        card.style.display = visible ? 'flex' : 'none';
+        if (visible) card.classList.add('visible');
+    });
+}
+window.filterCasas = filterCasas;
 
 /**
  * PROGRESS BARS ANIMATION
