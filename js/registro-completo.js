@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
       separateDialCode: true,
       loadUtilsOnInit: 'assets/vendor/intl-tel-input/utils.js',
     });
+
+    const resetPhoneError = () => {
+      phoneInput.setCustomValidity('');
+      clearErrorMessage();
+    };
+    phoneInput.addEventListener('input', resetPhoneError);
+    phoneInput.addEventListener('countrychange', resetPhoneError);
   }
 
   // ── Edad automática desde la fecha de nacimiento ──
@@ -86,9 +93,27 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    // Una validación telefónica anterior no debe bloquear el nuevo intento.
+    if (phoneInput) phoneInput.setCustomValidity('');
+
     if (!form.checkValidity()) {
       form.reportValidity();
       showMessage('Por favor completa los campos obligatorios (*).', '#e74c3c', 'error');
+      return;
+    }
+
+    // Valida inmediatamente, sin bloquear el formulario esperando recursos.
+    const typedPhoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
+    const phoneIsValid = iti && typeof iti.isValidNumber === 'function'
+      ? iti.isValidNumber()
+      : typedPhoneDigits.length >= 6 && typedPhoneDigits.length <= 15;
+    if (!typedPhoneDigits || !phoneIsValid) {
+      const phoneError = 'Ingresa un número de WhatsApp válido para el país seleccionado.';
+      if (phoneInput) {
+        phoneInput.setCustomValidity(phoneError);
+        phoneInput.reportValidity();
+      }
+      showMessage(phoneError, '#e74c3c', 'error');
       return;
     }
 
@@ -102,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : phoneDigits;
 
     if (!phone) {
-      showMessage('Por favor ingresa un número de WhatsApp válido.', '#e74c3c', 'error');
+      showMessage('Ingresa un número de WhatsApp válido para el país seleccionado.', '#e74c3c', 'error');
       return;
     }
 
