@@ -324,6 +324,7 @@ function initUnifiedFooter() {
 function initGalleryLoading() {
     const gallery = document.querySelector('.gallery-2rows');
     if (!gallery || gallery.dataset.galleryInitialized === 'true') return;
+    const compactGallery = window.matchMedia('(max-width: 600px)').matches;
 
     const galleryImages = Array.from({ length: 30 }, (_, index) => {
         const frame = String(index + 5).padStart(2, '0');
@@ -339,13 +340,15 @@ function initGalleryLoading() {
         const track = row.querySelector('.g-track');
         if (!track || track.children.length) return;
 
-        const rowImages = galleryImages.filter((_, index) => index % 2 === rowIndex);
+        const rowImages = galleryImages
+            .filter((_, index) => index % 2 === rowIndex)
+            .slice(0, compactGallery ? 4 : undefined);
         const inner = document.createElement('div');
         inner.className = 'g-inner';
 
         rowImages.forEach((src, index) => {
             const img = document.createElement('img');
-            if (index < 5) img.src = src;
+            if (compactGallery || index < 5) img.src = src;
             else img.dataset.src = src;
             img.alt = '';
             img.decoding = 'async';
@@ -368,11 +371,16 @@ function initGalleryLoading() {
           img.removeAttribute('data-src');
         });
       };
-      window.addEventListener('scroll', hydrateRemaining, { once: true, passive: true });
-      window.setTimeout(hydrateRemaining, 6000);
+      if (!compactGallery) {
+        window.addEventListener('scroll', hydrateRemaining, { once: true, passive: true });
+        window.setTimeout(hydrateRemaining, 6000);
+      }
     };
 
-    if (!('IntersectionObserver' in window)) {
+    // En Safari móvil el contenedor vacío puede atravesar el viewport antes de
+    // que IntersectionObserver lo detecte. Construirlo de inmediato evita que
+    // quede un bloque blanco permanente, manteniendo solo 8 recursos únicos.
+    if (compactGallery || !('IntersectionObserver' in window)) {
       buildGallery();
       return;
     }
