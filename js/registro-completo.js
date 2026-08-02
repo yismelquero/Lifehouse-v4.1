@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     iti = window.intlTelInput(phoneInput, {
       initialCountry: 'bo',
       separateDialCode: true,
-      loadUtilsOnInit: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/utils.js',
+      loadUtilsOnInit: 'assets/vendor/intl-tel-input/utils.js',
     });
   }
 

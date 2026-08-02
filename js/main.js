@@ -322,13 +322,20 @@ function initUnifiedFooter() {
 // Mantiene el espacio del carrusel desde el primer render y retira el estado
 // de carga de cada foto apenas termina de decodificarse.
 function initGalleryLoading() {
+    const gallery = document.querySelector('.gallery-2rows');
+    if (!gallery || gallery.dataset.galleryInitialized === 'true') return;
+
     const galleryImages = Array.from({ length: 30 }, (_, index) => {
         const frame = String(index + 5).padStart(2, '0');
         const sequence = index + 1;
         return `assets/Home/carrusel webp/PICS FRAME 4 -${frame}_${sequence}_11zon.webp`;
     });
 
-    document.querySelectorAll('[data-gallery-row]').forEach((row, rowIndex) => {
+    const buildGallery = () => {
+      if (gallery.dataset.galleryInitialized === 'true') return;
+      gallery.dataset.galleryInitialized = 'true';
+
+      gallery.querySelectorAll('[data-gallery-row]').forEach((row, rowIndex) => {
         const track = row.querySelector('.g-track');
         if (!track || track.children.length) return;
 
@@ -338,21 +345,44 @@ function initGalleryLoading() {
 
         rowImages.forEach((src, index) => {
             const img = document.createElement('img');
-            img.src = src;
+            if (index < 5) img.src = src;
+            else img.dataset.src = src;
             img.alt = '';
             img.decoding = 'async';
-            img.loading = index < 4 ? 'eager' : 'lazy';
+            img.loading = 'lazy';
             inner.appendChild(img);
         });
 
         track.append(inner, inner.cloneNode(true));
-    });
+      });
 
-    document.querySelectorAll('.gallery-2rows img').forEach(img => {
+      gallery.querySelectorAll('img').forEach(img => {
         const markLoaded = () => img.classList.add('is-loaded');
         if (img.complete && img.naturalWidth > 0) markLoaded();
         else img.addEventListener('load', markLoaded, { once: true });
-    });
+      });
+
+      const hydrateRemaining = () => {
+        gallery.querySelectorAll('img[data-src]').forEach(img => {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        });
+      };
+      window.addEventListener('scroll', hydrateRemaining, { once: true, passive: true });
+      window.setTimeout(hydrateRemaining, 6000);
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      buildGallery();
+      return;
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      if (!entries.some(entry => entry.isIntersecting)) return;
+      observer.disconnect();
+      buildGallery();
+    }, { rootMargin: '150px 0px' });
+    observer.observe(gallery);
 }
 
 // ── SCROLL PROGRESS BAR
@@ -503,8 +533,16 @@ function initHeroSlides() {
         { key: 'lifehouse', word: 'LIFEHOUSE' }
     ];
 
+    function hydrateSlide(slide) {
+        slide?.querySelectorAll('img[data-src]').forEach(img => {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+        });
+    }
+
     function goTo(index) {
         current = (index + slides.length) % slides.length;
+        hydrateSlide(slides[compactHero.matches ? 1 : current]);
         if (word) word.classList.add('hero-cycle--switching');
 
         window.setTimeout(() => {
@@ -536,6 +574,7 @@ function initHeroSlides() {
     }
 
     function syncVisualMode() {
+        hydrateSlide(slides[compactHero.matches ? 1 : current]);
         slides.forEach(s => s.classList.remove('active'));
         slides[compactHero.matches ? 1 : current].classList.add('active');
         const visualState = compactHero.matches ? states[1].key : states[current].key;
@@ -545,6 +584,9 @@ function initHeroSlides() {
 
     compactHero.addEventListener('change', syncVisualMode);
     syncVisualMode();
+    const preloadSlides = () => window.setTimeout(() => slides.forEach(hydrateSlide), 200);
+    if (document.readyState === 'complete') preloadSlides();
+    else window.addEventListener('load', preloadSlides, { once: true });
     start();
 }
 
@@ -840,24 +882,79 @@ function toggleDay(card) {
 window.toggleDay = toggleDay;
 
 // ── CONTACT FORM (index.html)
+function loadScriptOnce(src) {
+    const absoluteSrc = new URL(src, window.location.href).href;
+    const existing = Array.from(document.scripts).find(script => script.src === absoluteSrc);
+    if (existing?.dataset.loaded === 'true') return Promise.resolve();
+
+    return new Promise((resolve, reject) => {
+        const script = existing || document.createElement('script');
+        script.addEventListener('load', () => {
+            script.dataset.loaded = 'true';
+            resolve();
+        }, { once: true });
+        script.addEventListener('error', reject, { once: true });
+        if (!existing) {
+            script.src = src;
+            document.head.appendChild(script);
+        }
+    });
+}
+
+function loadStyleOnce(href) {
+    const absoluteHref = new URL(href, window.location.href).href;
+    if (Array.from(document.styleSheets).some(sheet => sheet.href === absoluteHref)) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.onload = resolve;
+        link.onerror = reject;
+        document.head.appendChild(link);
+    });
+}
+
 function initContactForm() {
     const form = document.getElementById('contactForm');
-    if (!form) return;
+    if (!form || form.dataset.contactInitialized === 'true') return;
+    form.dataset.contactInitialized = 'true';
 
     const phoneInput = document.getElementById('conPhone');
     let iti;
-    if (phoneInput && typeof intlTelInput !== 'undefined') {
-        iti = window.intlTelInput(phoneInput, {
-            initialCountry: 'bo',
-            separateDialCode: true,
-            loadUtilsOnInit: 'https://cdn.jsdelivr.net/npm/intl-tel-input@24/build/js/utils.js',
+    let dependenciesPromise;
+    const prepareDependencies = () => {
+        if (dependenciesPromise) return dependenciesPromise;
+        dependenciesPromise = Promise.all([
+            loadStyleOnce('assets/vendor/intl-tel-input/intlTelInput.css'),
+            loadScriptOnce('assets/vendor/supabase/supabase.js'),
+            loadScriptOnce('assets/vendor/intl-tel-input/intlTelInput.min.js'),
+        ]).then(() => loadScriptOnce('js/supabase.js?v=2')).then(() => {
+            if (phoneInput && !iti && typeof window.intlTelInput !== 'undefined') {
+                iti = window.intlTelInput(phoneInput, {
+                    initialCountry: 'bo',
+                    separateDialCode: true,
+                    loadUtilsOnInit: 'assets/vendor/intl-tel-input/utils.js',
+                });
+            }
         });
-    }
+        return dependenciesPromise;
+    };
+
+    form.addEventListener('focusin', () => prepareDependencies().catch(console.error), { once: true });
 
     const msg = document.getElementById('conMsg');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        try {
+            await prepareDependencies();
+        } catch (error) {
+            msg.textContent = 'No se pudo preparar el formulario. Revisa tu conexión e intenta de nuevo.';
+            msg.style.color = '#e74c3c';
+            console.error(error);
+            return;
+        }
 
         const nombre = document.getElementById('conNombre').value.trim();
         const apellido = document.getElementById('conApellido').value.trim();
