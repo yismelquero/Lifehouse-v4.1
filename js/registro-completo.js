@@ -102,12 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Para el registro aceptamos cualquier número nacional que comience en 6 o 7.
+    // La única restricción es ingresar exactamente 8 dígitos nacionales.
     // El prefijo internacional se obtiene por separado desde el selector de país.
     const typedPhoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
-    const phoneIsValid = /^[67]\d*$/.test(typedPhoneDigits);
+    const phoneIsValid = /^\d{8}$/.test(typedPhoneDigits);
     if (!phoneIsValid) {
-      const phoneError = 'El número de WhatsApp debe comenzar con 6 o 7.';
+      const phoneError = 'El número de WhatsApp debe tener exactamente 8 dígitos.';
       if (phoneInput) {
         phoneInput.setCustomValidity(phoneError);
         phoneInput.reportValidity();
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : phoneDigits;
 
     if (!phone) {
-      showMessage('El número de WhatsApp debe comenzar con 6 o 7.', '#e74c3c', 'error');
+      showMessage('El número de WhatsApp debe tener exactamente 8 dígitos.', '#e74c3c', 'error');
       return;
     }
 
