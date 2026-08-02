@@ -5,6 +5,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const msg = document.getElementById('rcMsg');
   const submitBtn = document.getElementById('rcSubmit');
 
+  function showMessage(text, color, state) {
+    msg.textContent = text;
+    msg.style.color = color;
+    msg.dataset.state = state;
+  }
+
+  function clearErrorMessage() {
+    if (msg.dataset.state !== 'error') return;
+    msg.textContent = '';
+    msg.style.color = '';
+    delete msg.dataset.state;
+  }
+
+  // Al corregir cualquier respuesta, retira de inmediato el error anterior.
+  form.addEventListener('input', clearErrorMessage);
+  form.addEventListener('change', clearErrorMessage);
+
   // ── Teléfono internacional ──
   const phoneInput = document.getElementById('rcPhone');
   let iti;
@@ -71,8 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!form.checkValidity()) {
       form.reportValidity();
-      msg.textContent = 'Por favor completa los campos obligatorios (*).';
-      msg.style.color = '#e74c3c';
+      showMessage('Por favor completa los campos obligatorios (*).', '#e74c3c', 'error');
       return;
     }
 
@@ -86,8 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : phoneDigits;
 
     if (!phone) {
-      msg.textContent = 'Por favor ingresa un número de WhatsApp válido.';
-      msg.style.color = '#e74c3c';
+      showMessage('Por favor ingresa un número de WhatsApp válido.', '#e74c3c', 'error');
       return;
     }
 
@@ -132,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.textContent = 'Enviando...';
     msg.textContent = '';
     msg.style.color = '';
+    delete msg.dataset.state;
 
     try {
       // Primero usa el esquema completo. Si la base aún no fue migrada,
@@ -142,16 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (retry.error) throw retry.error;
       }
 
-      msg.textContent = '¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.';
-      msg.style.color = '#2ecc71';
+      showMessage('¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.', '#2ecc71', 'success');
       form.reset();
       if (iti) iti.setNumber('');
       familiaFields.hidden = true;
       invitadoFields.hidden = true;
       casaVidaFields.hidden = true;
     } catch (err) {
-      msg.textContent = 'Ocurrió un error. Intenta de nuevo más tarde.';
-      msg.style.color = '#e74c3c';
+      showMessage('Ocurrió un error. Intenta de nuevo más tarde.', '#e74c3c', 'error');
       console.error(err);
     } finally {
       submitBtn.disabled = false;
