@@ -102,13 +102,12 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Valida inmediatamente, sin bloquear el formulario esperando recursos.
+    // Para el registro aceptamos cualquier número nacional que comience en 6 o 7.
+    // El prefijo internacional se obtiene por separado desde el selector de país.
     const typedPhoneDigits = phoneInput ? phoneInput.value.replace(/\D/g, '') : '';
-    const phoneIsValid = iti && typeof iti.isValidNumber === 'function'
-      ? iti.isValidNumber()
-      : typedPhoneDigits.length >= 6 && typedPhoneDigits.length <= 15;
-    if (!typedPhoneDigits || !phoneIsValid) {
-      const phoneError = 'Ingresa un número de WhatsApp válido para el país seleccionado.';
+    const phoneIsValid = /^[67]\d*$/.test(typedPhoneDigits);
+    if (!phoneIsValid) {
+      const phoneError = 'El número de WhatsApp debe comenzar con 6 o 7.';
       if (phoneInput) {
         phoneInput.setCustomValidity(phoneError);
         phoneInput.reportValidity();
@@ -127,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       : phoneDigits;
 
     if (!phone) {
-      showMessage('Ingresa un número de WhatsApp válido para el país seleccionado.', '#e74c3c', 'error');
+      showMessage('El número de WhatsApp debe comenzar con 6 o 7.', '#e74c3c', 'error');
       return;
     }
 
