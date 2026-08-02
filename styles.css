@@ -1688,6 +1688,12 @@ a.f-info-item:hover svg { opacity: 1; }
 .paso-card:hover .paso-img img {
   transform: scale(1.05);
 }
+.paso-img img.paso-img-crece {
+  transform: scale(1.28);
+}
+.paso-card:hover .paso-img img.paso-img-crece {
+  transform: scale(1.33);
+}
 .paso-body {
   padding: 2rem;
   text-align: center;
