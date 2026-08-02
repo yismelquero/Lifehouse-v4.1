@@ -523,7 +523,7 @@ body[data-hero-state="lifehouse"] .site-header:not(.scrolled) .header-inner {
 @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track, .g-row--rtl .g-track, .g-row--ltr .g-track { animation: none !important; }
+  .marquee-track { animation: none !important; }
   .hero-slide { transition: none !important; }
   .ig-track { animation: none !important; }
 }
@@ -600,6 +600,8 @@ body[data-hero-state="lifehouse"] .site-header:not(.scrolled) .header-inner {
     width: 275px;
     flex-basis: 275px;
   }
+  .g-row--rtl .g-track { animation-duration: 38s; }
+  .g-row--ltr .g-track { animation-duration: 38s; }
 }
 
 /* ══════════════════════════════════

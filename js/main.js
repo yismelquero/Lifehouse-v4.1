@@ -342,7 +342,7 @@ function initGalleryLoading() {
 
         const rowImages = galleryImages
             .filter((_, index) => index % 2 === rowIndex)
-            .slice(0, compactGallery ? 4 : undefined);
+            .slice(0, compactGallery ? 3 : undefined);
         const inner = document.createElement('div');
         inner.className = 'g-inner';
 
@@ -351,8 +351,9 @@ function initGalleryLoading() {
             if (compactGallery || index < 5) img.src = src;
             else img.dataset.src = src;
             img.alt = '';
-            img.decoding = 'async';
-            img.loading = 'lazy';
+            img.decoding = compactGallery ? 'sync' : 'async';
+            img.loading = compactGallery ? 'eager' : 'lazy';
+            img.draggable = false;
             inner.appendChild(img);
         });
 
