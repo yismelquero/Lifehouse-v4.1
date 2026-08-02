@@ -16,6 +16,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Edad automática desde la fecha de nacimiento ──
+  const nacimientoEl = document.getElementById('rcNacimiento');
+  const edadEl = document.getElementById('rcEdad');
+  function calcAge() {
+    if (!nacimientoEl || !edadEl || !nacimientoEl.value) {
+      if (edadEl) edadEl.value = '';
+      return;
+    }
+    const hoy = new Date();
+    const nac = new Date(`${nacimientoEl.value}T00:00:00`);
+    let edad = hoy.getFullYear() - nac.getFullYear();
+    const mes = hoy.getMonth() - nac.getMonth();
+    if (mes < 0 || (mes === 0 && hoy.getDate() < nac.getDate())) edad--;
+    edadEl.value = edad >= 0 && edad <= 120 ? edad : '';
+  }
+  if (nacimientoEl) nacimientoEl.addEventListener('change', calcAge);
+
   // ── Campos condicionales ──
   const familiaFields = document.getElementById('rcFamiliaFields');
   document.querySelectorAll('input[name="rcConFamilia"]').forEach((input) => {
@@ -37,6 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // ── Lectura segura de campos ──
+  function readValue(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function readRadio(name) {
+    const el = document.querySelector(`input[name="${name}"]:checked`);
+    return el ? el.value : '';
+  }
+
   // ── Envío ──
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -48,30 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const nombres = document.getElementById('rcNombres').value.trim();
-    const apellidos = document.getElementById('rcApellidos').value.trim();
-    const nacimiento = document.getElementById('rcNacimiento').value;
-    const edad = document.getElementById('rcEdad').value;
-    const genero = document.getElementById('rcGenero').value;
-    const phone = iti ? iti.getNumber() : (phoneInput ? phoneInput.value.trim() : '');
-    const email = document.getElementById('rcEmail').value.trim();
-    const zona = document.getElementById('rcZona').value.trim();
-
-    const estadoCivil = document.querySelector('input[name="rcEstadoCivil"]:checked')?.value || '';
-    const conFamilia = document.querySelector('input[name="rcConFamilia"]:checked')?.value || '';
-    const esposo = document.getElementById('rcEsposo').value.trim();
-    const hijosLH = document.querySelector('input[name="rcHijosLH"]:checked')?.value || '';
-    const cantHijos = document.getElementById('rcCantHijos').value;
-    const edadesHijos = document.getElementById('rcEdadesHijos').value.trim();
-
-    const primeraVez = document.querySelector('input[name="rcPrimeraVez"]:checked')?.value || '';
-    const conociste = comoConociste.value;
-    const invitadoPor = document.getElementById('rcInvitadoPor').value.trim();
-    const entregadoVida = document.getElementById('rcEntregadoVida').value;
-    const bautizado = document.querySelector('input[name="rcBautizado"]:checked')?.value || '';
-    const casaVida = document.querySelector('input[name="rcCasaVida"]:checked')?.value || '';
-    const casaVidaCual = document.getElementById('rcCasaVidaCual').value.trim();
-    const infoWhatsapp = document.querySelector('input[name="rcInfoWhatsapp"]:checked')?.value || '';
+    // Guarda por separado el prefijo internacional y el número nacional.
+    const fullPhone = iti ? iti.getNumber() : (phoneInput ? phoneInput.value.trim() : '');
+    const dialCode = iti ? String(iti.getSelectedCountryData().dialCode || '') : '';
+    const phoneDigits = fullPhone.replace(/\D/g, '');
+    const countryCode = dialCode ? `+${dialCode}` : null;
+    const phone = dialCode && phoneDigits.startsWith(dialCode)
+      ? phoneDigits.slice(dialCode.length)
+      : phoneDigits;
 
     if (!phone) {
       msg.textContent = 'Por favor ingresa un número de WhatsApp válido.';
@@ -79,48 +91,56 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    const age = readValue('rcEdad');
+    const childrenCount = readValue('rcCantHijos');
+    const payload = {
+      first_name: readValue('rcNombres'),
+      last_name: readValue('rcApellidos'),
+      birth_date: readValue('rcNacimiento') || null,
+      age: age ? parseInt(age, 10) : null,
+      gender: readValue('rcGenero') || null,
+      phone,
+      country_code: countryCode,
+      email: readValue('rcEmail') || null,
+      zona: readValue('rcZona') || null,
+      estado_civil: readRadio('rcEstadoCivil') || null,
+      con_familia: readRadio('rcConFamilia') || null,
+      esposo: readValue('rcEsposo') || null,
+      hijos_lh: readRadio('rcHijosLH') || null,
+      cantidad_hijos: childrenCount ? parseInt(childrenCount, 10) : null,
+      edades_hijos: readValue('rcEdadesHijos') || null,
+      primera_vez: readRadio('rcPrimeraVez') || null,
+      como_conociste: comoConociste.value || null,
+      invitado_por: readValue('rcInvitadoPor') || null,
+      entregado_vida: readValue('rcEntregadoVida') || null,
+      bautizado: readRadio('rcBautizado') || null,
+      casa_vida: readRadio('rcCasaVida') || null,
+      casa_vida_cual: readValue('rcCasaVidaCual') || null,
+      info_whatsapp: readRadio('rcInfoWhatsapp') || null,
+      registered_by: 'website',
+    };
+
+    const minimalPayload = {
+      first_name: payload.first_name,
+      last_name: payload.last_name,
+      phone,
+      country_code: countryCode,
+      registered_by: 'website',
+    };
+
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
     msg.textContent = '';
     msg.style.color = '';
 
     try {
-      const notes = [
-        '— INFORMACIÓN PERSONAL —',
-        `Fecha de nacimiento: ${nacimiento}`,
-        `Edad: ${edad}`,
-        `Género: ${genero}`,
-        email ? `Correo: ${email}` : null,
-        zona ? `Zona: ${zona}` : null,
-        '',
-        '— INFORMACIÓN FAMILIAR —',
-        `Estado civil: ${estadoCivil}`,
-        `¿Viene con familia?: ${conFamilia}`,
-        conFamilia === 'Sí' && esposo ? `Nombre del esposo/a: ${esposo}` : null,
-        conFamilia === 'Sí' && hijosLH ? `¿Hijos que asisten a LifeHouse?: ${hijosLH}` : null,
-        conFamilia === 'Sí' && cantHijos ? `Cantidad de hijos: ${cantHijos}` : null,
-        conFamilia === 'Sí' && edadesHijos ? `Edades de los hijos: ${edadesHijos}` : null,
-        '',
-        '— VIDA ESPIRITUAL —',
-        `¿Primera vez en LifeHouse?: ${primeraVez}`,
-        `¿Cómo conoció LifeHouse?: ${conociste}`,
-        conociste === 'Invitación de un amigo' && invitadoPor ? `Invitado por: ${invitadoPor}` : null,
-        `¿Ha entregado su vida a Jesús?: ${entregadoVida}`,
-        `¿Bautizado en agua?: ${bautizado}`,
-        `¿Forma parte de una Casa Vida?: ${casaVida}`,
-        casaVida === 'Sí' && casaVidaCual ? `Cuál Casa Vida: ${casaVidaCual}` : null,
-        `¿Recibir información por WhatsApp?: ${infoWhatsapp}`,
-      ].filter((line) => line !== null).join('\n');
-
-      const { error } = await supabase.from('members').insert({
-        first_name: nombres,
-        last_name: apellidos,
-        phone: phone,
-        notes: notes,
-        registered_by: 'website',
-      });
-
-      if (error) throw error;
+      // Primero usa el esquema completo. Si la base aún no fue migrada,
+      // reintenta con las columnas mínimas para no perder el registro.
+      const firstTry = await supabase.from('members').insert(payload);
+      if (firstTry.error) {
+        const retry = await supabase.from('members').insert(minimalPayload);
+        if (retry.error) throw retry.error;
+      }
 
       msg.textContent = '¡Gracias por registrarte! Nos pondremos en contacto contigo pronto.';
       msg.style.color = '#2ecc71';
