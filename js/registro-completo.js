@@ -116,19 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Guarda por separado el prefijo internacional y el número nacional.
-    const fullPhone = iti ? iti.getNumber() : (phoneInput ? phoneInput.value.trim() : '');
+    // La librería se usa únicamente para leer el prefijo seleccionado.
+    // El número nacional guardado es exactamente el valor de 8 dígitos validado arriba.
     const dialCode = iti ? String(iti.getSelectedCountryData().dialCode || '') : '';
-    const phoneDigits = fullPhone.replace(/\D/g, '');
     const countryCode = dialCode ? `+${dialCode}` : null;
-    const phone = dialCode && phoneDigits.startsWith(dialCode)
-      ? phoneDigits.slice(dialCode.length)
-      : phoneDigits;
-
-    if (!phone) {
-      showMessage('El número de WhatsApp debe tener exactamente 8 dígitos.', '#e74c3c', 'error');
-      return;
-    }
+    const phone = typedPhoneDigits;
 
     const age = readValue('rcEdad');
     const childrenCount = readValue('rcCantHijos');
